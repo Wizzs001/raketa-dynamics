@@ -1,451 +1,608 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta
-    name="description"
-    content="Raketa Dynamics upcoming releases, announcements, and development updates."
->
+    <meta
+        name="description"
+        content="Explore Raketa Dynamics aircraft and ground vehicle models."
+    >
 
-<title>Releases & Updates | Raketa Dynamics</title>
+    <title>Models | Raketa Dynamics</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-<style>
+    <style>
 
-.release-item {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 30px;
-    padding: 34px 0;
-    border-bottom: 1px solid #292929;
-    cursor: pointer;
-    overflow: hidden;
-    transition: padding 0.3s ease;
-}
+        .model-branch {
+            margin-bottom: 80px;
+        }
 
-.release-item:hover,
-.release-item.is-open {
-    padding: 42px 0;
-}
+        .model-branch:last-child {
+            margin-bottom: 0;
+        }
 
-.release-content {
-    min-width: 0;
-}
+        .model-branch-title {
+            margin-bottom: 30px;
+        }
 
-.release-date {
-    display: block;
-    margin-bottom: 12px;
-}
+        .model-branch-title h2 {
+            margin: 0;
+        }
 
-.release-item h2 {
-    margin: 0;
-}
+        .model-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
 
-.release-details {
-    display: none;
-    margin-top: 22px;
-}
+        .model-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            background: #000000;
+        }
 
-.release-item:hover .release-details,
-.release-item.is-open .release-details {
-    display: block;
-}
+        .model-item-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
 
-.release-details p {
-    max-width: 720px;
-    margin-bottom: 18px;
-    line-height: 1.7;
-}
+        .model-item-title {
+            margin: 0;
+            font-size: 1.15rem;
+            line-height: 1.2;
+        }
 
-.release-image {
-    display: none;
-    width: 100%;
-    max-height: 480px;
-    object-fit: contain;
-    object-position: center;
-}
+        .model-item-toggle {
+            font-size: 1.4rem;
+            line-height: 1;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
 
-.release-item:hover .release-image,
-.release-item.is-open .release-image {
-    display: block;
-}
+        .model-gallery {
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
+            display: flex;
+            gap: 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+        }
 
-.release-media {
-    display: none;
-}
+        .model-gallery-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+        }
 
-.release-item:hover .release-media,
-.release-item.is-open .release-media {
-    display: block;
-}
+        .model-gallery-slide img {
+            display: block;
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background: #000000;
+        }
 
-@media (min-width: 800px) {
+        .model-gallery-note {
+            padding: 9px 20px 0;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0.55;
+        }
 
-    .release-item {
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 45%);
-        align-items: start;
-        column-gap: 50px;
-    }
+        .model-item-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition:
+                max-height 0.45s ease,
+                opacity 0.3s ease,
+                padding 0.45s ease;
+            padding: 0 20px;
+        }
 
-    .release-content {
-        grid-column: 1;
-    }
+        .model-item:hover .model-item-content,
+        .model-item.is-open .model-item-content {
+            max-height: 300px;
+            opacity: 1;
+            padding: 20px;
+        }
 
-    .release-media {
-        grid-column: 2;
-        grid-row: 1;
-    }
+        .model-item:hover .model-item-toggle,
+        .model-item.is-open .model-item-toggle {
+            transform: rotate(45deg);
+        }
 
-    .release-image {
-        width: 100%;
-        max-height: 420px;
-        object-fit: contain;
-    }
+        .model-item-description p {
+            margin: 0 0 18px;
+            line-height: 1.6;
+        }
 
-}
+        .model-details-link {
+            display: inline-block;
+        }
 
-</style>
+        @media (max-width: 900px) {
+
+            .model-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .model-list {
+                grid-template-columns: 1fr;
+            }
+
+            .model-gallery-slide img {
+                height: 260px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
+
 
 <header class="site-header">
 
-<div class="container nav-container">
+    <div class="container nav-container">
 
-    <a href="index.html" class="brand">
+        <a href="index.html" class="brand">
 
-        <img
-            src="logo.png"
-            alt="Raketa Dynamics"
+            <img
+                src="logo.png"
+                alt="Raketa Dynamics"
+            >
+
+        </a>
+
+
+        <nav class="main-navigation">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="models.html">
+                Models
+            </a>
+
+            <a href="archive.html">
+                Collection Archive
+            </a>
+
+            <a href="panels.html">
+                Cockpit Panels
+            </a>
+
+            <a href="releases.html">
+                Releases
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+
+        <a
+            href="contact.html"
+            class="nav-button"
         >
+            Contact
+        </a>
 
-    </a>
+    </div>
+
+</header>
 
 
-    <nav class="main-navigation">
+<main>
+
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <h1>
+                Models.
+            </h1>
+
+            <p>
+                Explore the Raketa Dynamics range of detailed
+                scale aircraft and ground vehicles.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="models-section">
+
+        <div class="container">
+
+
+            <div class="model-branch">
+
+                <div class="model-branch-title">
+
+                    <h2>
+                        Aircraft
+                    </h2>
+
+                </div>
+
+
+                <div class="model-list">
+
+
+                    <article
+                        class="model-item"
+                        onclick="this.classList.toggle('is-open')"
+                    >
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                MiG-21UPG 'CU2777' No. 23 Squadron "Panthers" Sept 2025
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
+                        </div>
+
+
+                        <div class="model-gallery">
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 1"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 2"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 3"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 4"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 5"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="model-gallery-note">
+                            Scroll to view images
+                        </div>
+
+
+                        <div class="model-item-content">
+
+                            <div class="model-item-description">
+
+                                <p>
+                                    MiG-21UPG Bison No. 23 Squadron
+                                    "Panthers" 'CU2777' from the
+                                    farewell ceremony in September
+                                    2025. The Bison remained a worthy
+                                    successor to the Indian Air Forces
+                                    Fishbed lineage.
+                                </p>
+
+                                <a
+                                    href="mig-21-bison.html"
+                                    class="text-link model-details-link"
+                                    onclick="event.stopPropagation()"
+                                >
+                                    Product details →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="model-item"
+                        onclick="this.classList.toggle('is-open')"
+                    >
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                Sukhoi Su-30MKI 'SB232' No. 220 Squadron "Desert Tigers" May 2025
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
+                        </div>
+
+
+                        <div class="model-gallery">
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 1"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 2"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 3"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 4"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 5"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="model-gallery-note">
+                            Scroll to view images
+                        </div>
+
+
+                        <div class="model-item-content">
+
+                            <div class="model-item-description">
+
+                                <p>
+                                    Sukhoi Su-30MKI 'SB232' of
+                                    No. 220 Squadron "Desert Tigers",
+                                    May 2025.
+                                </p>
+
+                                <a
+                                    href="#"
+                                    class="text-link model-details-link"
+                                    onclick="event.stopPropagation()"
+                                >
+                                    Product details →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="model-branch">
+
+                <div class="model-branch-title">
+
+                    <h2>
+                        Ground vehicles
+                    </h2>
+
+                </div>
+
+
+                <div class="model-list">
+
+
+                    <article
+                        class="model-item"
+                        onclick="this.classList.toggle('is-open')"
+                    >
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                51P6A 'Bhuj' May 2025
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
+                        </div>
+
+
+                        <div class="model-gallery">
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 1"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 2"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 3"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 4"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 5"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="model-gallery-note">
+                            Scroll to view images
+                        </div>
+
+
+                        <div class="model-item-content">
+
+                            <div class="model-item-description">
+
+                                <p>
+                                    51P6A 'Bhuj' ground vehicle
+                                    model, May 2025.
+                                </p>
+
+                                <a
+                                    href="#"
+                                    class="text-link model-details-link"
+                                    onclick="event.stopPropagation()"
+                                >
+                                    Product details →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container footer-bottom">
+
+        <span>
+            © 2026 Raketa Dynamics
+        </span>
 
         <a href="index.html">
             Home
         </a>
 
-        <a href="models.html">
-            Models
-        </a>
-
-        <a href="archive.html">
-            Collection Archive
-        </a>
-
-        <a href="panels.html">
-            Cockpit Panels
-        </a>
-
-        <a href="releases.html">
-            Releases
-        </a>
-
-        <a href="about.html">
-            About
-        </a>
-
-    </nav>
-
-
-    <a href="contact.html" class="nav-button">
-        Contact
-    </a>
-
-</div>
-
-</header>
-
-<main>
-
-<section class="page-hero">
-
-<div class="container">
-
-    <span class="section-kicker">
-        RAKETA DYNAMICS / RELEASES & UPDATES
-    </span>
-
-    <h1>
-        Releases & Updates.
-    </h1>
-
-    <p>
-        Upcoming releases, announcements, and development
-        updates from Raketa Dynamics.
-    </p>
-
-</div>
-
-</section>
-
-<section class="models-section">
-
-<div class="container">
-
-    <div class="release-list">
-
-
-        <article
-            class="release-item"
-            onclick="this.classList.toggle('is-open')"
-        >
-
-            <div class="release-content">
-
-                <span class="section-kicker release-date">
-                    WEBSITE ANNOUNCEMENT / 18 AUGUST 2026
-                </span>
-
-                <h2>
-                    Development on the website has started.
-                </h2>
-
-                <div class="release-details">
-
-                    <p>
-                        Development on the Raketa Dynamics website has started.
-                        The website will be developed alongside the wider Raketa
-                        Dynamics project and will be updated as new information,
-                        models, cockpit panels, collections, and other projects
-                        are developed.
-                    </p>
-
-                    <p>
-                        This page will be used to provide regular announcements
-                        and development updates, as well as information about
-                        upcoming model releases.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="release-media">
-
-                <img
-                    class="release-image"
-                    src="wip.png"
-                    alt="Raketa Dynamics website development in progress"
-                >
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="release-item"
-            onclick="this.classList.toggle('is-open')"
-        >
-
-            <div class="release-content">
-
-                <span class="section-kicker release-date">
-                    UPCOMING RELEASE
-                </span>
-
-                <h2>
-                    1:72 Su-30MKI
-                </h2>
-
-                <div class="release-details">
-
-                    <p>
-                        An upcoming Raketa Dynamics release depicting the
-                        Indian Air Force Su-30MKI operated by No. 220 Squadron.
-                    </p>
-
-                    <p>
-                        Further release information, development progress,
-                        and additional details will be announced as the
-                        project progresses.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="release-item"
-            onclick="this.classList.toggle('is-open')"
-        >
-
-            <div class="release-content">
-
-                <span class="section-kicker release-date">
-                    UPCOMING RELEASE
-                </span>
-
-                <h2>
-                    1:72 51P6A
-                </h2>
-
-                <div class="release-details">
-
-                    <p>
-                        An upcoming Raketa Dynamics release representing the
-                        51P6A associated with the Indian Air Force at Bhuj.
-                    </p>
-
-                    <p>
-                        Further information and development updates will be
-                        added to this announcement as the release progresses.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="release-item"
-            onclick="this.classList.toggle('is-open')"
-        >
-
-            <div class="release-content">
-
-                <span class="section-kicker release-date">
-                    UPCOMING RELEASE
-                </span>
-
-                <h2>
-                    1:72 Mi-17V5
-                </h2>
-
-                <div class="release-details">
-
-                    <p>
-                        An upcoming Raketa Dynamics release depicting the
-                        Indian Air Force Mi-17V5 associated with No. 155 HU.
-                    </p>
-
-                    <p>
-                        Further release information and development progress
-                        will be announced as work on the project continues.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="release-item"
-            onclick="this.classList.toggle('is-open')"
-        >
-
-            <div class="release-content">
-
-                <span class="section-kicker release-date">
-                    UPCOMING RELEASE / RUSSIA
-                </span>
-
-                <h2>
-                    1:72 Su-30SM2
-                </h2>
-
-                <div class="release-details">
-
-                    <p>
-                        An upcoming Raketa Dynamics release representing the
-                        Russian Aerospace Forces / VKS Su-30SM2.
-                    </p>
-
-                    <p>
-                        Additional development information, images, and release
-                        details can be added here as the project progresses.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <article
-            class="release-item"
-            onclick="this.classList.toggle('is-open')"
-        >
-
-            <div class="release-content">
-
-                <span class="section-kicker release-date">
-                    UPCOMING RELEASE / UKRAINE
-                </span>
-
-                <h2>
-                    1:72 Su-27S/P
-                </h2>
-
-                <div class="release-details">
-
-                    <p>
-                        An upcoming Raketa Dynamics release representing the
-                        Ukrainian Air Force Su-27S/P associated with the
-                        831st Tactical Aviation Brigade.
-                    </p>
-
-                    <p>
-                        Further development information, images, and release
-                        details can be added to this announcement as the
-                        project progresses.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
     </div>
-
-</div>
-
-</section>
-
-</main>
-
-<footer class="site-footer">
-
-<div class="container footer-bottom">
-
-    <span>
-        © 2026 Raketa Dynamics
-    </span>
-
-    <a href="index.html">
-        Return to home
-    </a>
-
-</div>
 
 </footer>
 
+
 </body>
+
 </html>
