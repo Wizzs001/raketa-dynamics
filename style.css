@@ -198,7 +198,7 @@ main {
 
     display: flex;
 
-    flex-direction: column;
+    align-items: center;
 
     justify-content: center;
 
@@ -208,31 +208,17 @@ main {
 }
 
 
-.brand-name {
+.brand img {
 
-    font-size: 23px;
+    display: block;
 
-    font-weight: 700;
+    width: 150px;
 
-    letter-spacing: 0.16em;
+    height: auto;
 
-    color: var(--text);
-}
+    max-height: 52px;
 
-
-.brand-subtitle {
-
-    margin-top: 6px;
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.42em;
-
-    color: var(--accent-light);
-
-    padding-left: 3px;
+    object-fit: contain;
 }
 
 
