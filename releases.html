@@ -20,6 +20,103 @@
 
 <link rel="stylesheet" href="style.css">
 
+<style>
+
+.release-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    padding: 34px 0;
+    border-bottom: 1px solid #292929;
+    cursor: pointer;
+    overflow: hidden;
+    transition: padding 0.3s ease;
+}
+
+.release-item:hover,
+.release-item.is-open {
+    padding: 42px 0;
+}
+
+.release-content {
+    min-width: 0;
+}
+
+.release-date {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.release-item h2 {
+    margin: 0;
+}
+
+.release-details {
+    display: none;
+    margin-top: 22px;
+}
+
+.release-item:hover .release-details,
+.release-item.is-open .release-details {
+    display: block;
+}
+
+.release-details p {
+    max-width: 720px;
+    margin-bottom: 18px;
+    line-height: 1.7;
+}
+
+.release-image {
+    display: none;
+    width: 100%;
+    max-height: 480px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.release-item:hover .release-image,
+.release-item.is-open .release-image {
+    display: block;
+}
+
+.release-media {
+    display: none;
+}
+
+.release-item:hover .release-media,
+.release-item.is-open .release-media {
+    display: block;
+}
+
+@media (min-width: 800px) {
+
+    .release-item {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 45%);
+        align-items: start;
+        column-gap: 50px;
+    }
+
+    .release-content {
+        grid-column: 1;
+    }
+
+    .release-media {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .release-image {
+        width: 100%;
+        max-height: 420px;
+        object-fit: contain;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
@@ -105,15 +202,14 @@
     <div class="release-list">
 
 
-        <article class="release-item">
+        <article
+            class="release-item"
+            onclick="this.classList.toggle('is-open')"
+        >
 
-            <span class="release-number">
-                01
-            </span>
+            <div class="release-content">
 
-            <div>
-
-                <span class="section-kicker">
+                <span class="section-kicker release-date">
                     WEBSITE ANNOUNCEMENT / 18 AUGUST 2026
                 </span>
 
@@ -121,11 +217,30 @@
                     Development on the website has started.
                 </h2>
 
-                <p>
-                    Development on the Raketa Dynamics website has started.
-                </p>
+                <div class="release-details">
+
+                    <p>
+                        Development on the Raketa Dynamics website has started.
+                        The website will be developed alongside the wider Raketa
+                        Dynamics project and will be updated as new information,
+                        models, cockpit panels, collections, and other projects
+                        are developed.
+                    </p>
+
+                    <p>
+                        This page will be used to provide regular announcements
+                        and development updates, as well as information about
+                        upcoming model releases.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="release-media">
 
                 <img
+                    class="release-image"
                     src="wip.png"
                     alt="Raketa Dynamics website development in progress"
                 >
@@ -135,15 +250,14 @@
         </article>
 
 
-        <article class="release-item">
+        <article
+            class="release-item"
+            onclick="this.classList.toggle('is-open')"
+        >
 
-            <span class="release-number">
-                02
-            </span>
+            <div class="release-content">
 
-            <div>
-
-                <span class="section-kicker">
+                <span class="section-kicker release-date">
                     UPCOMING RELEASE
                 </span>
 
@@ -151,24 +265,34 @@
                     1:72 Su-30MKI
                 </h2>
 
-                <p>
-                    Indian Air Force / No. 220 Squadron
-                </p>
+                <div class="release-details">
+
+                    <p>
+                        An upcoming Raketa Dynamics release depicting the
+                        Indian Air Force Su-30MKI operated by No. 220 Squadron.
+                    </p>
+
+                    <p>
+                        Further release information, development progress,
+                        and additional details will be announced as the
+                        project progresses.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
-        <article class="release-item">
+        <article
+            class="release-item"
+            onclick="this.classList.toggle('is-open')"
+        >
 
-            <span class="release-number">
-                03
-            </span>
+            <div class="release-content">
 
-            <div>
-
-                <span class="section-kicker">
+                <span class="section-kicker release-date">
                     UPCOMING RELEASE
                 </span>
 
@@ -176,24 +300,33 @@
                     1:72 51P6A
                 </h2>
 
-                <p>
-                    Indian Air Force / Bhuj
-                </p>
+                <div class="release-details">
+
+                    <p>
+                        An upcoming Raketa Dynamics release representing the
+                        51P6A associated with the Indian Air Force at Bhuj.
+                    </p>
+
+                    <p>
+                        Further information and development updates will be
+                        added to this announcement as the release progresses.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
-        <article class="release-item">
+        <article
+            class="release-item"
+            onclick="this.classList.toggle('is-open')"
+        >
 
-            <span class="release-number">
-                04
-            </span>
+            <div class="release-content">
 
-            <div>
-
-                <span class="section-kicker">
+                <span class="section-kicker release-date">
                     UPCOMING RELEASE
                 </span>
 
@@ -201,24 +334,33 @@
                     1:72 Mi-17V5
                 </h2>
 
-                <p>
-                    Indian Air Force / No. 155 HU
-                </p>
+                <div class="release-details">
+
+                    <p>
+                        An upcoming Raketa Dynamics release depicting the
+                        Indian Air Force Mi-17V5 associated with No. 155 HU.
+                    </p>
+
+                    <p>
+                        Further release information and development progress
+                        will be announced as work on the project continues.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
-        <article class="release-item">
+        <article
+            class="release-item"
+            onclick="this.classList.toggle('is-open')"
+        >
 
-            <span class="release-number">
-                05
-            </span>
+            <div class="release-content">
 
-            <div>
-
-                <span class="section-kicker">
+                <span class="section-kicker release-date">
                     UPCOMING RELEASE / RUSSIA
                 </span>
 
@@ -226,24 +368,33 @@
                     1:72 Su-30SM2
                 </h2>
 
-                <p>
-                    Russian Aerospace Forces / VKS
-                </p>
+                <div class="release-details">
+
+                    <p>
+                        An upcoming Raketa Dynamics release representing the
+                        Russian Aerospace Forces / VKS Su-30SM2.
+                    </p>
+
+                    <p>
+                        Additional development information, images, and release
+                        details can be added here as the project progresses.
+                    </p>
+
+                </div>
 
             </div>
 
         </article>
 
 
-        <article class="release-item">
+        <article
+            class="release-item"
+            onclick="this.classList.toggle('is-open')"
+        >
 
-            <span class="release-number">
-                06
-            </span>
+            <div class="release-content">
 
-            <div>
-
-                <span class="section-kicker">
+                <span class="section-kicker release-date">
                     UPCOMING RELEASE / UKRAINE
                 </span>
 
@@ -251,10 +402,21 @@
                     1:72 Su-27S/P
                 </h2>
 
-                <p>
-                    Ukrainian Air Force /
-                    831st Tactical Aviation Brigade
-                </p>
+                <div class="release-details">
+
+                    <p>
+                        An upcoming Raketa Dynamics release representing the
+                        Ukrainian Air Force Su-27S/P associated with the
+                        831st Tactical Aviation Brigade.
+                    </p>
+
+                    <p>
+                        Further development information, images, and release
+                        details can be added to this announcement as the
+                        project progresses.
+                    </p>
+
+                </div>
 
             </div>
 
