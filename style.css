@@ -170,8 +170,7 @@ main {
 
     width: 100%;
 
-    background: rgba(9, 10, 9, 0.97);
-
+    background: #000000;
     border-bottom: 1px solid var(--line);
 }
 
