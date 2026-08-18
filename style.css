@@ -1,1503 +1,635 @@
-/* =========================================================
-   RAKETA DYNAMICS
-   MAIN WEBSITE STYLESHEET
-========================================================= */
-
-:root {
-    --background: #090a09;
-    --background-light: #101210;
-    --background-panel: #141714;
-    --background-panel-light: #191c19;
-    --text: #eeeDE7;
-    --text-muted: #a7aaa2;
-    --text-dark: #d8dad3;
-    --line: rgba(238, 237, 231, 0.14);
-    --line-strong: rgba(238, 237, 231, 0.24);
-    --accent: #a89a72;
-    --accent-light: #c1b58e;
-    --olive: #59604c;
-    --olive-light: #707861;
-    --sand: #a89a72;
-    --max-width: 1280px;
-}
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: var(--background);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button,
-input,
-textarea,
-select {
-    font: inherit;
-}
-
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-.container {
-    width: min(calc(100% - 48px), var(--max-width));
-    margin-left: auto;
-    margin-right: auto;
-}
-
-main {
-    overflow: hidden;
-}
-
-.section-kicker {
-    display: block;
-    color: var(--accent-light);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-}
-
-.section-label {
-    color: var(--accent-light);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.site-header {
-    position: relative;
-    z-index: 50;
-    width: 100%;
-    background: #000000;
-    border-bottom: 1px solid #000000;
-}
-
-.nav-container {
-    min-height: 86px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-}
-
-
-/* =========================================================
-   BRAND / LOGO
-========================================================= */
-
-.brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    line-height: 1;
-}
-
-.brand img {
-    display: block;
-    width: 60px;
-    height: auto;
-    max-height: 32px;
-    object-fit: contain;
-}
-
-
-/* =========================================================
-   MAIN NAVIGATION
-========================================================= */
-
-.main-navigation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    margin-left: auto;
-    margin-right: 10px;
-}
-
-.main-navigation a {
-    position: relative;
-    padding: 8px 0;
-    color: var(--text-muted);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s ease;
-}
-
-.main-navigation a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 1px;
-    background: var(--accent);
-    transition: width 0.2s ease;
-}
-
-.main-navigation a:hover {
-    color: var(--text);
-}
-
-.main-navigation a:hover::after {
-    width: 100%;
-}
-
-
-/* =========================================================
-   HEADER BUTTON
-========================================================= */
-
-.nav-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    padding: 0 19px;
-    border: 1px solid var(--line-strong);
-    color: var(--text);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
-}
-
-.nav-button:hover {
-    background: var(--olive);
-    border-color: var(--olive-light);
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    min-height: 780px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    background:
-        linear-gradient(
-            180deg,
-            #090a09 0%,
-            #0b0d0b 55%,
-            #0e100e 100%
-        );
-    border-bottom: 1px solid var(--line);
-}
-
-.hero-content {
-    padding-top: 90px;
-    padding-bottom: 90px;
-}
-
-.hero-label {
-    margin-bottom: 28px;
-    color: var(--accent-light);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-}
-
-.hero h1 {
-    max-width: 980px;
-    font-size: clamp(60px, 9vw, 128px);
-    font-weight: 500;
-    line-height: 0.92;
-    letter-spacing: -0.055em;
-}
-
-.hero h1 span {
-    display: block;
-    color: var(--text-muted);
-}
-
-.hero-description {
-    max-width: 620px;
-    margin-top: 35px;
-    color: var(--text-muted);
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 38px;
-}
-
-.button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50px;
-    padding: 0 24px;
-    border: 1px solid transparent;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
-}
-
-.button-primary {
-    background: var(--text);
-    color: #0a0b0a;
-}
-
-.button-primary:hover {
-    background: var(--accent-light);
-}
-
-.button-secondary {
-    border-color: var(--line-strong);
-    color: var(--text);
-}
-
-.button-secondary:hover {
-    background: var(--olive);
-    border-color: var(--olive-light);
-}
-
-
-/* =========================================================
-   HERO SPECIFICATIONS
-========================================================= */
-
-.hero-specifications {
-    display: flex;
-    gap: 60px;
-    margin-top: 100px;
-    padding-top: 25px;
-    border-top: 1px solid var(--line);
-    max-width: 700px;
-}
-
-.hero-specifications div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.hero-specifications strong {
-    color: var(--accent-light);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-}
-
-.hero-specifications span {
-    color: var(--text-muted);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.13em;
-}
-
-
-/* =========================================================
-   INTRO SECTION
-========================================================= */
-
-.intro-section {
-    padding-top: 150px;
-    padding-bottom: 150px;
-    background: var(--background);
-}
-
-.intro-grid {
-    display: grid;
-    grid-template-columns: 25% 1fr;
-    gap: 70px;
-}
-
-.intro-content {
-    max-width: 800px;
-}
-
-.intro-content h2 {
-    margin-bottom: 28px;
-    font-size: clamp(42px, 6vw, 78px);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.045em;
-}
-
-.intro-content p {
-    max-width: 720px;
-    color: var(--text-muted);
-    font-size: 16px;
-    line-height: 1.85;
-}
-
-.intro-content p + p {
-    margin-top: 22px;
-}
-
-.large-text {
-    font-size: 21px !important;
-    line-height: 1.7 !important;
-    color: var(--text-dark) !important;
-}
-
-
-/* =========================================================
-   MODELS SECTION
-========================================================= */
-
-.models-section {
-    padding-top: 120px;
-    padding-bottom: 120px;
-    background: var(--background-light);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-
-.section-heading {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 50px;
-    margin-bottom: 55px;
-}
-
-.section-heading h2 {
-    margin-top: 12px;
-    font-size: clamp(42px, 5vw, 68px);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.045em;
-}
-
-.section-heading > p {
-    max-width: 400px;
-    color: var(--text-muted);
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   PRODUCT GRID
-========================================================= */
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    background: var(--line);
-}
-
-.product-card {
-    background: var(--background-panel);
-    min-width: 0;
-}
-
-.product-image-placeholder {
-    aspect-ratio: 4 / 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        linear-gradient(
-            145deg,
-            #171a17,
-            #0d0f0d
-        );
-    border-bottom: 1px solid var(--line);
-    color: rgba(238, 237, 231, 0.22);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-}
-
-.product-card-content {
-    padding: 25px;
-}
-
-.product-meta {
-    color: var(--accent-light);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-}
-
-.product-card h3 {
-    margin-top: 9px;
-    font-size: 27px;
-    font-weight: 500;
-    letter-spacing: -0.025em;
-}
-
-.product-card p {
-    margin-top: 5px;
-    color: var(--text-muted);
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   TEXT LINKS
-========================================================= */
-
-.text-link {
-    display: inline-block;
-    margin-top: 20px;
-    color: var(--text);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: color 0.2s ease;
-}
-
-.text-link:hover {
-    color: var(--accent-light);
-}
-
-
-/* =========================================================
-   EDITIONS
-========================================================= */
-
-.edition-section {
-    padding-top: 120px;
-    padding-bottom: 120px;
-    background: var(--background);
-}
-
-.edition-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-    background: var(--line);
-}
-
-.edition-card {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 30px;
-    min-height: 400px;
-    padding: 45px;
-    background: var(--background-panel);
-}
-
-.edition-card-featured {
-    background:
-        linear-gradient(
-            145deg,
-            #171a16,
-            #111310
-        );
-}
-
-.edition-number {
-    color: var(--accent);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-}
-
-.edition-label {
-    color: var(--accent-light);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-}
-
-.edition-card h3 {
-    margin-top: 15px;
-    font-size: 42px;
-    font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-}
-
-.edition-card p {
-    max-width: 500px;
-    margin-top: 22px;
-    color: var(--text-muted);
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-.edition-card ul {
-    margin-top: 24px;
-    padding-left: 18px;
-    color: var(--text-muted);
-    font-size: 14px;
-    line-height: 2;
-}
-
-
-/* =========================================================
-   ARCHIVE
-========================================================= */
-
-.archive-section {
-    padding-top: 120px;
-    padding-bottom: 120px;
-    background: var(--background-light);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-
-.archive-grid {
-    display: grid;
-    grid-template-columns:
-        minmax(0, 0.8fr)
-        minmax(0, 1.2fr);
-    gap: 90px;
-    align-items: center;
-}
-
-.archive-introduction h2 {
-    margin-top: 15px;
-    font-size: clamp(44px, 5vw, 72px);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.045em;
-}
-
-.archive-introduction p {
-    max-width: 480px;
-    margin-top: 25px;
-    color: var(--text-muted);
-    font-size: 15px;
-    line-height: 1.8;
-}
-
-.archive-introduction .button {
-    margin-top: 32px;
-}
-
-
-/* =========================================================
-   ARCHIVE TREE
-========================================================= */
-
-.archive-preview {
-    border: 1px solid var(--line-strong);
-    background: #0b0d0b;
-}
-
-.archive-header {
-    padding: 18px 22px;
-    border-bottom: 1px solid var(--line);
-    color: var(--accent-light);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.17em;
-}
-
-.archive-tree {
-    padding: 30px;
-}
-
-.tree-collection {
-    color: var(--text);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-}
-
-.tree-nation {
-    margin-top: 25px;
-    padding-left: 20px;
-    color: var(--accent-light);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-}
-
-.tree-category {
-    margin-top: 18px;
-    margin-left: 40px;
-    padding-left: 20px;
-    border-left: 1px solid var(--line-strong);
-    color: var(--text-muted);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-}
-
-.tree-vehicle {
-    margin-top: 14px;
-    margin-left: 60px;
-    padding-left: 20px;
-    border-left: 1px solid var(--line-strong);
-    color: var(--text);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-}
-
-.tree-release {
-    margin-top: 8px;
-    margin-left: 80px;
-    padding-left: 20px;
-    border-left: 1px solid var(--line);
-    color: var(--text-muted);
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   COCKPIT PANELS
-========================================================= */
-
-.panels-section {
-    padding-top: 140px;
-    padding-bottom: 140px;
-    background: var(--background);
-}
-
-.panels-grid {
-    display: grid;
-    grid-template-columns: 1fr 0.8fr;
-    gap: 100px;
-    align-items: center;
-}
-
-.panels-content h2 {
-    margin-top: 15px;
-    font-size: clamp(44px, 5vw, 74px);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.045em;
-}
-
-.panels-content > p {
-    max-width: 580px;
-    margin-top: 25px;
-    color: var(--text-muted);
-    font-size: 16px;
-    line-height: 1.8;
-}
-
-.panel-types {
-    margin-top: 40px;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-
-.panel-types > div {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 20px 0;
-}
-
-.panel-types > div + div {
-    border-top: 1px solid var(--line);
-}
-
-.panel-types strong {
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.panel-types span {
-    color: var(--text-muted);
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-.panel-display {
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--line-strong);
-    background:
-        linear-gradient(
-            145deg,
-            #1a1d19,
-            #0c0e0c
-        );
-}
-
-.panel-display-inner {
-    width: 70%;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--line-strong);
-    background: #0a0c0a;
-    box-shadow:
-        inset 0 0 0 8px #111411;
-}
-
-.panel-display-inner span {
-    color: var(--accent);
-    font-size: 64px;
-    font-weight: 500;
-    letter-spacing: -0.05em;
-}
-
-.panel-display-inner small {
-    margin-top: 8px;
-    color: var(--text-muted);
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-section {
-    padding-top: 140px;
-    padding-bottom: 140px;
-    background: var(--background);
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 25% 1fr;
-    gap: 70px;
-}
-
-.about-grid > div:last-child {
-    max-width: 800px;
-}
-
-.about-grid h2 {
-    font-size: clamp(44px, 5vw, 72px);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.045em;
-}
-
-.about-grid p {
-    max-width: 700px;
-    margin-top: 25px;
-    color: var(--text-muted);
-    font-size: 15px;
-    line-height: 1.85;
-}
-
-.about-grid .large-text {
-    margin-top: 30px;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-section {
-    padding-top: 130px;
-    padding-bottom: 130px;
-    background:
-        linear-gradient(
-            145deg,
-            #151814,
-            #0b0d0b
-        );
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-
-.contact-content {
-    max-width: 850px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.contact-content h2 {
-    margin-top: 18px;
-    font-size: clamp(46px, 6vw, 82px);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.05em;
-}
-
-.contact-content > p {
-    max-width: 600px;
-    margin: 25px auto 0;
-    color: var(--text-muted);
-    font-size: 15px;
-    line-height: 1.8;
-}
-
-.contact-content .button {
-    margin-top: 32px;
-}
-
-
-/* =========================================================
-   SEPARATE PAGE HERO
-========================================================= */
-
-.page-hero {
-    min-height: 520px;
-    display: flex;
-    align-items: flex-end;
-    padding-top: 150px;
-    padding-bottom: 90px;
-    background:
-        linear-gradient(
-            180deg,
-            #080909 0%,
-            #0e100e 100%
-        );
-    border-bottom: 1px solid var(--line);
-}
-
-.page-hero h1 {
-    max-width: 900px;
-    margin-top: 14px;
-    font-size: clamp(52px, 7vw, 92px);
-    font-weight: 500;
-    line-height: 0.98;
-    letter-spacing: -0.045em;
-}
-
-.page-hero p {
-    max-width: 650px;
-    margin-top: 28px;
-    color: var(--text-muted);
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   RELEASE LIST
-========================================================= */
-
-.release-list {
-    border-top: 1px solid var(--line);
-}
-
-.release-item {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 35px;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--line);
-}
-
-.release-number {
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-}
-
-.release-item h2 {
-    margin-top: 8px;
-    font-size: 34px;
-    font-weight: 500;
-    letter-spacing: -0.025em;
-}
-
-.release-item p {
-    margin-top: 8px;
-    color: var(--text-muted);
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   SECOND ARCHIVE PANEL
-========================================================= */
-
-.archive-second {
-    margin-top: 24px;
-}
-
-
-/* =========================================================
-   CONTACT EMAIL
-========================================================= */
-
-.contact-email {
-    margin-top: 25px !important;
-    color: var(--text-dark) !important;
-    font-size: 12px !important;
-    letter-spacing: 0.04em;
-}
-
-
-/* =========================================================
-   PRODUCT PAGE
-========================================================= */
-
-.product-page {
-    padding-top: 70px;
-    padding-bottom: 120px;
-    background: var(--background);
-}
-
-.product-page-back {
-    margin-bottom: 55px;
-}
-
-.product-page-back a {
-    color: var(--text-muted);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: color 0.2s ease;
-}
-
-.product-page-back a:hover {
-    color: var(--text);
-}
-
-.product-page-grid {
-    display: grid;
-    grid-template-columns:
-        minmax(0, 1.1fr)
-        minmax(0, 0.9fr);
-    gap: 90px;
-    align-items: center;
-}
-
-.product-page-image-placeholder {
-    aspect-ratio: 4 / 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        linear-gradient(
-            145deg,
-            #171a17,
-            #0d0f0d
-        );
-    border: 1px solid var(--line-strong);
-    color: rgba(238, 237, 231, 0.22);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-}
-
-.product-page-information h1 {
-    margin-top: 15px;
-    font-size: clamp(50px, 6vw, 82px);
-    font-weight: 500;
-    line-height: 0.98;
-    letter-spacing: -0.05em;
-}
-
-.product-page-introduction {
-    max-width: 580px;
-    margin-top: 30px;
-    color: var(--text-muted);
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-.product-page-status {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    margin-top: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-
-.product-page-status span,
-.product-page-specifications span {
-    color: var(--accent-light);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-}
-
-.product-page-status strong {
-    color: var(--text-muted);
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.product-page-specifications {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 25px;
-}
-
-.product-page-specifications div {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-.product-page-specifications strong {
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.product-page-button {
-    margin-top: 35px;
-}
-
-
-/* =========================================================
-   PRODUCT DETAILS
-========================================================= */
-
-.product-details-section {
-    padding-top: 120px;
-    padding-bottom: 120px;
-    background: var(--background-light);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-
-.product-details-grid {
-    display: grid;
-    grid-template-columns: 25% 1fr;
-    gap: 70px;
-}
-
-.product-details-grid h2 {
-    margin-top: 15px;
-    font-size: clamp(44px, 5vw, 72px);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.045em;
-}
-
-.product-details-grid p {
-    max-width: 750px;
-    margin-top: 25px;
-    color: var(--text-muted);
-    font-size: 15px;
-    line-height: 1.85;
-}
-
-.product-details-grid .large-text {
-    margin-top: 0;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.site-footer {
-    background: #070807;
-    border-top: 1px solid var(--line);
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns:
-        1.2fr
-        1fr
-        1fr;
-    gap: 60px;
-    padding-top: 70px;
-    padding-bottom: 70px;
-}
-
-.footer-brand {
-    margin-bottom: 22px;
-}
-
-.footer-grid > div:first-child p {
-    max-width: 330px;
-    color: var(--text-muted);
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footer-links a {
-    color: var(--text-muted);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s ease;
-}
-
-.footer-links a:hover {
-    color: var(--text);
-}
-
-.footer-contact {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.footer-contact > span {
-    color: var(--accent-light);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.17em;
-}
-
-.footer-contact a {
-    color: var(--text-muted);
-    font-size: 12px;
-    word-break: break-word;
-}
-
-.footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-top: 1px solid var(--line);
-    color: #70736d;
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.footer-bottom a {
-    color: var(--text-muted);
-    transition: color 0.2s ease;
-}
-
-.footer-bottom a:hover {
-    color: var(--text);
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 1000px) {
-
-    .main-navigation {
-        gap: 18px;
-    }
-
-    .main-navigation a {
-        font-size: 9px;
-    }
-
-    .archive-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
-    }
-
-    .panels-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
-
-    .panel-display {
-        max-width: 600px;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .footer-contact {
-        grid-column: 1 / -1;
-    }
-}
-
-
-@media (max-width: 760px) {
-
-    .container {
-        width: min(
-            calc(100% - 32px),
-            var(--max-width)
-        );
-    }
-
-    .nav-container {
-        min-height: 75px;
-        flex-wrap: wrap;
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-
-    .main-navigation {
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-        justify-content: flex-start;
-        margin: 0;
-        padding-bottom: 2px;
-        gap: 24px;
-        scrollbar-width: none;
-    }
-
-    .main-navigation::-webkit-scrollbar {
-        display: none;
-    }
-
-    .nav-button {
-        display: none;
-    }
-
-    .hero {
-        min-height: 680px;
-    }
-
-    .hero-content {
-        padding-top: 70px;
-        padding-bottom: 70px;
-    }
-
-    .hero h1 {
-        font-size: clamp(50px, 14vw, 80px);
-    }
-
-    .hero-description {
-        font-size: 15px;
-    }
-
-    .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-        max-width: 330px;
-    }
-
-    .hero-specifications {
-        gap: 25px;
-        margin-top: 70px;
-    }
-
-    .intro-section,
-    .models-section,
-    .edition-section,
-    .archive-section,
-    .panels-section,
-    .about-section {
-        padding-top: 90px;
-        padding-bottom: 90px;
-    }
-
-    .intro-grid,
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .section-heading {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .edition-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .edition-card {
-        grid-template-columns: 40px 1fr;
-        min-height: auto;
-        padding: 30px;
-        gap: 20px;
-    }
-
-    .edition-card h3 {
-        font-size: 34px;
-    }
-
-    .page-hero {
-        min-height: 430px;
-        padding-top: 120px;
-        padding-bottom: 65px;
-    }
-
-    .page-hero h1 {
-        font-size: 48px;
-    }
-
-    .page-hero p {
-        font-size: 15px;
-    }
-
-    .release-item {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 30px 0;
-    }
-
-    .release-item h2 {
-        font-size: 28px;
-    }
-
-    .tree-category {
-        margin-left: 25px;
-    }
-
-    .tree-vehicle {
-        margin-left: 40px;
-    }
-
-    .tree-release {
-        margin-left: 55px;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding-top: 50px;
-        padding-bottom: 50px;
-    }
-
-    .footer-contact {
-        grid-column: auto;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-
-    /* PRODUCT PAGE MOBILE */
-
-    .product-page {
-        padding-top: 45px;
-        padding-bottom: 80px;
-    }
-
-    .product-page-back {
-        margin-bottom: 35px;
-    }
-
-    .product-page-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
-    }
-
-    .product-page-information h1 {
-        font-size: 48px;
-    }
-
-    .product-page-introduction {
-        font-size: 15px;
-    }
-
-    .product-page-specifications {
-        gap: 12px;
-    }
-
-    .product-details-section {
-        padding-top: 90px;
-        padding-bottom: 90px;
-    }
-
-    .product-details-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .brand img {
-        width: 50px;
-        max-height: 28px;
-    }
-
-    .hero {
-        min-height: 620px;
-    }
-
-    .hero-specifications {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-    }
-
-    .hero-specifications span {
-        font-size: 7px;
-        line-height: 1.4;
-    }
-
-    .product-card-content {
-        padding: 20px;
-    }
-
-    .archive-tree {
-        padding: 20px;
-    }
-
-    .panel-display-inner span {
-        font-size: 48px;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Explore Raketa Dynamics aircraft and ground vehicle models."
+    >
+
+    <title>Models | Raketa Dynamics</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .model-branch {
+            margin-bottom: 80px;
+        }
+
+        .model-branch:last-child {
+            margin-bottom: 0;
+        }
+
+        .model-branch-title {
+            margin-bottom: 30px;
+        }
+
+        .model-branch-title h2 {
+            margin: 0;
+        }
+
+        .model-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .model-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            background: #000000;
+        }
+
+        .model-item-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .model-item-title {
+            margin: 0;
+            font-size: 1.15rem;
+            line-height: 1.2;
+        }
+
+        .model-item-toggle {
+            font-size: 1.4rem;
+            line-height: 1;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+
+        .model-gallery {
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
+            display: flex;
+            gap: 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+        }
+
+        .model-gallery-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+        }
+
+        .model-gallery-slide img {
+            display: block;
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background: #000000;
+        }
+
+        .model-gallery-note {
+            padding: 9px 20px 0;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0.55;
+        }
+
+        .model-item-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition:
+                max-height 0.45s ease,
+                opacity 0.3s ease,
+                padding 0.45s ease;
+            padding: 0 20px;
+        }
+
+        .model-item:hover .model-item-content,
+        .model-item.is-open .model-item-content {
+            max-height: 300px;
+            opacity: 1;
+            padding: 20px;
+        }
+
+        .model-item:hover .model-item-toggle,
+        .model-item.is-open .model-item-toggle {
+            transform: rotate(45deg);
+        }
+
+        .model-item-description p {
+            margin: 0 0 18px;
+            line-height: 1.6;
+        }
+
+        .model-details-link {
+            display: inline-block;
+        }
+
+        @media (max-width: 900px) {
+
+            .model-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .model-list {
+                grid-template-columns: 1fr;
+            }
+
+            .model-gallery-slide img {
+                height: 260px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="brand">
+
+            <img
+                src="logo.png"
+                alt="Raketa Dynamics"
+            >
+
+        </a>
+
+
+        <nav class="main-navigation">
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <div class="nav-dropdown">
+
+                <a
+                    href="models.html"
+                    class="nav-dropdown-trigger"
+                >
+                    Models
+                </a>
+
+                <div class="nav-dropdown-menu">
+
+                    <a href="models.html#aircraft">
+                        Aircraft
+                    </a>
+
+                    <a href="models.html#ground-vehicles">
+                        Ground Vehicles
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="archive.html">
+                Collection Archive
+            </a>
+
+            <a href="panels.html">
+                Cockpit Panels
+            </a>
+
+            <a href="releases.html">
+                Releases
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+
+        <a
+            href="contact.html"
+            class="nav-button"
+        >
+            Contact
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <h1>
+                Models.
+            </h1>
+
+            <p>
+                Explore the Raketa Dynamics range of detailed
+                scale aircraft and ground vehicles.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="models-section">
+
+        <div class="container">
+
+
+            <div
+                class="model-branch"
+                id="aircraft"
+            >
+
+                <div class="model-branch-title">
+
+                    <h2>
+                        Aircraft
+                    </h2>
+
+                </div>
+
+
+                <div class="model-list">
+
+
+                    <article
+                        class="model-item"
+                        onclick="this.classList.toggle('is-open')"
+                    >
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                MiG-21UPG 'CU2777' No. 23 Squadron "Panthers" Sept 2025
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
+                        </div>
+
+
+                        <div class="model-gallery">
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 1"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 2"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 3"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 4"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' image 5"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="model-gallery-note">
+                            Scroll to view images
+                        </div>
+
+
+                        <div class="model-item-content">
+
+                            <div class="model-item-description">
+
+                                <p>
+                                    MiG-21UPG Bison No. 23 Squadron
+                                    "Panthers" 'CU2777' from the
+                                    farewell ceremony in September
+                                    2025. The Bison remained a worthy
+                                    successor to the Indian Air Forces
+                                    Fishbed lineage.
+                                </p>
+
+                                <a
+                                    href="mig-21-bison.html"
+                                    class="text-link model-details-link"
+                                    onclick="event.stopPropagation()"
+                                >
+                                    Product details →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="model-item"
+                        onclick="this.classList.toggle('is-open')"
+                    >
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                Sukhoi Su-30MKI 'SB232' No. 220 Squadron "Desert Tigers" May 2025
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
+                        </div>
+
+
+                        <div class="model-gallery">
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 1"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 2"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 3"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 4"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' image 5"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="model-gallery-note">
+                            Scroll to view images
+                        </div>
+
+
+                        <div class="model-item-content">
+
+                            <div class="model-item-description">
+
+                                <p>
+                                    Sukhoi Su-30MKI 'SB232' of
+                                    No. 220 Squadron "Desert Tigers",
+                                    May 2025.
+                                </p>
+
+                                <a
+                                    href="#"
+                                    class="text-link model-details-link"
+                                    onclick="event.stopPropagation()"
+                                >
+                                    Product details →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="model-branch"
+                id="ground-vehicles"
+            >
+
+                <div class="model-branch-title">
+
+                    <h2>
+                        Ground vehicles
+                    </h2>
+
+                </div>
+
+
+                <div class="model-list">
+
+
+                    <article
+                        class="model-item"
+                        onclick="this.classList.toggle('is-open')"
+                    >
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                51P6A 'Bhuj' May 2025
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
+                        </div>
+
+
+                        <div class="model-gallery">
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 1"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 2"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 3"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 4"
+                                >
+
+                            </div>
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj' image 5"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="model-gallery-note">
+                            Scroll to view images
+                        </div>
+
+
+                        <div class="model-item-content">
+
+                            <div class="model-item-description">
+
+                                <p>
+                                    51P6A 'Bhuj' ground vehicle
+                                    model, May 2025.
+                                </p>
+
+                                <a
+                                    href="#"
+                                    class="text-link model-details-link"
+                                    onclick="event.stopPropagation()"
+                                >
+                                    Product details →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container footer-bottom">
+
+        <span>
+            © 2026 Raketa Dynamics
+        </span>
+
+        <a href="index.html">
+            Home
+        </a>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
