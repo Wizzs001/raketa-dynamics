@@ -171,7 +171,8 @@ main {
     width: 100%;
 
     background: #000000;
-    border-bottom: 1px solid var(--line);
+
+    border-bottom: 1px solid #000000;
 }
 
 
@@ -190,7 +191,7 @@ main {
 
 
 /* =========================================================
-   BRAND
+   BRAND / LOGO
 ========================================================= */
 
 .brand {
@@ -2058,17 +2059,11 @@ main {
 
 @media (max-width: 480px) {
 
-    .brand-name {
+    .brand img {
 
-        font-size: 19px;
-    }
+        width: 50px;
 
-
-    .brand-subtitle {
-
-        font-size: 7px;
-
-        letter-spacing: 0.35em;
+        max-height: 28px;
     }
 
 
