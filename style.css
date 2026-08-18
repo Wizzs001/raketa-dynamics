@@ -212,11 +212,11 @@ main {
 
     display: block;
 
-    width: 150px;
+    width: 60px;
 
     height: auto;
 
-    max-height: 52px;
+    max-height: 32px;
 
     object-fit: contain;
 }
