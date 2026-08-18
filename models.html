@@ -12,12 +12,135 @@
 
     <meta
         name="description"
-        content="Explore Raketa Dynamics aircraft models."
+        content="Explore Raketa Dynamics aircraft and ground vehicle models."
     >
 
     <title>Models | Raketa Dynamics</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .model-branch {
+            margin-bottom: 70px;
+        }
+
+        .model-branch:last-child {
+            margin-bottom: 0;
+        }
+
+        .model-branch-title {
+            margin-bottom: 25px;
+        }
+
+        .model-branch-title h2 {
+            margin: 0;
+        }
+
+        .model-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .model-item {
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+        }
+
+        .model-item-header {
+            min-height: 86px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .model-item-title {
+            margin: 0;
+            font-size: 1.35rem;
+        }
+
+        .model-item-toggle {
+            font-size: 1.4rem;
+            line-height: 1;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .model-item-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition:
+                max-height 0.45s ease,
+                opacity 0.3s ease,
+                padding 0.45s ease;
+            padding: 0;
+        }
+
+        .model-item:hover .model-item-content,
+        .model-item.is-open .model-item-content {
+            max-height: 360px;
+            opacity: 1;
+            padding: 0 0 28px;
+        }
+
+        .model-item:hover .model-item-toggle,
+        .model-item.is-open .model-item-toggle {
+            transform: rotate(45deg);
+        }
+
+        .model-item-expanded {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
+            gap: 45px;
+            align-items: center;
+        }
+
+        .model-item-description {
+            max-width: 650px;
+        }
+
+        .model-item-description p {
+            margin: 0 0 20px;
+        }
+
+        .model-item-image {
+            display: block;
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            background: #000000;
+        }
+
+        .model-details-link {
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 700px) {
+
+            .model-item-expanded {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .model-item-image {
+                height: 220px;
+            }
+
+            .model-item-title {
+                font-size: 1.15rem;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -92,12 +215,12 @@
             </span>
 
             <h1>
-                Aircraft models.
+                Models.
             </h1>
 
             <p>
-                Explore the Raketa Dynamics range of highly
-                detailed 1:72 aircraft and vehicle replicas.
+                Explore the Raketa Dynamics range of detailed
+                scale aircraft and ground vehicles.
             </p>
 
         </div>
@@ -109,224 +232,214 @@
 
         <div class="container">
 
-            <div class="section-heading">
 
-                <div>
+            <div class="model-branch">
+
+                <div class="model-branch-title">
 
                     <span class="section-kicker">
-                        COLLECTION
+                        AIRCRAFT
                     </span>
 
                     <h2>
-                        Current models.
+                        Aircraft
                     </h2>
 
                 </div>
 
-                <p>
-                    Explore individual Raketa Dynamics products
-                    and their developing specifications.
-                </p>
+
+                <div class="model-list">
+
+
+                    <article
+                        class="model-item"
+                        onclick="this.classList.toggle('is-open')"
+                    >
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                MiG-21UPG 'CU2777' No. 23 Squadron "Panthers" Sept 2025
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
+                        </div>
+
+
+                        <div class="model-item-content">
+
+                            <div class="model-item-expanded">
+
+                                <div class="model-item-description">
+
+                                    <p>
+                                        MiG-21UPG Bison No. 23 Squadron
+                                        "Panthers" 'CU2777' from the
+                                        farewell ceremony in September
+                                        2025.
+                                    </p>
+
+                                    <a
+                                        href="mig-21-bison.html"
+                                        class="text-link model-details-link"
+                                        onclick="event.stopPropagation()"
+                                    >
+                                        Product details →
+                                    </a>
+
+                                </div>
+
+
+                                <img
+                                    class="model-item-image"
+                                    src="wip.png"
+                                    alt="MiG-21UPG 'CU2777' No. 23 Squadron Panthers"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="model-item"
+                        onclick="this.classList.toggle('is-open')"
+                    >
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                Sukhoi Su-30MKI 'SB232' No. 220 Squadron "Desert Tigers" May 2025
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
+                        </div>
+
+
+                        <div class="model-item-content">
+
+                            <div class="model-item-expanded">
+
+                                <div class="model-item-description">
+
+                                    <p>
+                                        Indian Air Force Sukhoi Su-30MKI
+                                        'SB232' of No. 220 Squadron
+                                        "Desert Tigers", May 2025.
+                                    </p>
+
+                                    <a
+                                        href="#"
+                                        class="text-link model-details-link"
+                                        onclick="event.stopPropagation()"
+                                    >
+                                        Product details →
+                                    </a>
+
+                                </div>
+
+
+                                <img
+                                    class="model-item-image"
+                                    src="wip.png"
+                                    alt="Sukhoi Su-30MKI 'SB232' No. 220 Squadron Desert Tigers"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
 
             </div>
 
 
-            <div class="product-grid">
+            <div class="model-branch">
+
+                <div class="model-branch-title">
+
+                    <span class="section-kicker">
+                        GROUND VEHICLES
+                    </span>
+
+                    <h2>
+                        Ground vehicles
+                    </h2>
+
+                </div>
 
 
-                <article class="product-card">
+                <div class="model-list">
 
-                    <div class="product-image-placeholder">
-                        <span>MIG-21 BISON</span>
-                    </div>
 
-                    <div class="product-card-content">
+                    <article
+                        class="model-item"
+                        onclick="this.classList.toggle('is-open')"
+                    >
 
-                        <div class="product-meta">
-                            1:72 / AIRCRAFT
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                51P6A 'Bhuj' May 2025
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
                         </div>
 
-                        <h3>
-                            MiG-21 Bison
-                        </h3>
 
-                        <p>
-                            Modernised MiG-21 aircraft.
-                        </p>
+                        <div class="model-item-content">
 
-                        <a
-                            href="mig-21-bison.html"
-                            class="text-link"
-                        >
-                            Product details →
-                        </a>
+                            <div class="model-item-expanded">
 
-                    </div>
+                                <div class="model-item-description">
 
-                </article>
+                                    <p>
+                                        51P6A 'Bhuj' ground vehicle
+                                        model, May 2025.
+                                    </p>
+
+                                    <a
+                                        href="#"
+                                        class="text-link model-details-link"
+                                        onclick="event.stopPropagation()"
+                                    >
+                                        Product details →
+                                    </a>
+
+                                </div>
 
 
-                <article class="product-card">
+                                <img
+                                    class="model-item-image"
+                                    src="wip.png"
+                                    alt="51P6A 'Bhuj'"
+                                >
 
-                    <div class="product-image-placeholder">
-                        <span>MIG-21BIS</span>
-                    </div>
+                            </div>
 
-                    <div class="product-card-content">
-
-                        <div class="product-meta">
-                            1:72 / AIRCRAFT
                         </div>
 
-                        <h3>
-                            MiG-21bis
-                        </h3>
-
-                        <p>
-                            Product status to be confirmed.
-                        </p>
-
-                        <a
-                            href="#"
-                            class="text-link"
-                        >
-                            Product details →
-                        </a>
-
-                    </div>
-
-                </article>
+                    </article>
 
 
-                <article class="product-card">
-
-                    <div class="product-image-placeholder">
-                        <span>SU-30MKI</span>
-                    </div>
-
-                    <div class="product-card-content">
-
-                        <div class="product-meta">
-                            1:72 / AIRCRAFT
-                        </div>
-
-                        <h3>
-                            Su-30MKI
-                        </h3>
-
-                        <p>
-                            Indian Air Force
-                        </p>
-
-                        <a
-                            href="#"
-                            class="text-link"
-                        >
-                            Product details →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <article class="product-card">
-
-                    <div class="product-image-placeholder">
-                        <span>MI-17V5</span>
-                    </div>
-
-                    <div class="product-card-content">
-
-                        <div class="product-meta">
-                            1:72 / HELICOPTER
-                        </div>
-
-                        <h3>
-                            Mi-17V5
-                        </h3>
-
-                        <p>
-                            Indian Air Force
-                        </p>
-
-                        <a
-                            href="#"
-                            class="text-link"
-                        >
-                            Product details →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <article class="product-card">
-
-                    <div class="product-image-placeholder">
-                        <span>51P6A</span>
-                    </div>
-
-                    <div class="product-card-content">
-
-                        <div class="product-meta">
-                            1:72 / GROUND VEHICLE
-                        </div>
-
-                        <h3>
-                            51P6A
-                        </h3>
-
-                        <p>
-                            Product status to be confirmed.
-                        </p>
-
-                        <a
-                            href="#"
-                            class="text-link"
-                        >
-                            Product details →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <article class="product-card">
-
-                    <div class="product-image-placeholder">
-                        <span>TEJAS</span>
-                    </div>
-
-                    <div class="product-card-content">
-
-                        <div class="product-meta">
-                            1:72 / AIRCRAFT
-                        </div>
-
-                        <h3>
-                            Tejas
-                        </h3>
-
-                        <p>
-                            Product status to be confirmed.
-                        </p>
-
-                        <a
-                            href="#"
-                            class="text-link"
-                        >
-                            Product details →
-                        </a>
-
-                    </div>
-
-                </article>
-
+                </div>
 
             </div>
+
 
         </div>
 
