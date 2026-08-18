@@ -43,10 +43,6 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-
-    /*
-       Header is fixed, so the page begins below it.
-    */
     padding-top: 86px;
 }
 
@@ -102,7 +98,7 @@ main {
 
 /* =========================================================
    HEADER
-   FIXED BLACK BAR + EXPANDING NAVIGATION
+   FIXED SOLID BLACK BAR
 ========================================================= */
 
 .site-header {
@@ -111,7 +107,9 @@ main {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: transparent;
+
+    /* Main header is ALWAYS black */
+    background: #000000;
 }
 
 
@@ -123,15 +121,19 @@ main {
     position: relative;
     z-index: 1002;
     width: 100%;
+
     background: #000000;
+
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .nav-container {
     min-height: 86px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     gap: 30px;
 }
 
@@ -165,30 +167,42 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+
     gap: 30px;
+
     margin-left: auto;
     margin-right: 10px;
 }
 
 .main-navigation a {
     position: relative;
+
     padding: 8px 0;
+
     color: var(--text-muted);
+
     font-size: 11px;
     font-weight: 600;
+
     letter-spacing: 0.08em;
     text-transform: uppercase;
+
     transition: color 0.2s ease;
 }
 
 .main-navigation a::after {
     content: "";
+
     position: absolute;
+
     left: 0;
     bottom: 0;
+
     width: 0;
     height: 1px;
+
     background: var(--accent);
+
     transition: width 0.2s ease;
 }
 
@@ -209,14 +223,20 @@ main {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     min-height: 40px;
     padding: 0 19px;
+
     border: 1px solid var(--line-strong);
+
     color: var(--text);
+
     font-size: 10px;
     font-weight: 700;
+
     letter-spacing: 0.12em;
     text-transform: uppercase;
+
     transition:
         background 0.2s ease,
         border-color 0.2s ease;
@@ -229,13 +249,16 @@ main {
 
 
 /* =========================================================
-   EXPANDING MEGA NAVIGATION
+   EXPANDING SECONDARY NAVIGATION
+   ONLY THIS PART IS TRANSPARENT DARK GREY
 ========================================================= */
 
 .mega-navigation {
     position: absolute;
+
     top: 86px;
     left: 0;
+
     width: 100%;
 
     background: rgba(18, 20, 18, 0.94);
@@ -261,20 +284,18 @@ main {
 
 
 /*
-    IMPORTANT:
+    The entire .site-header is the hover area.
 
-    The hover target is the entire .site-header,
-    not just the black navigation bar.
-
-    This allows the mouse to travel from the black
-    bar into the expanded panel without the panel
-    disappearing.
+    This allows the mouse to move from the black
+    bar into the secondary menu without it closing.
 */
 
 .site-header:hover .mega-navigation {
     opacity: 1;
     visibility: visible;
+
     transform: translateY(0);
+
     pointer-events: auto;
 }
 
@@ -1385,7 +1406,6 @@ main {
 
 /* =========================================================
    MODELS PAGE
-   THREE-COLUMN MODEL CARDS
 ========================================================= */
 
 .model-branch {
@@ -1664,18 +1684,26 @@ main {
     .nav-container {
         min-height: 75px;
         flex-wrap: wrap;
+
         padding-top: 15px;
         padding-bottom: 15px;
     }
 
     .main-navigation {
         order: 3;
+
         width: 100%;
+
         overflow-x: auto;
+
         justify-content: flex-start;
+
         margin: 0;
+
         padding-bottom: 2px;
+
         gap: 24px;
+
         scrollbar-width: none;
     }
 
