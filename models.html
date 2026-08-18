@@ -21,6 +21,76 @@
 
     <style>
 
+        /* =====================================================
+           MODELS NAVIGATION DROPDOWN
+        ===================================================== */
+
+        .models-nav-item {
+            position: relative;
+        }
+
+        .models-nav-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .models-subnav {
+            position: fixed;
+            top: 86px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 70px;
+            padding: 24px 30px;
+            background: rgba(18, 20, 18, 0.94);
+            border-top: 1px solid rgba(238, 237, 231, 0.10);
+            border-bottom: 1px solid rgba(238, 237, 231, 0.18);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            pointer-events: none;
+            transition:
+                opacity 0.2s ease,
+                visibility 0.2s ease,
+                transform 0.2s ease;
+            z-index: 49;
+        }
+
+        .models-nav-item:hover .models-subnav,
+        .models-nav-item:focus-within .models-subnav {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .models-subnav a {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition:
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .models-subnav a:hover,
+        .models-subnav a:focus {
+            color: var(--text);
+            transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           MODEL BRANCHES
+        ===================================================== */
+
         .model-branch {
             margin-bottom: 80px;
         }
@@ -135,13 +205,40 @@
             display: inline-block;
         }
 
+
+        /* =====================================================
+           RESPONSIVE MODELS
+        ===================================================== */
+
         @media (max-width: 900px) {
 
             .model-list {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
+            .models-subnav {
+                gap: 35px;
+            }
+
         }
+
+
+        @media (max-width: 760px) {
+
+            .models-subnav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 18px;
+                padding: 20px 24px;
+            }
+
+        }
+
 
         @media (max-width: 600px) {
 
@@ -184,22 +281,27 @@
             </a>
 
 
-            <div class="nav-dropdown">
+            <div class="models-nav-item">
 
                 <a
                     href="models.html"
-                    class="nav-dropdown-trigger"
+                    class="models-nav-link"
                 >
                     Models
                 </a>
 
-                <div class="nav-dropdown-menu">
 
-                    <a href="models.html#aircraft">
+                <div class="models-subnav">
+
+                    <a href="#aircraft">
                         Aircraft
                     </a>
 
-                    <a href="models.html#ground-vehicles">
+                    <a href="#helicopters">
+                        Helicopters
+                    </a>
+
+                    <a href="#ground-vehicles">
                         Ground Vehicles
                     </a>
 
@@ -212,13 +314,16 @@
                 Collection Archive
             </a>
 
+
             <a href="panels.html">
                 Cockpit Panels
             </a>
 
+
             <a href="releases.html">
                 Releases
             </a>
+
 
             <a href="about.html">
                 About
@@ -480,6 +585,52 @@
 
                     </article>
 
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="model-branch"
+                id="helicopters"
+            >
+
+                <div class="model-branch-title">
+
+                    <h2>
+                        Helicopters
+                    </h2>
+
+                </div>
+
+
+                <div class="model-list">
+
+                    <article class="model-item">
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                No helicopter models currently listed
+                            </h3>
+
+                        </div>
+
+                        <div class="model-gallery">
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Raketa Dynamics helicopter models coming soon"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </article>
 
                 </div>
 
