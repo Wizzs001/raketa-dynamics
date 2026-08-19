@@ -3545,3 +3545,1395 @@ button:focus-visible {
     }
 
 }
+/* =====================================================
+   RAKETA DYNAMICS
+   COLLECTION ARCHIVE
+====================================================== */
+
+
+/* =====================================================
+   ARCHIVE DIVISIONS
+====================================================== */
+
+.archive-divisions {
+
+    padding-top: 90px;
+
+    padding-bottom: 120px;
+
+    background: var(--background);
+
+}
+
+
+.archive-divisions-container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 65px;
+
+}
+
+
+/* =====================================================
+   ARCHIVE CARD
+====================================================== */
+
+.archive-division-card {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 430px;
+
+    overflow: hidden;
+
+    background: #050605;
+
+    border: 1px solid var(--line-strong);
+
+    transition:
+        border-color 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.archive-division-card:hover {
+
+    border-color:
+        rgba(
+            193,
+            181,
+            142,
+            0.55
+        );
+
+    transform:
+        translateY(-4px);
+
+}
+
+
+/* =====================================================
+   IMAGE
+====================================================== */
+
+.archive-division-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    background: #000;
+
+}
+
+
+.archive-division-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    opacity: 0.68;
+
+    transition:
+        transform 0.6s ease,
+        opacity 0.4s ease;
+
+}
+
+
+.archive-division-card:hover
+.archive-division-image img {
+
+    transform:
+        scale(1.035);
+
+    opacity: 0.82;
+
+}
+
+
+/* =====================================================
+   OVERLAY
+====================================================== */
+
+.archive-division-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.84),
+            rgba(0, 0, 0, 0.35) 65%,
+            rgba(0, 0, 0, 0.60)
+        );
+
+    pointer-events: none;
+
+}
+
+
+.archive-division-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.10),
+            transparent 45%,
+            rgba(0, 0, 0, 0.45)
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   CONTENT
+====================================================== */
+
+.archive-division-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 430px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    padding:
+        55px
+        clamp(
+            30px,
+            7vw,
+            100px
+        );
+
+}
+
+
+.archive-division-number {
+
+    color: var(--accent);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+}
+
+
+.archive-division-kicker {
+
+    margin-top: 9px;
+
+    color: var(--accent-light);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+}
+
+
+.archive-division-content h2 {
+
+    margin-top: 14px;
+
+    color: var(--text);
+
+    font-size:
+        clamp(
+            52px,
+            7vw,
+            90px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+
+}
+
+
+.archive-division-content p {
+
+    max-width: 520px;
+
+    margin-top: 24px;
+
+    color:
+        rgba(
+            238,
+            237,
+            231,
+            0.74
+        );
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+}
+
+
+.archive-division-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    color: var(--text);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+
+}
+
+
+.archive-division-arrow {
+
+    color: var(--accent-light);
+
+    font-size: 16px;
+
+    transition:
+        transform 0.25s ease;
+
+}
+
+
+.archive-division-card:hover
+.archive-division-arrow {
+
+    transform:
+        translateX(6px);
+
+}
+
+
+/* =====================================================
+   INTRODUCTION
+====================================================== */
+
+.archive-introduction {
+
+    padding-top: 130px;
+
+    padding-bottom: 140px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151814,
+            #0b0d0b
+        );
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.archive-introduction-content {
+
+    max-width: 800px;
+
+}
+
+
+.archive-introduction h2 {
+
+    margin-top: 15px;
+
+    max-width: 750px;
+
+    font-size:
+        clamp(
+            45px,
+            6vw,
+            78px
+        );
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+
+}
+
+
+.archive-introduction p {
+
+    max-width: 600px;
+
+    margin-top: 28px;
+
+    color: var(--text-muted);
+
+    font-size: 15px;
+
+    line-height: 1.85;
+
+}
+
+
+/* =====================================================
+   TREE PAGE
+====================================================== */
+
+.tree-page {
+
+    background:
+        #090b09;
+
+    min-height: 100vh;
+
+}
+
+
+.tree-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    min-height: 74px;
+
+    padding:
+        0
+        clamp(
+            22px,
+            5vw,
+            70px
+        );
+
+    background:
+        rgba(
+            9,
+            11,
+            9,
+            0.94
+        );
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    backdrop-filter:
+        blur(14px);
+
+}
+
+
+.tree-back {
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+    transition:
+        color 0.25s ease;
+
+}
+
+
+.tree-back:hover {
+
+    color: var(--text);
+
+}
+
+
+.tree-header-title {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 4px;
+
+}
+
+
+.tree-header-title span {
+
+    color: var(--accent);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+}
+
+
+.tree-header-title strong {
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =====================================================
+   TREE
+====================================================== */
+
+.tech-tree {
+
+    width: min(
+        1500px,
+        calc(100% - 40px)
+    );
+
+    margin:
+        0
+        auto;
+
+    padding-top: 100px;
+
+    padding-bottom: 180px;
+
+}
+
+
+.tree-intro {
+
+    max-width: 800px;
+
+    margin-bottom: 110px;
+
+}
+
+
+.tree-intro h1 {
+
+    margin-top: 14px;
+
+    color: var(--text);
+
+    font-size:
+        clamp(
+            60px,
+            9vw,
+            125px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.06em;
+
+}
+
+
+.tree-intro p {
+
+    max-width: 650px;
+
+    margin-top: 30px;
+
+    color: var(--text-muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =====================================================
+   LINE LEGEND
+====================================================== */
+
+.line-legend {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 35px;
+
+}
+
+
+.line-legend span {
+
+    padding:
+        9px
+        13px;
+
+    border: 1px solid;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+}
+
+
+.legend-silver {
+
+    color: #c7c9c6;
+
+    border-color:
+        rgba(
+            199,
+            201,
+            198,
+            0.45
+        );
+
+}
+
+
+.legend-gold {
+
+    color: #d2b66f;
+
+    border-color:
+        rgba(
+            210,
+            182,
+            111,
+            0.5
+        );
+
+}
+
+
+.legend-black {
+
+    color: #eeeeea;
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.3
+        );
+
+    background:
+        #030303;
+
+}
+
+
+.legend-white {
+
+    color: #ffffff;
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.8
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+
+}
+
+
+/* =====================================================
+   TREE NODES
+====================================================== */
+
+.tree-node {
+
+    position: relative;
+
+    width: 270px;
+
+    margin:
+        0
+        auto;
+
+    padding:
+        25px
+        28px;
+
+    background:
+        #0d100d;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    text-align: center;
+
+}
+
+
+.tree-node span {
+
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+}
+
+
+.tree-node h2 {
+
+    margin-top: 9px;
+
+    color: var(--text);
+
+    font-size: 27px;
+
+    font-weight: 500;
+
+    letter-spacing: -0.03em;
+
+}
+
+
+.tree-node h3 {
+
+    margin-top: 9px;
+
+    color: var(--text);
+
+    font-size: 20px;
+
+    font-weight: 500;
+
+}
+
+
+.tree-root {
+
+    border-color:
+        rgba(
+            193,
+            181,
+            142,
+            0.5
+        );
+
+}
+
+
+.tree-category {
+
+    background:
+        #101310;
+
+}
+
+
+.tree-family {
+
+    background:
+        #0c0f0c;
+
+}
+
+
+/* =====================================================
+   CONNECTOR
+====================================================== */
+
+.tree-connector {
+
+    width: 1px;
+
+    height: 60px;
+
+    margin:
+        0
+        auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(
+                193,
+                181,
+                142,
+                0.75
+            ),
+            rgba(
+                193,
+                181,
+                142,
+                0.15
+            )
+        );
+
+}
+
+
+/* =====================================================
+   BRANCHES
+====================================================== */
+
+.tree-branches {
+
+    display: grid;
+
+    gap: 70px;
+
+    align-items: start;
+
+}
+
+
+.tree-branches-two {
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+}
+
+
+.tree-branches-three {
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+}
+
+
+.tree-branch {
+
+    min-width: 0;
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   RELEASE GROUP
+====================================================== */
+
+.release-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.release-family-title {
+
+    margin-bottom: 10px;
+
+    color: var(--accent);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =====================================================
+   RELEASE NODE
+====================================================== */
+
+.release-node {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    width: 100%;
+
+    padding:
+        20px
+        22px;
+
+    background:
+        #0b0d0b;
+
+    border: 1px solid;
+
+    text-align: left;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+
+}
+
+
+.release-node:hover {
+
+    transform:
+        translateX(5px);
+
+    background:
+        #111411;
+
+}
+
+
+.release-node div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+
+.release-node strong {
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.01em;
+
+}
+
+
+.release-node span {
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+}
+
+
+.release-node small {
+
+    flex-shrink: 0;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+}
+
+
+/* =====================================================
+   SILVER LINE
+====================================================== */
+
+.line-silver {
+
+    border-color:
+        rgba(
+            190,
+            193,
+            190,
+            0.45
+        );
+
+}
+
+
+.line-silver small {
+
+    color: #c7c9c6;
+
+}
+
+
+/* =====================================================
+   GOLD LINE
+====================================================== */
+
+.line-gold {
+
+    border-color:
+        rgba(
+            210,
+            182,
+            111,
+            0.65
+        );
+
+}
+
+
+.line-gold small {
+
+    color: #d2b66f;
+
+}
+
+
+/* =====================================================
+   BLACK LINE
+====================================================== */
+
+.line-black {
+
+    background:
+        #030303;
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.5
+        );
+
+    box-shadow:
+        inset
+        3px
+        0
+        0
+        rgba(
+            255,
+            255,
+            255,
+            0.7
+        );
+
+}
+
+
+.line-black small {
+
+    color: #ffffff;
+
+}
+
+
+/* =====================================================
+   WHITE LINE
+====================================================== */
+
+.line-white {
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4f4f0,
+            #cfcfca
+        );
+
+    border-color:
+        #ffffff;
+
+}
+
+
+.line-white strong,
+.line-white span {
+
+    color: #101210;
+
+}
+
+
+.line-white small {
+
+    color: #101210;
+
+}
+
+
+/* =====================================================
+   END
+====================================================== */
+
+.tree-end {
+
+    margin-top: 130px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.1
+        );
+
+    color: var(--text-muted);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 900px) {
+
+    .tree-branches-three {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .tree-branches-two {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .tree-branch {
+
+        max-width: 600px;
+
+        width: 100%;
+
+        margin:
+            0
+            auto;
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 760px) {
+
+    .archive-divisions {
+
+        padding-top: 60px;
+
+        padding-bottom: 85px;
+
+    }
+
+
+    .archive-divisions-container {
+
+        gap: 42px;
+
+    }
+
+
+    .archive-division-card {
+
+        min-height: 380px;
+
+    }
+
+
+    .archive-division-content {
+
+        min-height: 380px;
+
+        padding: 40px;
+
+    }
+
+
+    .archive-division-content h2 {
+
+        font-size:
+            clamp(
+                46px,
+                13vw,
+                72px
+            );
+
+    }
+
+
+    .archive-introduction {
+
+        padding-top: 90px;
+
+        padding-bottom: 100px;
+
+    }
+
+
+    .tech-tree {
+
+        width:
+            calc(
+                100% - 28px
+            );
+
+        padding-top: 70px;
+
+    }
+
+
+    .tree-intro {
+
+        margin-bottom: 75px;
+
+    }
+
+
+    .tree-node {
+
+        width:
+            min(
+                270px,
+                100%
+            );
+
+    }
+
+
+    .tree-header {
+
+        min-height: 65px;
+
+    }
+
+
+    .tree-header-title span {
+
+        display: none;
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+====================================================== */
+
+@media (max-width: 480px) {
+
+    .archive-divisions {
+
+        padding-top: 45px;
+
+        padding-bottom: 65px;
+
+    }
+
+
+    .archive-divisions-container {
+
+        gap: 28px;
+
+    }
+
+
+    .archive-division-card {
+
+        min-height: 340px;
+
+    }
+
+
+    .archive-division-content {
+
+        min-height: 340px;
+
+        padding: 28px;
+
+    }
+
+
+    .archive-division-content h2 {
+
+        font-size: 48px;
+
+    }
+
+
+    .archive-division-content p {
+
+        margin-top: 18px;
+
+        font-size: 12px;
+
+    }
+
+
+    .tree-intro h1 {
+
+        font-size: 58px;
+
+    }
+
+
+    .line-legend {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .release-node {
+
+        padding:
+            17px;
+
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .archive-division-card,
+    .archive-division-image img,
+    .archive-division-arrow,
+    .release-node {
+
+        transition: none;
+
+    }
+
+}
