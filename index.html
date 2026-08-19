@@ -26,64 +26,107 @@
 
 
 <!-- =====================================================
-     HEADER
-====================================================== -->
-
-<!-- =====================================================
-     HEADER
+     FIXED HEADER / NAVIGATION
 ====================================================== -->
 
 <header class="site-header">
 
-    <div class="nav-container">
+    <!-- =================================================
+         BLACK PRIMARY NAVIGATION BAR
+    ================================================== -->
 
-        <!-- LOGO -->
-        <a href="index.html" class="brand">
-            <img src="logo.png" alt="Raketa Dynamics">
-        </a>
+    <div class="nav-bar">
 
+        <div class="nav-container">
 
-        <!-- RIGHT-HAND MENU -->
-        <nav class="simple-navigation" aria-label="Main navigation">
+            <!-- LOGO -->
 
-            <a href="index.html">
-                HOME
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <img
+                    src="logo.png"
+                    alt="Raketa Dynamics"
+                >
+
             </a>
 
 
-            <!-- SUPPLY + DROPDOWN -->
-            <div class="nav-dropdown-parent">
+            <!-- FIVE PRIMARY NAVIGATION HEADINGS -->
 
-                <a href="supply.html" class="nav-supply">
+            <nav
+                class="primary-navigation"
+                aria-label="Main navigation"
+            >
+
+                <a
+                    href="index.html"
+                    class="primary-nav-link"
+                >
+                    HOME
+                </a>
+
+
+                <a
+                    href="supply.html"
+                    class="primary-nav-link primary-nav-supply"
+                >
                     SUPPLY
                 </a>
 
-                <div class="index-supply-dropdown">
 
-                    <a href="models.html">
-                        MODELS
-                    </a>
-
-                </div>
-
-            </div>
+                <a
+                    href="archive.html"
+                    class="primary-nav-link"
+                >
+                    COLLECTION ARCHIVE
+                </a>
 
 
-            <a href="archive.html">
-                COLLECTION ARCHIVE
+                <a
+                    href="releases.html"
+                    class="primary-nav-link"
+                >
+                    UPDATES
+                </a>
+
+
+                <a
+                    href="about.html"
+                    class="primary-nav-link"
+                >
+                    ABOUT
+                </a>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MODELS
+         
+         This is deliberately OUTSIDE the black bar.
+         It does not affect the vertical position of
+         SUPPLY or any of the five primary headings.
+    ================================================== -->
+
+    <div class="models-navigation">
+
+        <div class="models-navigation-inner">
+
+            <a
+                href="models.html"
+                class="models-navigation-link"
+            >
+                MODELS
             </a>
 
-
-            <a href="releases.html">
-                UPDATES
-            </a>
-
-
-            <a href="about.html">
-                ABOUT
-            </a>
-
-        </nav>
+        </div>
 
     </div>
 
