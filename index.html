@@ -26,107 +26,95 @@
 
 
 <!-- =====================================================
-     FIXED HEADER / NAVIGATION
+     FIXED HEADER
 ====================================================== -->
 
 <header class="site-header">
 
-    <!-- =================================================
-         BLACK PRIMARY NAVIGATION BAR
-    ================================================== -->
+    <div class="nav-container">
 
-    <div class="nav-bar">
+        <!-- LOGO -->
 
-        <div class="nav-container">
+        <a
+            href="index.html"
+            class="brand"
+        >
 
-            <!-- LOGO -->
+            <img
+                src="logo.png"
+                alt="Raketa Dynamics"
+            >
+
+        </a>
+
+
+        <!-- =================================================
+             MAIN NAVIGATION
+             ONLY THE FIVE TOP HEADINGS ARE INSIDE THE BLACK BAR
+        ================================================== -->
+
+        <nav
+            class="site-navigation"
+            aria-label="Main navigation"
+        >
 
             <a
                 href="index.html"
-                class="brand"
+                class="site-navigation-link"
             >
-
-                <img
-                    src="logo.png"
-                    alt="Raketa Dynamics"
-                >
-
+                HOME
             </a>
 
 
-            <!-- FIVE PRIMARY NAVIGATION HEADINGS -->
+            <!-- SUPPLY -->
 
-            <nav
-                class="primary-navigation"
-                aria-label="Main navigation"
-            >
-
-                <a
-                    href="index.html"
-                    class="primary-nav-link"
-                >
-                    HOME
-                </a>
-
+            <div class="site-navigation-item site-navigation-supply">
 
                 <a
                     href="supply.html"
-                    class="primary-nav-link primary-nav-supply"
+                    class="site-navigation-link"
                 >
                     SUPPLY
                 </a>
 
 
-                <a
-                    href="archive.html"
-                    class="primary-nav-link"
-                >
-                    COLLECTION ARCHIVE
-                </a>
-
+                <!-- MODELS IS A SEPARATE ELEMENT.
+                     IT IS NOT INSIDE THE BLACK HEADER BAR. -->
 
                 <a
-                    href="releases.html"
-                    class="primary-nav-link"
+                    href="models.html"
+                    class="models-navigation-link"
                 >
-                    UPDATES
+                    MODELS
                 </a>
 
+            </div>
 
-                <a
-                    href="about.html"
-                    class="primary-nav-link"
-                >
-                    ABOUT
-                </a>
-
-            </nav>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         MODELS
-         
-         This is deliberately OUTSIDE the black bar.
-         It does not affect the vertical position of
-         SUPPLY or any of the five primary headings.
-    ================================================== -->
-
-    <div class="models-navigation">
-
-        <div class="models-navigation-inner">
 
             <a
-                href="models.html"
-                class="models-navigation-link"
+                href="archive.html"
+                class="site-navigation-link"
             >
-                MODELS
+                COLLECTION ARCHIVE
             </a>
 
-        </div>
+
+            <a
+                href="releases.html"
+                class="site-navigation-link"
+            >
+                UPDATES
+            </a>
+
+
+            <a
+                href="about.html"
+                class="site-navigation-link"
+            >
+                ABOUT
+            </a>
+
+        </nav>
 
     </div>
 
@@ -259,18 +247,15 @@
 
         <div>
 
-
             <a
                 href="index.html"
                 class="brand footer-brand"
             >
 
-
                 <img
                     src="logo.png"
                     alt="Raketa Dynamics"
                 >
-
 
             </a>
 
@@ -280,7 +265,6 @@
                 and aviation enthusiasts.
             </p>
 
-
         </div>
 
 
@@ -288,51 +272,41 @@
 
         <div class="footer-links">
 
-
             <a href="index.html">
                 Home
             </a>
-
 
             <a href="supply.html">
                 Supply
             </a>
 
-
             <a href="models.html">
                 Models
             </a>
-
 
             <a href="armoury.html">
                 Armoury
             </a>
 
-
             <a href="hanger.html">
                 Hanger
             </a>
-
 
             <a href="archive.html">
                 Collection Archive
             </a>
 
-
             <a href="releases.html">
                 Updates
             </a>
-
 
             <a href="about.html">
                 About
             </a>
 
-
             <a href="contact.html">
                 Contact
             </a>
-
 
         </div>
 
@@ -341,16 +315,13 @@
 
         <div class="footer-contact">
 
-
             <span>
                 CONTACT
             </span>
 
-
             <a href="mailto:Raketadynamicsmodels@gmail.com">
                 Raketadynamicsmodels@gmail.com
             </a>
-
 
         </div>
 
@@ -364,16 +335,13 @@
 
     <div class="container footer-bottom">
 
-
         <span>
             © 2026 Raketa Dynamics
         </span>
 
-
         <span>
             Berkshire, United Kingdom
         </span>
-
 
     </div>
 
