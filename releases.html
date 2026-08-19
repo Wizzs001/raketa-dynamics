@@ -29,9 +29,14 @@
      HEADER
 ====================================================== -->
 
+<!-- =====================================================
+     FIXED HEADER
+====================================================== -->
+
 <header class="site-header">
 
     <div class="nav-container">
+
 
         <!-- LOGO -->
 
@@ -48,15 +53,15 @@
         </a>
 
 
-        <!-- =================================================
-             MAIN NAVIGATION
-             ONLY THE FIVE TOP HEADINGS ARE INSIDE THE BLACK BAR
-        ================================================== -->
+        <!-- MAIN NAVIGATION -->
 
         <nav
             class="site-navigation"
             aria-label="Main navigation"
         >
+
+
+            <!-- HOME -->
 
             <a
                 href="index.html"
@@ -66,7 +71,9 @@
             </a>
 
 
-            <!-- SUPPLY -->
+            <!-- =================================================
+                 SUPPLY
+            ================================================== -->
 
             <div class="site-navigation-item site-navigation-supply">
 
@@ -78,18 +85,39 @@
                 </a>
 
 
-                <!-- MODELS IS A SEPARATE ELEMENT.
-                     IT IS NOT INSIDE THE BLACK HEADER BAR. -->
+                <!-- SUPPLY DROPDOWN -->
 
-                <a
-                    href="models.html"
-                    class="models-navigation-link"
-                >
-                    MODELS
-                </a>
+                <div class="supply-dropdown">
+
+                    <a
+                        href="models.html"
+                        class="dropdown-navigation-link"
+                    >
+                        MODELS
+                    </a>
+
+                    <a
+                        href="armoury.html"
+                        class="dropdown-navigation-link"
+                    >
+                        ARMOURY
+                    </a>
+
+                    <a
+                        href="hanger.html"
+                        class="dropdown-navigation-link"
+                    >
+                        HANGER
+                    </a>
+
+                </div>
 
             </div>
 
+
+            <!-- =================================================
+                 COLLECTION ARCHIVE
+            ================================================== -->
 
             <a
                 href="archive.html"
@@ -99,27 +127,71 @@
             </a>
 
 
-            <a
-                href="releases.html"
-                class="site-navigation-link"
-            >
-                UPDATES
-            </a>
+            <!-- =================================================
+                 UPDATES
+            ================================================== -->
+
+            <div class="site-navigation-item site-navigation-updates">
+
+                <a
+                    href="releases.html"
+                    class="site-navigation-link"
+                >
+                    UPDATES
+                </a>
 
 
-            <a
-                href="about.html"
-                class="site-navigation-link"
-            >
-                ABOUT
-            </a>
+                <!-- UPDATES DROPDOWN -->
+
+                <div class="updates-dropdown">
+
+                    <a
+                        href="releases.html"
+                        class="dropdown-navigation-link"
+                    >
+                        RELEASES
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ABOUT
+            ================================================== -->
+
+            <div class="site-navigation-item site-navigation-about">
+
+                <a
+                    href="about.html"
+                    class="site-navigation-link"
+                >
+                    ABOUT
+                </a>
+
+
+                <!-- ABOUT DROPDOWN -->
+
+                <div class="about-dropdown">
+
+                    <a
+                        href="contact.html"
+                        class="dropdown-navigation-link"
+                    >
+                        CONTACT
+                    </a>
+
+                </div>
+
+            </div>
+
 
         </nav>
 
     </div>
 
 </header>
-
 <!-- =====================================================
      MAIN
 ====================================================== -->
