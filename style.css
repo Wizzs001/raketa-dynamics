@@ -1,7 +1,7 @@
 /* =========================================================
    RAKETA DYNAMICS
    MAIN WEBSITE STYLESHEET
-   REFINED / RESPONSIVE / PRODUCTION VERSION
+   MENU RESET VERSION
 ========================================================= */
 
 :root {
@@ -150,6 +150,7 @@ section {
 
 /* =========================================================
    HEADER
+   BLACK BAR + LOGO ONLY
 ========================================================= */
 
 .site-header {
@@ -160,16 +161,20 @@ section {
 
     width: 100%;
 
+    height: var(--header-height);
+
     z-index: 10000;
 
     background: #000000;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
 }
 
 
 /* =========================================================
-   MAIN NAVIGATION BAR
+   BLACK TOP BAR
 ========================================================= */
 
 .nav-main {
@@ -178,24 +183,27 @@ section {
     z-index: 10002;
 
     width: 100%;
+    height: var(--header-height);
 
     background: #000000;
 }
 
 .nav-container {
+    height: var(--header-height);
     min-height: var(--header-height);
 
     display: flex;
 
     align-items: center;
-    justify-content: space-between;
+
+    justify-content: flex-start;
 
     gap: 30px;
 }
 
 
 /* =========================================================
-   BRAND / LOGO
+   LOGO
 ========================================================= */
 
 .brand {
@@ -230,222 +238,40 @@ section {
 
 
 /* =========================================================
-   MAIN NAVIGATION
+   REMOVE ALL MAIN MENU TEXT
 ========================================================= */
+
+/*
+   The navigation HTML can remain in every page.
+
+   It is deliberately hidden here so there is currently
+   NOTHING except the logo in the black header bar.
+
+   We will rebuild the menu from scratch afterwards.
+*/
 
 .main-navigation {
-    display: flex;
-
-    align-items: stretch;
-    justify-content: flex-end;
-
-    gap: 38px;
-
-    margin-left: auto;
-    margin-right: 10px;
-}
-
-.nav-item {
-    position: relative;
-
-    display: flex;
-
-    align-items: stretch;
-}
-
-.nav-item > a {
-    position: relative;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    padding: 8px 0;
-
-    color: var(--text-muted);
-
-    font-size: 13px;
-    font-weight: 600;
-
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
-
-    transition:
-        color var(--transition-fast);
-}
-
-.nav-item > a::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: 1px;
-
-    width: 0;
-    height: 1px;
-
-    background: var(--accent);
-
-    transition:
-        width var(--transition-fast);
-}
-
-.nav-item > a:hover,
-.nav-item > a:focus-visible {
-    color: var(--text);
-}
-
-.nav-item > a:hover::after,
-.nav-item > a:focus-visible::after {
-    width: 100%;
+    display: none !important;
 }
 
 
 /* =========================================================
-   HOVER DROPDOWN
+   REMOVE ALL DROPDOWN / MEGA MENU
 ========================================================= */
 
-.nav-dropdown {
-    position: absolute;
-
-    top: 100%;
-    left: 0;
-
-    min-width: 155px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    background:
-        rgba(80, 82, 79, 0.82);
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.12);
-
-    border-top:
-        0;
-
-    box-shadow:
-        0 16px 40px
-        rgba(0, 0, 0, 0.38);
-
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-
-    opacity: 0;
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform:
-        translateY(-6px);
-
-    transform-origin: top left;
-
-    transition:
-        opacity 0.2s ease,
-        visibility 0.2s ease,
-        transform 0.2s ease;
+.mega-navigation {
+    display: none !important;
 }
 
 
-/* =========================================================
-   OPEN DROPDOWN
-========================================================= */
+/*
+   Also disable anything that may have been attached to
+   the old mega navigation.
+*/
 
-.nav-item-dropdown:hover .nav-dropdown,
-.nav-item-dropdown:focus-within .nav-dropdown {
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform:
-        translateY(0);
-}
-
-
-/* =========================================================
-   DROPDOWN LINKS
-========================================================= */
-
-.nav-dropdown a {
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    width: 100%;
-
-    min-height: 46px;
-
-    padding: 0 18px;
-
-    color: var(--text-muted);
-
-    font-size: 11px;
-    font-weight: 600;
-
-    letter-spacing: 0.08em;
-
-    line-height: 1.4;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
-
-    transition:
-        color var(--transition-fast),
-        background var(--transition-fast),
-        padding-left var(--transition-fast);
-}
-
-.nav-dropdown a::after {
-    display: none;
-}
-
-.nav-dropdown a:hover,
-.nav-dropdown a:focus-visible {
-    color: var(--text);
-
-    background:
-        rgba(255, 255, 255, 0.07);
-
-    padding-left: 22px;
-}
-
-.nav-dropdown a::before {
-    content: "";
-
-    position: absolute;
-
-    left: 10px;
-
-    top: 50%;
-
-    width: 0;
-    height: 1px;
-
-    background: var(--accent);
-
-    transform:
-        translateY(-50%);
-
-    transition:
-        width var(--transition-fast);
-}
-
-.nav-dropdown a:hover::before,
-.nav-dropdown a:focus-visible::before {
-    width: 4px;
+.mega-navigation::before,
+.mega-navigation::after {
+    display: none !important;
 }
 
 
@@ -454,41 +280,7 @@ section {
 ========================================================= */
 
 .nav-button {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 40px;
-
-    padding: 0 19px;
-
-    border: 1px solid var(--line-strong);
-
-    color: var(--text);
-
-    font-size: 10px;
-    font-weight: 700;
-
-    letter-spacing: 0.12em;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
-
-    transition:
-        background var(--transition-fast),
-        border-color var(--transition-fast),
-        color var(--transition-fast);
-}
-
-.nav-button:hover,
-.nav-button:focus-visible {
-    background: var(--olive);
-
-    border-color: var(--olive-light);
-
-    color: #fff;
+    display: none !important;
 }
 
 
@@ -746,7 +538,8 @@ section {
 
     height: 34px;
 
-    background: rgba(255, 255, 255, 0.65);
+    background:
+        rgba(255, 255, 255, 0.65);
 
     animation:
         homeScrollPulse
@@ -1156,7 +949,13 @@ section {
 
     border-bottom: 1px solid var(--line);
 
-    color: rgba(238, 237, 231, 0.22);
+    color:
+        rgba(
+            238,
+            237,
+            231,
+            0.22
+        );
 
     font-size: 12px;
     font-weight: 700;
@@ -2014,22 +1813,6 @@ button:focus-visible {
 
 @media (max-width: 1000px) {
 
-    .main-navigation {
-        gap: 24px;
-    }
-
-    .nav-item > a {
-        font-size: 11px;
-    }
-
-    .nav-dropdown {
-        min-width: 145px;
-    }
-
-    .nav-dropdown a {
-        font-size: 10px;
-    }
-
     .archive-grid {
         grid-template-columns: 1fr;
 
@@ -2074,13 +1857,18 @@ button:focus-visible {
         );
     }
 
+    .nav-main {
+        height: var(--header-height);
+    }
+
     .nav-container {
+        height: var(--header-height);
         min-height: var(--header-height);
 
-        flex-wrap: wrap;
+        padding-top: 0;
+        padding-bottom: 0;
 
-        padding-top: 12px;
-        padding-bottom: 12px;
+        flex-wrap: nowrap;
     }
 
     .brand img {
@@ -2089,66 +1877,19 @@ button:focus-visible {
         max-height: 42px;
     }
 
+
+    /* Absolutely no mobile menu */
+
     .main-navigation {
-        order: 3;
-
-        width: 100%;
-
-        overflow-x: auto;
-
-        justify-content: flex-start;
-
-        margin: 0;
-
-        padding-bottom: 2px;
-
-        gap: 24px;
-
-        scrollbar-width: none;
+        display: none !important;
     }
 
-    .main-navigation::-webkit-scrollbar {
-        display: none;
-    }
-
-    .nav-item {
-        flex-shrink: 0;
-    }
-
-    .nav-item > a {
-        font-size: 10px;
+    .mega-navigation {
+        display: none !important;
     }
 
     .nav-button {
-        display: none;
-    }
-
-
-    /*
-       Mobile dropdown remains attached to its
-       parent navigation item.
-    */
-
-    .nav-dropdown {
-        top: 100%;
-
-        min-width: 140px;
-
-        max-height:
-            calc(
-                100vh -
-                var(--header-height)
-            );
-
-        overflow-y: auto;
-    }
-
-    .nav-dropdown a {
-        min-height: 42px;
-
-        padding-left: 14px;
-
-        font-size: 9px;
+        display: none !important;
     }
 
 
@@ -2335,24 +2076,6 @@ button:focus-visible {
         max-height: 36px;
     }
 
-    .main-navigation {
-        gap: 18px;
-    }
-
-    .nav-item > a {
-        font-size: 9px;
-    }
-
-    .nav-dropdown {
-        min-width: 130px;
-    }
-
-    .nav-dropdown a {
-        font-size: 8px;
-
-        min-height: 40px;
-    }
-
     .hero {
         min-height: 620px;
     }
@@ -2401,22 +2124,6 @@ button:focus-visible {
             calc(100% - 24px),
             var(--max-width)
         );
-    }
-
-    .main-navigation {
-        gap: 18px;
-    }
-
-    .nav-item > a {
-        font-size: 8px;
-    }
-
-    .nav-dropdown {
-        min-width: 120px;
-    }
-
-    .nav-dropdown a {
-        font-size: 7px;
     }
 
     .hero h1 {
