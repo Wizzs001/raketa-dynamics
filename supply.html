@@ -29,9 +29,14 @@
      HEADER
 ====================================================== -->
 
+<!-- =====================================================
+     FIXED HEADER
+====================================================== -->
+
 <header class="site-header">
 
     <div class="nav-container">
+
 
         <!-- LOGO -->
 
@@ -48,15 +53,15 @@
         </a>
 
 
-        <!-- =================================================
-             MAIN NAVIGATION
-             ONLY THE FIVE TOP HEADINGS ARE INSIDE THE BLACK BAR
-        ================================================== -->
+        <!-- MAIN NAVIGATION -->
 
         <nav
             class="site-navigation"
             aria-label="Main navigation"
         >
+
+
+            <!-- HOME -->
 
             <a
                 href="index.html"
@@ -66,7 +71,9 @@
             </a>
 
 
-            <!-- SUPPLY -->
+            <!-- =================================================
+                 SUPPLY
+            ================================================== -->
 
             <div class="site-navigation-item site-navigation-supply">
 
@@ -78,42 +85,27 @@
                 </a>
 
 
-                <!-- =================================================
-                     MODELS
-                     OUTSIDE THE BLACK HEADER BAR
-                ================================================== -->
+                <!-- SUPPLY DROPDOWN -->
 
-                <div class="navigation-subitems">
+                <div class="supply-dropdown">
 
                     <a
                         href="models.html"
-                        class="models-navigation-link"
+                        class="dropdown-navigation-link"
                     >
                         MODELS
                     </a>
 
-
-                    <!-- =================================================
-                         ARMOURY
-                         DIRECTLY UNDER MODELS
-                    ================================================== -->
-
                     <a
                         href="armoury.html"
-                        class="armoury-navigation-link"
+                        class="dropdown-navigation-link"
                     >
                         ARMOURY
                     </a>
 
-
-                    <!-- =================================================
-                         HANGER
-                         DIRECTLY UNDER ARMOURY
-                    ================================================== -->
-
                     <a
                         href="hanger.html"
-                        class="hanger-navigation-link"
+                        class="dropdown-navigation-link"
                     >
                         HANGER
                     </a>
@@ -123,6 +115,10 @@
             </div>
 
 
+            <!-- =================================================
+                 COLLECTION ARCHIVE
+            ================================================== -->
+
             <a
                 href="archive.html"
                 class="site-navigation-link"
@@ -131,20 +127,65 @@
             </a>
 
 
-            <a
-                href="releases.html"
-                class="site-navigation-link"
-            >
-                UPDATES
-            </a>
+            <!-- =================================================
+                 UPDATES
+            ================================================== -->
+
+            <div class="site-navigation-item site-navigation-updates">
+
+                <a
+                    href="releases.html"
+                    class="site-navigation-link"
+                >
+                    UPDATES
+                </a>
 
 
-            <a
-                href="about.html"
-                class="site-navigation-link"
-            >
-                ABOUT
-            </a>
+                <!-- UPDATES DROPDOWN -->
+
+                <div class="updates-dropdown">
+
+                    <a
+                        href="releases.html"
+                        class="dropdown-navigation-link"
+                    >
+                        RELEASES
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ABOUT
+            ================================================== -->
+
+            <div class="site-navigation-item site-navigation-about">
+
+                <a
+                    href="about.html"
+                    class="site-navigation-link"
+                >
+                    ABOUT
+                </a>
+
+
+                <!-- ABOUT DROPDOWN -->
+
+                <div class="about-dropdown">
+
+                    <a
+                        href="contact.html"
+                        class="dropdown-navigation-link"
+                    >
+                        CONTACT
+                    </a>
+
+                </div>
+
+            </div>
+
 
         </nav>
 
