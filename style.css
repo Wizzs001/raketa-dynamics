@@ -31,6 +31,14 @@
 
     --transition-fast: 0.2s ease;
     --transition: 0.3s ease;
+
+    /*
+       Dropdown timing.
+       The closing delay gives the user time to move from
+       the toolbar down onto the dropdown links.
+    */
+    --dropdown-open-speed: 0.25s;
+    --dropdown-close-delay: 0.9s;
 }
 
 
@@ -167,6 +175,12 @@ section {
     border-bottom:
         1px solid
         rgba(255, 255, 255, 0.08);
+
+    /*
+       Allows the dropdown menus to extend below
+       the black toolbar.
+    */
+    overflow: visible;
 }
 
 
@@ -300,7 +314,7 @@ section {
 
 
 /* =========================================================
-   SUPPLY NAVIGATION ITEM
+   NAVIGATION ITEMS
 ========================================================= */
 
 .site-navigation-item {
@@ -317,11 +331,14 @@ section {
 }
 
 
-/*
-   SUPPLY itself remains exactly where it was.
-*/
+/* =========================================================
+   SUPPLY / ABOUT / UPDATES NAVIGATION LINKS
+========================================================= */
 
-.site-navigation-supply .site-navigation-link {
+.site-navigation-supply .site-navigation-link,
+.site-navigation-about .site-navigation-link,
+.site-navigation-updates .site-navigation-link {
+
     position: relative;
 
     z-index: 2;
@@ -329,23 +346,35 @@ section {
 
 
 /* =========================================================
-   SUPPLY DROPDOWN
+   UNIVERSAL NAV DROPDOWN
 ========================================================= */
 
 /*
-   MODELS / ARMOURY / HANGER are all contained inside
-   this dropdown.
+   This styling is shared by:
 
-   The dropdown is hidden by default.
+   SUPPLY
+      Models
+      Armoury
+      Hanger
 
-   Hovering ANYWHERE over the black .site-header opens it.
+   ABOUT
+      Contact
 
-   Because .supply-dropdown is physically inside the
-   .site-header, the menu stays open while the mouse moves
-   from the toolbar down onto the links.
+   UPDATES
+      Releases
+
+   All dropdowns therefore have exactly the same:
+   - font
+   - size
+   - spacing
+   - animation
+   - positioning behaviour
 */
 
-.supply-dropdown {
+
+.supply-dropdown,
+.about-dropdown,
+.updates-dropdown {
 
     position: absolute;
 
@@ -367,9 +396,6 @@ section {
 
     justify-content: flex-start;
 
-    /*
-       Equal spacing between all three items.
-    */
     gap: 16px;
 
     min-width: 110px;
@@ -382,19 +408,69 @@ section {
 
     pointer-events: none;
 
+    /*
+       Important:
+       The closing transition has a deliberate delay.
+
+       This means the dropdown does NOT immediately
+       disappear when the mouse leaves the toolbar.
+    */
     transition:
-        opacity 0.25s ease,
-        transform 0.25s ease,
-        visibility 0.25s ease;
+        opacity var(--dropdown-open-speed) ease var(--dropdown-close-delay),
+        transform var(--dropdown-open-speed) ease var(--dropdown-close-delay),
+        visibility 0s linear calc(
+            var(--dropdown-close-delay) +
+            var(--dropdown-open-speed)
+        );
 }
 
 
+/* =========================================================
+   INVISIBLE HOVER BRIDGE
+========================================================= */
+
 /*
-   THE WHOLE BLACK TOOLBAR OPENS THE MENU.
+   There is a small physical gap between the black toolbar
+   and the dropdown.
 
-   Not just SUPPLY.
+   Without this bridge, moving the mouse down could briefly
+   leave the header and cause the menu to close.
 
-   This is intentional.
+   This invisible area fills that gap.
+
+   It has NO visible effect.
+*/
+
+.supply-dropdown::before,
+.about-dropdown::before,
+.updates-dropdown::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: -18px;
+
+    height: 20px;
+
+    background: transparent;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   SUPPLY DROPDOWN OPEN
+========================================================= */
+
+/*
+   The entire black toolbar can activate the Supply dropdown,
+   just as before.
+
+   The delayed closing gives time to reach the links.
 */
 
 .site-header:hover .supply-dropdown,
@@ -409,6 +485,72 @@ section {
     transform:
         translateX(-50%)
         translateY(0);
+
+    /*
+       Open immediately.
+    */
+    transition:
+        opacity var(--dropdown-open-speed) ease 0s,
+        transform var(--dropdown-open-speed) ease 0s,
+        visibility 0s linear 0s;
+}
+
+
+/* =========================================================
+   ABOUT DROPDOWN OPEN
+========================================================= */
+
+/*
+   About's Contact dropdown uses the same interaction
+   behaviour as Supply.
+*/
+
+.site-header:hover .about-dropdown,
+.site-header:focus-within .about-dropdown {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+    transition:
+        opacity var(--dropdown-open-speed) ease 0s,
+        transform var(--dropdown-open-speed) ease 0s,
+        visibility 0s linear 0s;
+}
+
+
+/* =========================================================
+   UPDATES DROPDOWN OPEN
+========================================================= */
+
+/*
+   Updates' Releases dropdown uses the same interaction
+   behaviour as Supply and About.
+*/
+
+.site-header:hover .updates-dropdown,
+.site-header:focus-within .updates-dropdown {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+    transition:
+        opacity var(--dropdown-open-speed) ease 0s,
+        transform var(--dropdown-open-speed) ease 0s,
+        visibility 0s linear 0s;
 }
 
 
@@ -423,10 +565,6 @@ section {
     align-items: center;
 
     justify-content: center;
-
-    /*
-       Same size as the main navigation headings.
-    */
 
     color: var(--text-muted);
 
@@ -458,6 +596,20 @@ section {
     color: var(--text);
 
     transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   DROPDOWN ITEM SPACING
+========================================================= */
+
+.supply-dropdown .dropdown-navigation-link,
+.about-dropdown .dropdown-navigation-link,
+.updates-dropdown .dropdown-navigation-link {
+
+    margin: 0;
+
+    padding: 0;
 }
 
 
@@ -2024,7 +2176,9 @@ button:focus-visible {
         font-size: 8px;
     }
 
-    .supply-dropdown {
+    .supply-dropdown,
+    .about-dropdown,
+    .updates-dropdown {
         gap: 15px;
     }
 }
@@ -2111,10 +2265,12 @@ button:focus-visible {
 
 
     /* -----------------------------------------------------
-       SUPPLY DROPDOWN
+       ALL DROPDOWNS
     ----------------------------------------------------- */
 
-    .supply-dropdown {
+    .supply-dropdown,
+    .about-dropdown,
+    .updates-dropdown {
 
         top: calc(100% + 11px);
 
@@ -2346,10 +2502,12 @@ button:focus-visible {
 
 
     /* -----------------------------------------------------
-       COMPACT DROPDOWN
+       COMPACT DROPDOWNS
     ----------------------------------------------------- */
 
-    .supply-dropdown {
+    .supply-dropdown,
+    .about-dropdown,
+    .updates-dropdown {
 
         top: calc(100% + 10px);
 
@@ -2453,7 +2611,9 @@ button:focus-visible {
         letter-spacing: 0.06em;
     }
 
-    .supply-dropdown {
+    .supply-dropdown,
+    .about-dropdown,
+    .updates-dropdown {
         gap: 10px;
     }
 
@@ -2503,7 +2663,9 @@ button:focus-visible {
         animation: none;
     }
 
-    .supply-dropdown {
+    .supply-dropdown,
+    .about-dropdown,
+    .updates-dropdown {
         transition: none;
     }
 }
