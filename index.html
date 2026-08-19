@@ -28,9 +28,11 @@
 <!-- =====================================================
      FIXED HEADER
 ====================================================== -->
+
 <header class="site-header">
 
     <div class="nav-container">
+
 
         <!-- LOGO -->
 
@@ -54,6 +56,9 @@
             aria-label="Main navigation"
         >
 
+
+            <!-- HOME -->
+
             <a
                 href="index.html"
                 class="site-navigation-link"
@@ -62,7 +67,9 @@
             </a>
 
 
-            <!-- SUPPLY -->
+            <!-- =================================================
+                 SUPPLY
+            ================================================== -->
 
             <div class="site-navigation-item site-navigation-supply">
 
@@ -74,7 +81,7 @@
                 </a>
 
 
-                <!-- DROPDOWN -->
+                <!-- SUPPLY DROPDOWN -->
 
                 <div class="supply-dropdown">
 
@@ -104,6 +111,10 @@
             </div>
 
 
+            <!-- =================================================
+                 COLLECTION ARCHIVE
+            ================================================== -->
+
             <a
                 href="archive.html"
                 class="site-navigation-link"
@@ -112,26 +123,72 @@
             </a>
 
 
-            <a
-                href="releases.html"
-                class="site-navigation-link"
-            >
-                UPDATES
-            </a>
+            <!-- =================================================
+                 UPDATES
+            ================================================== -->
+
+            <div class="site-navigation-item site-navigation-updates">
+
+                <a
+                    href="releases.html"
+                    class="site-navigation-link"
+                >
+                    UPDATES
+                </a>
 
 
-            <a
-                href="about.html"
-                class="site-navigation-link"
-            >
-                ABOUT
-            </a>
+                <!-- UPDATES DROPDOWN -->
+
+                <div class="updates-dropdown">
+
+                    <a
+                        href="releases.html"
+                        class="dropdown-navigation-link"
+                    >
+                        RELEASES
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ABOUT
+            ================================================== -->
+
+            <div class="site-navigation-item site-navigation-about">
+
+                <a
+                    href="about.html"
+                    class="site-navigation-link"
+                >
+                    ABOUT
+                </a>
+
+
+                <!-- ABOUT DROPDOWN -->
+
+                <div class="about-dropdown">
+
+                    <a
+                        href="contact.html"
+                        class="dropdown-navigation-link"
+                    >
+                        CONTACT
+                    </a>
+
+                </div>
+
+            </div>
+
 
         </nav>
 
     </div>
 
 </header>
+
 
 <!-- =====================================================
      MAIN
@@ -140,106 +197,112 @@
 <main>
 
 
-<!-- =====================================================
-     FIRST SCREEN
-====================================================== -->
+    <!-- =================================================
+         FIRST SCREEN
+    ================================================== -->
 
-<section class="home-hero">
-
-
-    <div class="home-image-stage">
-
-        <img
-            src="wip.png"
-            alt="Raketa Dynamics model work in progress"
-            class="home-image home-image-black"
-        >
-
-        <img
-            src="WIPwhite.png"
-            alt="Raketa Dynamics model work in progress"
-            class="home-image home-image-white"
-        >
-
-    </div>
+    <section class="home-hero">
 
 
-    <div class="home-hero-top">
+        <!-- HOME IMAGE STAGE -->
 
-        <img
-            src="raketa-dynamics.png"
-            alt="Raketa Dynamics"
-            class="home-hero-logo"
-        >
+        <div class="home-image-stage">
 
-    </div>
+            <img
+                src="wip.png"
+                alt="Raketa Dynamics model work in progress"
+                class="home-image home-image-black"
+            >
 
-
-    <div class="home-scroll-indicator">
-
-        <span>
-            Scroll
-        </span>
-
-        <span class="home-scroll-line"></span>
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     SECOND SCREEN
-====================================================== -->
-
-<section class="home-second-screen">
-
-    <div class="container">
-
-        <div class="home-second-content">
-
-
-            <span class="section-kicker">
-                RAKETA DYNAMICS / AVIATION REPLICAS
-            </span>
-
-
-            <h2>
-                Aircraft replicas built for collectors.
-            </h2>
-
-
-            <p class="large-text">
-                Highly detailed 1:72 aircraft models created for
-                collectors, aviation enthusiasts and those who
-                appreciate the aircraft beyond the silhouette.
-            </p>
-
-
-            <p>
-                Explore the Raketa Dynamics collection, aircraft
-                models, cockpit replicas and release archive.
-            </p>
-
-
-            <div class="hero-actions">
-
-                <a
-                    href="models.html"
-                    class="button button-primary"
-                >
-                    Explore Models
-                </a>
-
-            </div>
-
+            <img
+                src="WIPwhite.png"
+                alt="Raketa Dynamics model work in progress"
+                class="home-image home-image-white"
+            >
 
         </div>
 
-    </div>
 
-</section>
+        <!-- HERO LOGO -->
+
+        <div class="home-hero-top">
+
+            <img
+                src="raketa-dynamics.png"
+                alt="Raketa Dynamics"
+                class="home-hero-logo"
+            >
+
+        </div>
+
+
+        <!-- SCROLL INDICATOR -->
+
+        <div class="home-scroll-indicator">
+
+            <span>
+                Scroll
+            </span>
+
+            <span class="home-scroll-line"></span>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =================================================
+         SECOND SCREEN
+    ================================================== -->
+
+    <section class="home-second-screen">
+
+        <div class="container">
+
+            <div class="home-second-content">
+
+
+                <span class="section-kicker">
+                    RAKETA DYNAMICS / AVIATION REPLICAS
+                </span>
+
+
+                <h2>
+                    Aircraft replicas built for collectors.
+                </h2>
+
+
+                <p class="large-text">
+                    Highly detailed 1:72 aircraft models created for
+                    collectors, aviation enthusiasts and those who
+                    appreciate the aircraft beyond the silhouette.
+                </p>
+
+
+                <p>
+                    Explore the Raketa Dynamics collection, aircraft
+                    models, cockpit replicas and release archive.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="models.html"
+                        class="button button-primary"
+                    >
+                        Explore Models
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
 
 
 </main>
