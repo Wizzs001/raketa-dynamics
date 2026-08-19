@@ -2,254 +2,468 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Supply — Raketa Dynamics</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================================
+           RAKETA DYNAMICS
+           SUPPLY PAGE
+        ========================================================= */
+
+        .supply-page {
+            min-height: calc(100vh - 86px);
+            background: var(--background);
+        }
+
+
+        /* =========================================================
+           SUPPLY INTRO
+        ========================================================= */
+
+        .supply-intro {
+            padding-top: 110px;
+            padding-bottom: 55px;
+        }
+
+        .supply-intro-inner {
+            max-width: 900px;
+        }
+
+        .supply-intro h1 {
+            margin-top: 14px;
+
+            font-size: clamp(
+                52px,
+                7vw,
+                92px
+            );
+
+            font-weight: 500;
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+        }
+
+        .supply-intro p {
+            max-width: 650px;
+
+            margin-top: 28px;
+
+            color: var(--text-muted);
+
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           SUPPLY GRID
+        ========================================================= */
+
+        .supply-section {
+            padding-top: 35px;
+            padding-bottom: 130px;
+        }
+
+        .supply-grid {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 28px;
+        }
+
+
+        /* =========================================================
+           SUPPLY CARD
+        ========================================================= */
+
+        .supply-card {
+            position: relative;
+
+            display: block;
+
+            width: 100%;
+            min-height: 360px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--line-strong);
+
+            background: #000;
+
+            isolation: isolate;
+
+            transition:
+                border-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .supply-card:hover {
+            border-color: var(--accent-light);
+
+            transform: translateY(-4px);
+        }
+
+
+        /* =========================================================
+           CARD IMAGE
+        ========================================================= */
+
+        .supply-card-image {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            opacity: 0.62;
+
+            transform: scale(1.01);
+
+            transition:
+                transform 0.6s ease,
+                opacity 0.4s ease;
+
+            z-index: -3;
+        }
+
+        .supply-card:hover .supply-card-image {
+            transform: scale(1.055);
+
+            opacity: 0.78;
+        }
+
+
+        /* =========================================================
+           CARD DARK OVERLAY
+        ========================================================= */
+
+        .supply-card::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: -2;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.82) 0%,
+                    rgba(0, 0, 0, 0.48) 48%,
+                    rgba(0, 0, 0, 0.25) 100%
+                );
+        }
+
+        .supply-card::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: -1;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.05) 0%,
+                    rgba(0, 0, 0, 0.15) 50%,
+                    rgba(0, 0, 0, 0.72) 100%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           CARD CONTENT
+        ========================================================= */
+
+        .supply-card-content {
+            min-height: 360px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            padding: 42px;
+        }
+
+
+        /* =========================================================
+           CARD NUMBER
+        ========================================================= */
+
+        .supply-card-number {
+            color: var(--accent-light);
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 0.18em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           CARD BOTTOM
+        ========================================================= */
+
+        .supply-card-bottom {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .supply-card-title {
+            font-size: clamp(
+                42px,
+                6vw,
+                76px
+            );
+
+            font-weight: 500;
+
+            line-height: 0.95;
+
+            letter-spacing: -0.05em;
+        }
+
+        .supply-card-description {
+            max-width: 420px;
+
+            margin-top: 15px;
+
+            color: rgba(
+                238,
+                237,
+                231,
+                0.72
+            );
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           OPEN INDICATOR
+        ========================================================= */
+
+        .supply-card-open {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            width: 52px;
+            height: 52px;
+
+            border: 1px solid
+                rgba(
+                    238,
+                    237,
+                    231,
+                    0.3
+                );
+
+            color: var(--text);
+
+            font-size: 19px;
+
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .supply-card:hover
+        .supply-card-open {
+            background: var(--olive);
+
+            border-color:
+                var(--accent-light);
+
+            transform: translateX(5px);
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 760px) {
+
+            .supply-intro {
+                padding-top: 80px;
+                padding-bottom: 35px;
+            }
+
+            .supply-intro h1 {
+                font-size: 52px;
+            }
+
+            .supply-intro p {
+                font-size: 14px;
+            }
+
+            .supply-section {
+                padding-top: 25px;
+                padding-bottom: 90px;
+            }
+
+            .supply-grid {
+                gap: 20px;
+            }
+
+            .supply-card {
+                min-height: 330px;
+            }
+
+            .supply-card-content {
+                min-height: 330px;
+
+                padding: 28px;
+            }
+
+            .supply-card-bottom {
+                align-items: flex-end;
+
+                gap: 20px;
+            }
+
+            .supply-card-title {
+                font-size: 44px;
+            }
+
+            .supply-card-description {
+                font-size: 12px;
+            }
+
+            .supply-card-open {
+                width: 46px;
+                height: 46px;
+            }
+        }
+
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 480px) {
+
+            .supply-intro {
+                padding-top: 65px;
+            }
+
+            .supply-intro h1 {
+                font-size: 46px;
+            }
+
+            .supply-card {
+                min-height: 300px;
+            }
+
+            .supply-card-content {
+                min-height: 300px;
+
+                padding: 22px;
+            }
+
+            .supply-card-title {
+                font-size: 39px;
+            }
+
+            .supply-card-description {
+                display: none;
+            }
+
+            .supply-card-open {
+                width: 42px;
+                height: 42px;
+
+                font-size: 16px;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .supply-card,
+            .supply-card-image,
+            .supply-card-open {
+                transition: none;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<header class="site-header">
 
-    <div class="nav-main">
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
 
-        <div class="container nav-container">
+    <header class="site-header">
 
-            <a href="index.html" class="brand">
-                <img src="logo.png" alt="Raketa Dynamics">
-            </a>
+        <div class="nav-main">
 
-            <nav class="main-navigation">
-
-                <a href="index.html">Home</a>
-
-                <a href="models.html">Models</a>
-
-                <a href="supply.html" class="active">Supply</a>
-
-                <a href="about.html">About</a>
-
-                <a href="contact.html">Contact</a>
-
-            </nav>
-
-            <a href="contact.html" class="nav-button">
-                Enquire
-            </a>
-
-        </div>
-
-    </div>
-
-</header>
+            <div class="container nav-container">
 
 
-<main>
+                <!-- BRAND -->
 
-    <!-- =====================================================
-         SUPPLY HERO
-    ====================================================== -->
+                <a
+                    href="index.html"
+                    class="brand"
+                    aria-label="Raketa Dynamics Home"
+                >
 
-    <section class="page-hero supply-page-hero">
-
-        <div class="container">
-
-            <span class="section-kicker">
-                RAKETA DYNAMICS / SUPPLY
-            </span>
-
-            <h1>
-                Supply.
-            </h1>
-
-            <p>
-                Explore the Raketa Dynamics catalogue through
-                models, armoury and hanger.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         SUPPLY CATEGORIES
-    ====================================================== -->
-
-    <section class="supply-section">
-
-        <div class="container">
-
-            <div class="supply-grid">
-
-
-                <!-- =================================================
-                     MODELS
-                ================================================== -->
-
-                <a href="models.html" class="supply-card">
-
-                    <div class="supply-card-image">
-
-                        <img
-                            src="wip.png"
-                            alt="Raketa Dynamics Models"
-                        >
-
-                        <div class="supply-card-overlay"></div>
-
-                        <div class="supply-card-content">
-
-                            <span class="supply-card-number">
-                                01
-                            </span>
-
-                            <span class="supply-card-label">
-                                SUPPLY / MODELS
-                            </span>
-
-                            <h2>
-                                Models
-                            </h2>
-
-                            <span class="supply-card-link">
-                                Enter Models →
-                            </span>
-
-                        </div>
-
-                    </div>
+                    <img
+                        src="logo.png"
+                        alt="Raketa Dynamics"
+                    >
 
                 </a>
 
 
-                <!-- =================================================
-                     ARMOURY
-                ================================================== -->
+                <!-- NAVIGATION -->
 
-                <a href="armoury.html" class="supply-card">
-
-                    <div class="supply-card-image">
-
-                        <img
-                            src="wip.png"
-                            alt="Raketa Dynamics Armoury"
-                        >
-
-                        <div class="supply-card-overlay"></div>
-
-                        <div class="supply-card-content">
-
-                            <span class="supply-card-number">
-                                02
-                            </span>
-
-                            <span class="supply-card-label">
-                                SUPPLY / ARMOURY
-                            </span>
-
-                            <h2>
-                                Armoury
-                            </h2>
-
-                            <span class="supply-card-link">
-                                Enter Armoury →
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-
-                <!-- =================================================
-                     HANGER
-                ================================================== -->
-
-                <a href="hanger.html" class="supply-card">
-
-                    <div class="supply-card-image">
-
-                        <img
-                            src="wip.png"
-                            alt="Raketa Dynamics Hanger"
-                        >
-
-                        <div class="supply-card-overlay"></div>
-
-                        <div class="supply-card-content">
-
-                            <span class="supply-card-number">
-                                03
-                            </span>
-
-                            <span class="supply-card-label">
-                                SUPPLY / HANGER
-                            </span>
-
-                            <h2>
-                                Hanger
-                            </h2>
-
-                            <span class="supply-card-link">
-                                Enter Hanger →
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer class="site-footer">
-
-    <div class="container">
-
-        <div class="footer-grid">
-
-            <div>
-
-                <div class="footer-brand">
-
-                    <a href="index.html" class="brand">
-
-                        <img
-                            src="logo.png"
-                            alt="Raketa Dynamics"
-                        >
-
-                    </a>
-
-                </div>
-
-                <p>
-                    Raketa Dynamics — engineering,
-                    design and documentation.
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <div class="footer-links">
+                <nav
+                    class="main-navigation"
+                    aria-label="Main navigation"
+                >
 
                     <a href="index.html">
                         Home
@@ -263,6 +477,71 @@
                         Supply
                     </a>
 
+                    <a href="armoury.html">
+                        Armoury
+                    </a>
+
+                    <a href="hanger.html">
+                        Hanger
+                    </a>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                </nav>
+
+
+                <!-- HEADER BUTTON -->
+
+                <a
+                    href="contact.html"
+                    class="nav-button"
+                >
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             MEGA NAVIGATION
+        ====================================================== -->
+
+        <div class="mega-navigation">
+
+            <div class="container mega-navigation-inner">
+
+
+                <div class="mega-navigation-column">
+
+                    <span class="mega-navigation-heading">
+                        Supply
+                    </span>
+
+                    <a href="models.html">
+                        Models
+                    </a>
+
+                    <a href="armoury.html">
+                        Armoury
+                    </a>
+
+                    <a href="hanger.html">
+                        Hanger
+                    </a>
+
+                </div>
+
+
+                <div class="mega-navigation-column">
+
+                    <span class="mega-navigation-heading">
+                        Raketa Dynamics
+                    </span>
+
                     <a href="about.html">
                         About
                     </a>
@@ -271,45 +550,349 @@
                         Contact
                     </a>
 
-                </div>
-
-            </div>
-
-
-            <div>
-
-                <div class="footer-contact">
-
-                    <span>
-                        CONTACT
-                    </span>
-
-                    <a href="mailto:contact@raketadynamics.com">
-                        contact@raketadynamics.com
+                    <a href="archive.html">
+                        Archive
                     </a>
 
                 </div>
 
+
             </div>
 
         </div>
 
+    </header>
 
-        <div class="footer-bottom">
 
-            <span>
-                © 2026 Raketa Dynamics
-            </span>
 
-            <a href="#">
-                Privacy
-            </a>
+    <!-- =========================================================
+         MAIN
+    ========================================================= -->
+
+    <main class="supply-page">
+
+
+        <!-- =====================================================
+             INTRODUCTION
+        ====================================================== -->
+
+        <section class="supply-intro">
+
+            <div class="container">
+
+                <div class="supply-intro-inner">
+
+                    <span class="section-kicker">
+                        Raketa Dynamics / Supply
+                    </span>
+
+                    <h1>
+                        Supply
+                    </h1>
+
+                    <p>
+                        Explore the current Raketa Dynamics
+                        supply network. Select a category below
+                        to enter the corresponding section.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             THREE SUPPLY CATEGORIES
+        ====================================================== -->
+
+        <section class="supply-section">
+
+            <div class="container">
+
+                <div class="supply-grid">
+
+
+                    <!-- =================================================
+                         MODELS
+                    ================================================== -->
+
+                    <a
+                        href="models.html"
+                        class="supply-card"
+                    >
+
+                        <img
+                            src="wip.png"
+                            alt="Raketa Dynamics Models"
+                            class="supply-card-image"
+                        >
+
+                        <div class="supply-card-content">
+
+                            <span class="supply-card-number">
+                                01 / Supply
+                            </span>
+
+
+                            <div class="supply-card-bottom">
+
+                                <div>
+
+                                    <h2 class="supply-card-title">
+                                        Models
+                                    </h2>
+
+                                    <p class="supply-card-description">
+                                        Explore the Raketa Dynamics
+                                        vehicle catalogue and current
+                                        model development programme.
+                                    </p>
+
+                                </div>
+
+
+                                <span
+                                    class="supply-card-open"
+                                    aria-hidden="true"
+                                >
+                                    →
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- =================================================
+                         ARMOURY
+                    ================================================== -->
+
+                    <a
+                        href="armoury.html"
+                        class="supply-card"
+                    >
+
+                        <img
+                            src="wip.png"
+                            alt="Raketa Dynamics Armoury"
+                            class="supply-card-image"
+                        >
+
+                        <div class="supply-card-content">
+
+                            <span class="supply-card-number">
+                                02 / Supply
+                            </span>
+
+
+                            <div class="supply-card-bottom">
+
+                                <div>
+
+                                    <h2 class="supply-card-title">
+                                        Armoury
+                                    </h2>
+
+                                    <p class="supply-card-description">
+                                        Equipment, systems and
+                                        specialised hardware currently
+                                        within the Raketa ecosystem.
+                                    </p>
+
+                                </div>
+
+
+                                <span
+                                    class="supply-card-open"
+                                    aria-hidden="true"
+                                >
+                                    →
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- =================================================
+                         HANGER
+                    ================================================== -->
+
+                    <a
+                        href="hanger.html"
+                        class="supply-card"
+                    >
+
+                        <img
+                            src="wip.png"
+                            alt="Raketa Dynamics Hanger"
+                            class="supply-card-image"
+                        >
+
+                        <div class="supply-card-content">
+
+                            <span class="supply-card-number">
+                                03 / Supply
+                            </span>
+
+
+                            <div class="supply-card-bottom">
+
+                                <div>
+
+                                    <h2 class="supply-card-title">
+                                        Hanger
+                                    </h2>
+
+                                    <p class="supply-card-description">
+                                        Enter the Raketa Dynamics
+                                        hanger and explore projects,
+                                        builds and stored platforms.
+                                    </p>
+
+                                </div>
+
+
+                                <span
+                                    class="supply-card-open"
+                                    aria-hidden="true"
+                                >
+                                    →
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+
+            <div class="footer-grid">
+
+
+                <!-- BRAND -->
+
+                <div>
+
+                    <div class="footer-brand">
+
+                        <a
+                            href="index.html"
+                            class="brand"
+                        >
+
+                            <img
+                                src="logo.png"
+                                alt="Raketa Dynamics"
+                            >
+
+                        </a>
+
+                    </div>
+
+                    <p>
+                        Raketa Dynamics — engineering,
+                        vehicles and systems.
+                    </p>
+
+                </div>
+
+
+                <!-- LINKS -->
+
+                <div>
+
+                    <div class="footer-links">
+
+                        <a href="index.html">
+                            Home
+                        </a>
+
+                        <a href="models.html">
+                            Models
+                        </a>
+
+                        <a href="supply.html">
+                            Supply
+                        </a>
+
+                        <a href="armoury.html">
+                            Armoury
+                        </a>
+
+                        <a href="hanger.html">
+                            Hanger
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="footer-contact">
+
+                    <span>
+                        Contact
+                    </span>
+
+                    <a href="contact.html">
+                        Get in touch
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- FOOTER BOTTOM -->
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Raketa Dynamics
+                </span>
+
+                <a href="index.html">
+                    Raketa Dynamics
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
-
-</footer>
+    </footer>
 
 
 </body>
