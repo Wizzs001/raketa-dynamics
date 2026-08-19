@@ -19,442 +19,6 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <style>
-
-        /* =====================================================
-           HOMEPAGE HERO
-        ====================================================== */
-
-        .home-hero {
-
-            position: relative;
-
-            width: 100%;
-            height: 100vh;
-            min-height: 650px;
-
-            overflow: hidden;
-
-            background: #000;
-
-        }
-
-
-        /* =====================================================
-           IMAGE TRANSITION
-        ====================================================== */
-
-        .home-image-stage {
-
-            position: absolute;
-
-            inset: 0;
-
-            overflow: hidden;
-
-            background: #000;
-
-        }
-
-
-        .home-image {
-
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            opacity: 0;
-
-            transform: scale(1.035);
-
-            will-change: opacity, transform;
-
-        }
-
-
-        .home-image-black {
-
-            animation:
-                homeBlackFade 14s ease-in-out infinite,
-                homeBlackZoom 14s ease-in-out infinite;
-
-        }
-
-
-        .home-image-white {
-
-            animation:
-                homeWhiteFade 14s ease-in-out infinite,
-                homeWhiteZoom 14s ease-in-out infinite;
-
-            animation-delay: 7s;
-
-        }
-
-
-        /* =====================================================
-           SLOW CROSSFADE
-        ====================================================== */
-
-        @keyframes homeBlackFade {
-
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            45% {
-                opacity: 1;
-            }
-
-            55% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 0;
-            }
-
-        }
-
-
-        @keyframes homeWhiteFade {
-
-            0% {
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            45% {
-                opacity: 1;
-            }
-
-            55% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 0;
-            }
-
-        }
-
-
-        /* =====================================================
-           VERY SLOW MOVEMENT
-        ====================================================== */
-
-        @keyframes homeBlackZoom {
-
-            0% {
-                transform: scale(1.035);
-            }
-
-            50% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1.035);
-            }
-
-        }
-
-
-        @keyframes homeWhiteZoom {
-
-            0% {
-                transform: scale(1.035);
-            }
-
-            50% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1.035);
-            }
-
-        }
-
-
-        /* =====================================================
-           IMAGE OVERLAY
-        ====================================================== */
-
-        .home-image-stage::after {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            background:
-                linear-gradient(
-                    to bottom,
-                    rgba(0, 0, 0, 0.42),
-                    rgba(0, 0, 0, 0.08) 50%,
-                    rgba(0, 0, 0, 0.20)
-                );
-
-        }
-
-
-        /* =====================================================
-           LARGE RAKETA DYNAMICS LOGO
-        ====================================================== */
-
-        .home-hero-top {
-
-            position: absolute;
-
-            inset: 0 0 50% 0;
-
-            z-index: 5;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            background: rgba(0, 0, 0, 0.28);
-
-            pointer-events: none;
-
-        }
-
-
-        .home-hero-logo {
-
-            width: min(720px, 75vw);
-
-            max-height: 240px;
-
-            object-fit: contain;
-
-            opacity: 0.95;
-
-            filter:
-                drop-shadow(
-                    0 10px 30px
-                    rgba(0, 0, 0, 0.45)
-                );
-
-        }
-
-
-        /* =====================================================
-           SCROLL INDICATOR
-        ====================================================== */
-
-        .home-scroll-indicator {
-
-            position: absolute;
-
-            left: 50%;
-            bottom: 28px;
-
-            transform: translateX(-50%);
-
-            z-index: 10;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            gap: 8px;
-
-            color: #fff;
-
-            font-size: 0.65rem;
-
-            letter-spacing: 0.18em;
-
-            text-transform: uppercase;
-
-            opacity: 0.65;
-
-        }
-
-
-        .home-scroll-line {
-
-            width: 1px;
-
-            height: 34px;
-
-            background: rgba(255, 255, 255, 0.65);
-
-            animation:
-                homeScrollPulse
-                2.5s
-                ease-in-out
-                infinite;
-
-        }
-
-
-        @keyframes homeScrollPulse {
-
-            0%,
-            100% {
-
-                opacity: 0.25;
-
-                transform: scaleY(0.65);
-
-                transform-origin: top;
-
-            }
-
-            50% {
-
-                opacity: 1;
-
-                transform: scaleY(1);
-
-                transform-origin: top;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           SECOND SCREEN
-        ====================================================== */
-
-        .home-second-screen {
-
-            min-height: 100vh;
-
-            display: flex;
-
-            align-items: center;
-
-            background: #000;
-
-        }
-
-
-        .home-second-content {
-
-            max-width: 760px;
-
-        }
-
-
-        .home-second-content h2 {
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .home-second-content p {
-
-            line-height: 1.75;
-
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ====================================================== */
-
-        @media (max-width: 700px) {
-
-            .home-hero {
-
-                height: 100svh;
-
-                min-height: 600px;
-
-            }
-
-
-            .home-hero-top {
-
-                inset: 0 0 52% 0;
-
-            }
-
-
-            .home-hero-logo {
-
-                width: 82vw;
-
-                max-height: 180px;
-
-            }
-
-
-            .home-image {
-
-                object-position: center center;
-
-            }
-
-
-            .home-scroll-indicator {
-
-                bottom: 20px;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           REDUCED MOTION
-        ====================================================== */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .home-image {
-
-                animation: none;
-
-            }
-
-            .home-image-black {
-
-                opacity: 1;
-
-            }
-
-            .home-image-white {
-
-                opacity: 0;
-
-            }
-
-            .home-scroll-line {
-
-                animation: none;
-
-            }
-
-        }
-
-    </style>
-
 </head>
 
 
@@ -496,14 +60,6 @@
                     Supply
                 </a>
 
-                <a href="archive.html">
-                    Collection Archive
-                </a>
-
-                <a href="releases.html">
-                    Releases
-                </a>
-
                 <a href="about.html">
                     About
                 </a>
@@ -535,28 +91,6 @@
 
                 <a href="hanger.html">
                     Hanger
-                </a>
-
-            </div>
-
-
-            <!-- COLLECTION ARCHIVE -->
-
-            <div class="mega-navigation-column">
-
-                <a href="archive.html">
-                    Collection Archive
-                </a>
-
-            </div>
-
-
-            <!-- RELEASES -->
-
-            <div class="mega-navigation-column">
-
-                <a href="releases.html">
-                    Releases
                 </a>
 
             </div>
@@ -675,13 +209,6 @@
                     Explore Models
                 </a>
 
-                <a
-                    href="archive.html"
-                    class="button button-secondary"
-                >
-                    Collection Archive
-                </a>
-
             </div>
 
         </div>
@@ -693,6 +220,10 @@
 
 </main>
 
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
 <footer class="site-footer">
 
@@ -723,6 +254,10 @@
 
         <div class="footer-links">
 
+            <a href="index.html">
+                Home
+            </a>
+
             <a href="supply.html">
                 Supply
             </a>
@@ -737,14 +272,6 @@
 
             <a href="hanger.html">
                 Hanger
-            </a>
-
-            <a href="archive.html">
-                Collection Archive
-            </a>
-
-            <a href="releases.html">
-                Releases
             </a>
 
             <a href="about.html">
