@@ -27,12 +27,6 @@
     --black: #000000;
     --max-width: 1280px;
 
-    /*
-       IMPORTANT:
-       This remains 86px so the five main navigation
-       headings, including SUPPLY, retain their original
-       vertical position.
-    */
     --header-height: 86px;
 
     --transition-fast: 0.2s ease;
@@ -71,11 +65,6 @@ body {
 
     text-rendering: optimizeLegibility;
 
-    /*
-       The body only accounts for the BLACK header.
-       MODELS is positioned independently underneath SUPPLY
-       and therefore does not change the header height.
-    */
     padding-top: var(--header-height);
 
     overflow-x: hidden;
@@ -246,18 +235,6 @@ section {
 
 /* =========================================================
    NEW CLEAN NAVIGATION
-=========================================================
-
-   The black header contains ONLY:
-
-   HOME
-   SUPPLY
-   COLLECTION ARCHIVE
-   UPDATES
-   ABOUT
-
-   MODELS is NOT part of this navigation row.
-
 ========================================================= */
 
 .site-navigation {
@@ -341,11 +318,11 @@ section {
 
 
 /*
-   SUPPLY itself remains vertically centred in the original
-   86px header.
+   SUPPLY itself remains vertically centred.
 
-   MODELS is absolutely positioned from the SUPPLY item,
-   so it cannot move SUPPLY or any other heading.
+   MODELS / ARMOURY / HANGER are positioned absolutely
+   underneath SUPPLY so they DO NOT change the black
+   header height or move the other navigation headings.
 */
 
 .site-navigation-supply .site-navigation-link {
@@ -356,18 +333,19 @@ section {
 
 
 /* =========================================================
-   MODELS — SEPARATE ELEMENT
+   SUPPLY SUB-NAVIGATION
 ========================================================= */
 
-.models-navigation-link {
+/*
+   All three secondary links use exactly the same
+   typography and spacing.
+*/
+
+.models-navigation-link,
+.armoury-navigation-link,
+.hanger-navigation-link {
 
     position: absolute;
-
-    /*
-       SUPPLY occupies the original header height.
-       MODELS begins underneath it.
-    */
-    top: calc(100% + 13px);
 
     left: 50%;
 
@@ -403,8 +381,58 @@ section {
         color var(--transition-fast);
 }
 
+
+/* =========================================================
+   MODELS
+========================================================= */
+
+.models-navigation-link {
+
+    /*
+       First item directly underneath SUPPLY.
+    */
+    top: calc(100% + 13px);
+}
+
+
+/* =========================================================
+   ARMOURY
+========================================================= */
+
+.armoury-navigation-link {
+
+    /*
+       ARMOURY sits directly underneath MODELS.
+       Same vertical spacing as MODELS has from SUPPLY.
+    */
+    top: calc(100% + 31px);
+}
+
+
+/* =========================================================
+   HANGER
+========================================================= */
+
+.hanger-navigation-link {
+
+    /*
+       HANGER sits directly underneath ARMOURY.
+       Same vertical spacing again.
+    */
+    top: calc(100% + 49px);
+}
+
+
+/* =========================================================
+   SUPPLY SUB-NAVIGATION HOVER
+========================================================= */
+
 .models-navigation-link:hover,
-.models-navigation-link:focus-visible {
+.models-navigation-link:focus-visible,
+.armoury-navigation-link:hover,
+.armoury-navigation-link:focus-visible,
+.hanger-navigation-link:hover,
+.hanger-navigation-link:focus-visible {
 
     color: var(--text);
 }
@@ -1969,7 +1997,9 @@ button:focus-visible {
         font-size: 8px;
     }
 
-    .models-navigation-link {
+    .models-navigation-link,
+    .armoury-navigation-link,
+    .hanger-navigation-link {
         font-size: 7px;
     }
 }
@@ -2056,16 +2086,37 @@ button:focus-visible {
 
 
     /* -----------------------------------------------------
-       MODELS UNDER SUPPLY
+       SUPPLY SUB-NAVIGATION
     ----------------------------------------------------- */
 
-    .models-navigation-link {
-
-        top: calc(100% + 11px);
+    .models-navigation-link,
+    .armoury-navigation-link,
+    .hanger-navigation-link {
 
         font-size: 6px;
 
         letter-spacing: 0.08em;
+    }
+
+
+    /* MODELS */
+
+    .models-navigation-link {
+        top: calc(100% + 11px);
+    }
+
+
+    /* ARMOURY */
+
+    .armoury-navigation-link {
+        top: calc(100% + 27px);
+    }
+
+
+    /* HANGER */
+
+    .hanger-navigation-link {
+        top: calc(100% + 43px);
     }
 
 
@@ -2280,13 +2331,25 @@ button:focus-visible {
         letter-spacing: 0.08em;
     }
 
-    .models-navigation-link {
-
-        top: calc(100% + 10px);
+    .models-navigation-link,
+    .armoury-navigation-link,
+    .hanger-navigation-link {
 
         font-size: 6px;
 
         letter-spacing: 0.07em;
+    }
+
+    .models-navigation-link {
+        top: calc(100% + 10px);
+    }
+
+    .armoury-navigation-link {
+        top: calc(100% + 24px);
+    }
+
+    .hanger-navigation-link {
+        top: calc(100% + 38px);
     }
 
 
@@ -2364,11 +2427,10 @@ button:focus-visible {
         font-size: 30px;
     }
 
-    /*
-       On extremely narrow screens, keep all five headings
-       in the black header without allowing the navigation
-       to create a second row.
-    */
+
+    /* -----------------------------------------------------
+       COMPACT NAV
+    ----------------------------------------------------- */
 
     .site-navigation {
         gap: 6px;
@@ -2379,8 +2441,22 @@ button:focus-visible {
         letter-spacing: 0.06em;
     }
 
-    .models-navigation-link {
+    .models-navigation-link,
+    .armoury-navigation-link,
+    .hanger-navigation-link {
         font-size: 5.5px;
+    }
+
+    .models-navigation-link {
+        top: calc(100% + 10px);
+    }
+
+    .armoury-navigation-link {
+        top: calc(100% + 23px);
+    }
+
+    .hanger-navigation-link {
+        top: calc(100% + 36px);
     }
 }
 
