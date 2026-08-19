@@ -1,7 +1,6 @@
 /* =========================================================
    RAKETA DYNAMICS
    MAIN WEBSITE STYLESHEET
-   MENU RESET VERSION
 ========================================================= */
 
 :root {
@@ -150,7 +149,6 @@ section {
 
 /* =========================================================
    HEADER
-   BLACK BAR + LOGO ONLY
 ========================================================= */
 
 .site-header {
@@ -172,31 +170,23 @@ section {
         rgba(255, 255, 255, 0.08);
 }
 
-
-/* =========================================================
-   BLACK TOP BAR
-========================================================= */
-
-.nav-main {
-    position: relative;
-
-    z-index: 10002;
-
-    width: 100%;
-    height: var(--header-height);
-
-    background: #000000;
-}
-
 .nav-container {
+    width: min(
+        calc(100% - 48px),
+        var(--max-width)
+    );
+
     height: var(--header-height);
     min-height: var(--header-height);
+
+    margin-left: auto;
+    margin-right: auto;
 
     display: flex;
 
     align-items: center;
 
-    justify-content: flex-start;
+    justify-content: space-between;
 
     gap: 30px;
 }
@@ -238,49 +228,301 @@ section {
 
 
 /* =========================================================
-   REMOVE ALL MAIN MENU TEXT
+   SIMPLE NAVIGATION
 ========================================================= */
 
-/*
-   The navigation HTML can remain in every page.
+.simple-navigation {
 
-   It is deliberately hidden here so there is currently
-   NOTHING except the logo in the black header bar.
+    margin-left: auto;
 
-   We will rebuild the menu from scratch afterwards.
-*/
+    display: flex;
 
-.main-navigation {
-    display: none !important;
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 30px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.simple-navigation a {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-fast);
+}
+
+.simple-navigation a:hover,
+.simple-navigation a:focus-visible {
+
+    color: var(--text);
 }
 
 
 /* =========================================================
-   REMOVE ALL DROPDOWN / MEGA MENU
+   RIGHT-HAND TOOLBAR
 ========================================================= */
 
-.mega-navigation {
-    display: none !important;
+.new-toolbar {
+
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: stretch;
+
+    justify-content: flex-end;
+
+    height: var(--header-height);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    flex-shrink: 0;
 }
 
 
-/*
-   Also disable anything that may have been attached to
-   the old mega navigation.
-*/
+/* =========================================================
+   TOOLBAR COLUMNS
+========================================================= */
+
+.toolbar-column {
+
+    position: relative;
+
+    min-width: 76px;
+
+    height: var(--header-height);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    border-left:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    transition:
+        color var(--transition-fast),
+        background var(--transition-fast);
+}
+
+.toolbar-column:hover {
+
+    color: var(--text);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+}
+
+
+/* =========================================================
+   TOOLBAR SUBITEMS
+========================================================= */
+
+.toolbar-subitem {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: var(--text-muted);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-fast);
+}
+
+.toolbar-subitem:hover {
+
+    color: var(--text);
+}
+
+.toolbar-column .toolbar-subitem {
+
+    top: 22px;
+}
+
+.toolbar-column .toolbar-subitem-bottom {
+
+    top: auto;
+
+    bottom: 20px;
+}
+
+
+/* =========================================================
+   TOOLBAR INDIVIDUAL COLUMNS
+========================================================= */
+
+.toolbar-a,
+.toolbar-c,
+.toolbar-d {
+
+    min-width: 76px;
+}
+
+.toolbar-b {
+
+    min-width: 82px;
+}
+
+.toolbar-e {
+
+    min-width: 82px;
+}
+
+
+/* =========================================================
+   OLD NAVIGATION
+   Kept hidden so older pages do not interfere.
+========================================================= */
+
+.main-navigation,
+.mega-navigation,
+.nav-button {
+
+    display: none !important;
+}
 
 .mega-navigation::before,
 .mega-navigation::after {
+
     display: none !important;
 }
 
 
 /* =========================================================
-   HEADER BUTTON
+   RIGHT-HAND MENU ZONE
 ========================================================= */
 
-.nav-button {
-    display: none !important;
+.nav-menu-zone {
+
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: stretch;
+
+    justify-content: flex-end;
+
+    height: var(--header-height);
+}
+
+
+/* =========================================================
+   OLD NAV MAIN
+========================================================= */
+
+.nav-main {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 30px;
+
+    height: var(--header-height);
+
+    background: transparent;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.nav-main .nav-item {
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-fast);
+}
+
+.nav-main .nav-item:hover,
+.nav-main .nav-item:focus-visible {
+
+    color: var(--text);
+}
+
+
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
+.nav-dropdown {
+
+    display: none;
 }
 
 
@@ -1833,6 +2075,29 @@ button:focus-visible {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
+
+    .simple-navigation,
+    .nav-main {
+
+        gap: 18px;
+    }
+
+    .simple-navigation a,
+    .nav-main .nav-item {
+
+        font-size: 8px;
+    }
+
+    .toolbar-column {
+
+        min-width: 62px;
+    }
+
+    .toolbar-b,
+    .toolbar-e {
+
+        min-width: 68px;
+    }
 }
 
 
@@ -1857,18 +2122,19 @@ button:focus-visible {
         );
     }
 
-    .nav-main {
-        height: var(--header-height);
-    }
-
     .nav-container {
+        width: min(
+            calc(100% - 32px),
+            var(--max-width)
+        );
+
         height: var(--header-height);
         min-height: var(--header-height);
 
         padding-top: 0;
         padding-bottom: 0;
 
-        flex-wrap: nowrap;
+        gap: 12px;
     }
 
     .brand img {
@@ -1878,18 +2144,60 @@ button:focus-visible {
     }
 
 
-    /* Absolutely no mobile menu */
+    /* -----------------------------------------------------
+       MOBILE NAV
+       Keep the menu compact and on the right.
+    ----------------------------------------------------- */
 
-    .main-navigation {
-        display: none !important;
+    .simple-navigation,
+    .nav-main {
+
+        display: flex;
+
+        gap: 12px;
+
+        overflow: hidden;
     }
 
-    .mega-navigation {
-        display: none !important;
+    .simple-navigation a,
+    .nav-main .nav-item {
+
+        font-size: 7px;
+
+        letter-spacing: 0.10em;
     }
 
-    .nav-button {
-        display: none !important;
+    .new-toolbar {
+
+        height: var(--header-height);
+
+        max-width: calc(100vw - 110px);
+
+        overflow: hidden;
+    }
+
+    .toolbar-column {
+
+        min-width: 48px;
+
+        height: var(--header-height);
+
+        font-size: 7px;
+
+        letter-spacing: 0.10em;
+    }
+
+    .toolbar-b,
+    .toolbar-e {
+
+        min-width: 52px;
+    }
+
+    .toolbar-subitem {
+
+        font-size: 6px;
+
+        letter-spacing: 0.08em;
     }
 
 
@@ -2109,6 +2417,33 @@ button:focus-visible {
 
     .panel-display-inner span {
         font-size: 48px;
+    }
+
+    .simple-navigation,
+    .nav-main {
+
+        gap: 8px;
+    }
+
+    .simple-navigation a,
+    .nav-main .nav-item {
+
+        font-size: 6px;
+
+        letter-spacing: 0.08em;
+    }
+
+    .toolbar-column {
+
+        min-width: 42px;
+
+        font-size: 6px;
+    }
+
+    .toolbar-b,
+    .toolbar-e {
+
+        min-width: 45px;
     }
 }
 
