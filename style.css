@@ -236,7 +236,7 @@ section {
 .main-navigation {
     display: flex;
 
-    align-items: center;
+    align-items: stretch;
     justify-content: flex-end;
 
     gap: 38px;
@@ -245,7 +245,15 @@ section {
     margin-right: 10px;
 }
 
-.main-navigation a {
+.nav-item {
+    position: relative;
+
+    display: flex;
+
+    align-items: stretch;
+}
+
+.nav-item > a {
     position: relative;
 
     display: inline-flex;
@@ -269,7 +277,7 @@ section {
         color var(--transition-fast);
 }
 
-.main-navigation a::after {
+.nav-item > a::after {
     content: "";
 
     position: absolute;
@@ -286,14 +294,158 @@ section {
         width var(--transition-fast);
 }
 
-.main-navigation a:hover,
-.main-navigation a:focus-visible {
+.nav-item > a:hover,
+.nav-item > a:focus-visible {
     color: var(--text);
 }
 
-.main-navigation a:hover::after,
-.main-navigation a:focus-visible::after {
+.nav-item > a:hover::after,
+.nav-item > a:focus-visible::after {
     width: 100%;
+}
+
+
+/* =========================================================
+   HOVER DROPDOWN
+========================================================= */
+
+.nav-dropdown {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    min-width: 155px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        rgba(80, 82, 79, 0.82);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-top:
+        0;
+
+    box-shadow:
+        0 16px 40px
+        rgba(0, 0, 0, 0.38);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(-6px);
+
+    transform-origin: top left;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   OPEN DROPDOWN
+========================================================= */
+
+.nav-item-dropdown:hover .nav-dropdown,
+.nav-item-dropdown:focus-within .nav-dropdown {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   DROPDOWN LINKS
+========================================================= */
+
+.nav-dropdown a {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 0 18px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    line-height: 1.4;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-fast),
+        background var(--transition-fast),
+        padding-left var(--transition-fast);
+}
+
+.nav-dropdown a::after {
+    display: none;
+}
+
+.nav-dropdown a:hover,
+.nav-dropdown a:focus-visible {
+    color: var(--text);
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    padding-left: 22px;
+}
+
+.nav-dropdown a::before {
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+
+    top: 50%;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--accent);
+
+    transform:
+        translateY(-50%);
+
+    transition:
+        width var(--transition-fast);
+}
+
+.nav-dropdown a:hover::before,
+.nav-dropdown a:focus-visible::before {
+    width: 4px;
 }
 
 
@@ -337,303 +489,6 @@ section {
     border-color: var(--olive-light);
 
     color: #fff;
-}
-
-
-/* =========================================================
-   SUBMENU / MEGA NAVIGATION
-========================================================= */
-
-/*
-   IMPORTANT:
-
-   The original submenu was built as four independent
-   columns with visible headings.
-
-   This version treats the submenu as an extension of the
-   main toolbar.
-
-   The four existing HTML columns are positioned beneath:
-
-       Supply          Collection Archive   Updates   About
-
-   Home intentionally has nothing beneath it.
-*/
-
-.mega-navigation {
-    position: absolute;
-
-    top: var(--header-height);
-
-    left: 0;
-
-    width: 100%;
-
-    z-index: 10001;
-
-    background: transparent;
-
-    border: 0;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        translateY(-10px)
-        scaleY(0.96);
-
-    transform-origin: top center;
-
-    transition:
-        opacity 0.22s ease,
-        visibility 0.22s ease,
-        transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
-
-    pointer-events: none;
-}
-
-
-/*
-   The actual grey panel.
-
-   It begins after the logo area, so there is deliberately
-   no submenu panel underneath Home.
-*/
-
-.mega-navigation::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    left: max(
-        calc((100% - var(--max-width)) / 2 + 135px),
-        135px
-    );
-
-    right: max(
-        calc((100% - var(--max-width)) / 2),
-        24px
-    );
-
-    height: 145px;
-
-    background:
-        rgba(39, 42, 39, 0.91);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.10);
-
-    border-top:
-        1px solid rgba(255, 255, 255, 0.07);
-
-    box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.42);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border-radius: 0 0 3px 3px;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   OPEN SUBMENU
-========================================================= */
-
-.site-header:hover .mega-navigation,
-.site-header:focus-within .mega-navigation {
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateY(0)
-        scaleY(1);
-
-    pointer-events: auto;
-}
-
-
-/* =========================================================
-   SUBMENU CONTENT
-========================================================= */
-
-.mega-navigation-inner {
-    position: relative;
-
-    z-index: 2;
-
-    width: min(
-        calc(100% - 48px),
-        var(--max-width)
-    );
-
-    margin-left: auto;
-    margin-right: auto;
-
-    display: grid;
-
-    /*
-       Empty Home column
-       Supply
-       Collection Archive
-       Updates
-       About
-    */
-
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr)
-        minmax(0, 1fr)
-        minmax(0, 1fr)
-        minmax(0, 1fr);
-
-    gap: 38px;
-
-    padding-top: 22px;
-    padding-bottom: 25px;
-
-    min-height: 145px;
-}
-
-
-/* =========================================================
-   POSITION EXISTING HTML COLUMNS
-========================================================= */
-
-/*
-   Existing HTML order is:
-
-   1. Supply
-   2. Collection Archive
-   3. Updates
-   4. About
-
-   We deliberately leave column 1 empty for Home.
-*/
-
-.mega-navigation-column:nth-child(1) {
-    grid-column: 2;
-}
-
-.mega-navigation-column:nth-child(2) {
-    grid-column: 3;
-}
-
-.mega-navigation-column:nth-child(3) {
-    grid-column: 4;
-}
-
-.mega-navigation-column:nth-child(4) {
-    grid-column: 5;
-}
-
-
-/* =========================================================
-   HIDE OLD SUBMENU HEADINGS
-========================================================= */
-
-/*
-   This is the key fix.
-
-   There should NOT be another large "SUPPLY",
-   "COLLECTION ARCHIVE", "UPDATES" or "ABOUT"
-   heading inside the dropdown.
-*/
-
-.mega-navigation-heading {
-    display: none;
-}
-
-
-/* =========================================================
-   SUBMENU COLUMNS
-========================================================= */
-
-.mega-navigation-column {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    justify-content: flex-start;
-
-    gap: 9px;
-
-    min-width: 0;
-}
-
-
-/* =========================================================
-   SUBMENU LINKS
-========================================================= */
-
-.mega-navigation-column a {
-    position: relative;
-
-    display: inline-block;
-
-    width: max-content;
-    max-width: 100%;
-
-    padding: 0;
-
-    color: var(--text-muted);
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    letter-spacing: 0.08em;
-
-    line-height: 1.45;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
-
-    transition:
-        color var(--transition-fast),
-        transform var(--transition-fast);
-}
-
-.mega-navigation-column a:hover,
-.mega-navigation-column a:focus-visible {
-    color: var(--text);
-
-    transform: translateX(4px);
-}
-
-.mega-navigation-column a::before {
-    content: "";
-
-    position: absolute;
-
-    left: -9px;
-
-    top: 50%;
-
-    width: 0;
-    height: 1px;
-
-    background: var(--accent);
-
-    transform:
-        translateY(-50%);
-
-    transition:
-        width var(--transition-fast);
-}
-
-.mega-navigation-column a:hover::before,
-.mega-navigation-column a:focus-visible::before {
-    width: 4px;
 }
 
 
@@ -2163,24 +2018,16 @@ button:focus-visible {
         gap: 24px;
     }
 
-    .main-navigation a {
+    .nav-item > a {
         font-size: 11px;
     }
 
-    .mega-navigation-inner {
-        gap: 22px;
+    .nav-dropdown {
+        min-width: 145px;
     }
 
-    .mega-navigation-column a {
+    .nav-dropdown a {
         font-size: 10px;
-    }
-
-    .mega-navigation::before {
-        left:
-            max(
-                calc((100% - var(--max-width)) / 2 + 115px),
-                115px
-            );
     }
 
     .archive-grid {
@@ -2264,7 +2111,11 @@ button:focus-visible {
         display: none;
     }
 
-    .main-navigation a {
+    .nav-item {
+        flex-shrink: 0;
+    }
+
+    .nav-item > a {
         font-size: 10px;
     }
 
@@ -2273,10 +2124,15 @@ button:focus-visible {
     }
 
 
-    /* MOBILE SUBMENU */
+    /*
+       Mobile dropdown remains attached to its
+       parent navigation item.
+    */
 
-    .mega-navigation {
-        top: var(--header-height);
+    .nav-dropdown {
+        top: 100%;
+
+        min-width: 140px;
 
         max-height:
             calc(
@@ -2287,59 +2143,12 @@ button:focus-visible {
         overflow-y: auto;
     }
 
-    .mega-navigation::before {
-        left: 16px;
+    .nav-dropdown a {
+        min-height: 42px;
 
-        right: 16px;
+        padding-left: 14px;
 
-        height: auto;
-
-        min-height: 150px;
-    }
-
-    .mega-navigation-inner {
-        width:
-            calc(
-                100% - 32px
-            );
-
-        grid-template-columns:
-            repeat(4, minmax(0, 1fr));
-
-        gap: 14px;
-
-        padding-top: 20px;
-        padding-bottom: 25px;
-
-        min-height: 150px;
-    }
-
-    /*
-       On mobile the Home space is still preserved.
-    */
-
-    .mega-navigation-column:nth-child(1) {
-        grid-column: 1;
-    }
-
-    .mega-navigation-column:nth-child(2) {
-        grid-column: 2;
-    }
-
-    .mega-navigation-column:nth-child(3) {
-        grid-column: 3;
-    }
-
-    .mega-navigation-column:nth-child(4) {
-        grid-column: 4;
-    }
-
-    .mega-navigation-column a {
-        font-size: 8px;
-
-        letter-spacing: 0.06em;
-
-        white-space: normal;
+        font-size: 9px;
     }
 
 
@@ -2526,26 +2335,22 @@ button:focus-visible {
         max-height: 36px;
     }
 
-    .mega-navigation-inner {
-        grid-template-columns:
-            repeat(4, minmax(0, 1fr));
-
-        gap: 8px;
+    .main-navigation {
+        gap: 18px;
     }
 
-    .mega-navigation::before {
-        left: 10px;
-        right: 10px;
+    .nav-item > a {
+        font-size: 9px;
     }
 
-    .mega-navigation-column {
-        gap: 7px;
+    .nav-dropdown {
+        min-width: 130px;
     }
 
-    .mega-navigation-column a {
-        font-size: 7px;
+    .nav-dropdown a {
+        font-size: 8px;
 
-        line-height: 1.35;
+        min-height: 40px;
     }
 
     .hero {
@@ -2602,8 +2407,16 @@ button:focus-visible {
         gap: 18px;
     }
 
-    .main-navigation a {
+    .nav-item > a {
         font-size: 8px;
+    }
+
+    .nav-dropdown {
+        min-width: 120px;
+    }
+
+    .nav-dropdown a {
+        font-size: 7px;
     }
 
     .hero h1 {
