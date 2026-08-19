@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +25,10 @@
 
 <body>
 
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header class="site-header">
 
@@ -99,7 +103,9 @@
         <div class="container mega-navigation-inner">
 
 
-            <!-- NAVIGATION -->
+            <!-- =================================================
+                 NAVIGATION
+            ================================================== -->
 
             <div class="mega-navigation-column">
 
@@ -109,6 +115,22 @@
 
                 <a href="index.html">
                     Home
+                </a>
+
+                <a href="models.html">
+                    Models
+                </a>
+
+                <a href="archive.html">
+                    Collection Archive
+                </a>
+
+                <a href="panels.html">
+                    Cockpit Panels
+                </a>
+
+                <a href="releases.html">
+                    Releases
                 </a>
 
                 <a href="about.html">
@@ -122,7 +144,9 @@
             </div>
 
 
-            <!-- MODELS -->
+            <!-- =================================================
+                 MODELS
+            ================================================== -->
 
             <div class="mega-navigation-column">
 
@@ -130,69 +154,95 @@
                     Models
                 </div>
 
-                <a href="models.html">
-                    Models
+                <a href="models.html#aircraft">
+                    Aircraft
+                </a>
+
+                <a href="models.html#ground-vehicles">
+                    Ground Vehicles
+                </a>
+
+                <a href="models.html#helicopters">
+                    Helicopters
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+                 COLLECTION ARCHIVE
+            ================================================== -->
+
+            <div class="mega-navigation-column">
+
+                <div class="mega-navigation-heading">
+                    Collection Archive
+                </div>
+
+                <a href="archive.html">
+                    Full Collection
                 </a>
 
                 <a href="archive.html">
-                    Collection Archive
+                    Aircraft
+                </a>
+
+                <a href="archive.html">
+                    Helicopters
+                </a>
+
+                <a href="archive.html">
+                    Ground Vehicles
                 </a>
 
             </div>
 
 
-            <!-- COLLECTION -->
+            <!-- =================================================
+                 COCKPIT PANELS
+            ================================================== -->
 
             <div class="mega-navigation-column">
 
                 <div class="mega-navigation-heading">
-                    Collection
+                    Cockpit Panels
                 </div>
 
                 <a href="panels.html">
-                    Cockpit Panels
+                    All Panels
                 </a>
 
-                <a href="releases.html">
+                <a href="panels.html">
+                    Aircraft Panels
+                </a>
+
+                <a href="panels.html">
+                    Simulator Panels
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+                 RELEASES
+            ================================================== -->
+
+            <div class="mega-navigation-column">
+
+                <div class="mega-navigation-heading">
                     Releases
-                </a>
-
-            </div>
-
-
-            <!-- OPTIONAL FOURTH COLUMN -->
-
-            <div class="mega-navigation-column">
-
-                <div class="mega-navigation-heading">
-                    Raketa Dynamics
-                </div>
-
-                <a href="about.html">
-                    About the Studio
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </div>
-
-
-            <!-- OPTIONAL FIFTH COLUMN -->
-
-            <div class="mega-navigation-column">
-
-                <div class="mega-navigation-heading">
-                    Information
                 </div>
 
                 <a href="releases.html">
                     Latest Releases
                 </a>
 
-                <a href="archive.html">
-                    Archive
+                <a href="releases.html">
+                    Announcements
+                </a>
+
+                <a href="releases.html">
+                    Work in Progress
                 </a>
 
             </div>
@@ -207,7 +257,7 @@
 
 
 <!-- =========================================================
-     MAIN CONTENT
+     MAIN
 ========================================================= -->
 
 <main>
@@ -240,7 +290,7 @@
 
 
     <!-- =====================================================
-         MODELS
+         MODELS SECTION
     ====================================================== -->
 
     <section class="models-section">
@@ -252,8 +302,10 @@
                  AIRCRAFT
             ================================================== -->
 
-            <div class="model-branch">
-
+            <div
+                class="model-branch"
+                id="aircraft"
+            >
 
                 <div class="model-branch-title">
 
@@ -268,7 +320,7 @@
 
 
                     <!-- =========================================
-                         MIG-21
+                         MIG-21UPG
                     ========================================== -->
 
                     <article
@@ -481,8 +533,10 @@
                  GROUND VEHICLES
             ================================================== -->
 
-            <div class="model-branch">
-
+            <div
+                class="model-branch"
+                id="ground-vehicles"
+            >
 
                 <div class="model-branch-title">
 
@@ -601,6 +655,67 @@
             </div>
 
 
+            <!-- =================================================
+                 HELICOPTERS
+                 Placeholder section for the menu anchor.
+            ================================================== -->
+
+            <div
+                class="model-branch"
+                id="helicopters"
+            >
+
+                <div class="model-branch-title">
+
+                    <h2>
+                        Helicopters
+                    </h2>
+
+                </div>
+
+
+                <div class="model-list">
+
+                    <article class="model-item">
+
+                        <div class="model-item-header">
+
+                            <h3 class="model-item-title">
+                                Work in Progress
+                            </h3>
+
+                            <span class="model-item-toggle">
+                                +
+                            </span>
+
+                        </div>
+
+
+                        <div class="model-gallery">
+
+                            <div class="model-gallery-slide">
+
+                                <img
+                                    src="wip.png"
+                                    alt="Helicopter model work in progress"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="model-gallery-note">
+                            Work in progress
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
         </div>
 
     </section>
@@ -633,4 +748,3 @@
 </body>
 
 </html>
-```
