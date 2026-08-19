@@ -12,12 +12,150 @@
 
     <meta
         name="description"
-        content="Explore Raketa Dynamics aircraft, helicopters and ground vehicle models."
+        content="Explore Raketa Dynamics aircraft and ground vehicle models."
     >
 
     <title>Models | Raketa Dynamics</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .model-branch {
+            margin-bottom: 80px;
+        }
+
+        .model-branch:last-child {
+            margin-bottom: 0;
+        }
+
+        .model-branch-title {
+            margin-bottom: 30px;
+        }
+
+        .model-branch-title h2 {
+            margin: 0;
+        }
+
+        .model-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .model-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            background: #000000;
+        }
+
+        .model-item-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .model-item-title {
+            margin: 0;
+            font-size: 1.15rem;
+            line-height: 1.2;
+        }
+
+        .model-item-toggle {
+            font-size: 1.4rem;
+            line-height: 1;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+
+        .model-gallery {
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
+            display: flex;
+            gap: 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+        }
+
+        .model-gallery-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+        }
+
+        .model-gallery-slide img {
+            display: block;
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background: #000000;
+        }
+
+        .model-gallery-note {
+            padding: 9px 20px 0;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0.55;
+        }
+
+        .model-item-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition:
+                max-height 0.45s ease,
+                opacity 0.3s ease,
+                padding 0.45s ease;
+            padding: 0 20px;
+        }
+
+        .model-item:hover .model-item-content,
+        .model-item.is-open .model-item-content {
+            max-height: 300px;
+            opacity: 1;
+            padding: 20px;
+        }
+
+        .model-item:hover .model-item-toggle,
+        .model-item.is-open .model-item-toggle {
+            transform: rotate(45deg);
+        }
+
+        .model-item-description p {
+            margin: 0 0 18px;
+            line-height: 1.6;
+        }
+
+        .model-details-link {
+            display: inline-block;
+        }
+
+        @media (max-width: 900px) {
+
+            .model-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .model-list {
+                grid-template-columns: 1fr;
+            }
+
+            .model-gallery-slide img {
+                height: 260px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -27,107 +165,70 @@
 
 <header class="site-header">
 
+    <div class="container nav-container">
 
-    <!-- =====================================================
-         MAIN BLACK NAVIGATION BAR
-    ====================================================== -->
+        <a href="index.html" class="brand">
 
-    <div class="nav-main">
-
-        <div class="container nav-container">
-
-
-            <a
-                href="index.html"
-                class="brand"
+            <img
+                src="logo.png"
+                alt="Raketa Dynamics"
             >
 
-                <img
-                    src="logo.png"
-                    alt="Raketa Dynamics"
-                >
+        </a>
 
+
+        <nav class="main-navigation">
+
+            <a href="index.html">
+                Home
             </a>
 
-
-            <nav class="main-navigation">
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a href="models.html">
-                    Models
-                </a>
-
-                <a href="archive.html">
-                    Collection Archive
-                </a>
-
-                <a href="panels.html">
-                    Cockpit Panels
-                </a>
-
-                <a href="releases.html">
-                    Releases
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-            </nav>
-
-
-            <a
-                href="contact.html"
-                class="nav-button"
-            >
-                Contact
+            <a href="models.html">
+                Models
             </a>
 
+            <a href="archive.html">
+                Collection Archive
+            </a>
 
-        </div>
+            <a href="panels.html">
+                Cockpit Panels
+            </a>
+
+            <a href="releases.html">
+                Releases
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+
+        <a
+            href="contact.html"
+            class="nav-button"
+        >
+            Contact
+        </a>
 
     </div>
 
 
-    <!-- =====================================================
-         EXPANDED NAVIGATION PANEL
-    ====================================================== -->
-
     <div class="mega-navigation">
 
+        <div class="mega-navigation-inner">
 
-        <div class="container mega-navigation-inner">
-
-
-            <!-- NAVIGATION -->
 
             <div class="mega-navigation-column">
 
-                <span class="mega-navigation-heading">
-                    Navigation
+                <span class="mega-navigation-label">
+                    NAVIGATION
                 </span>
 
                 <a href="index.html">
                     Home
-                </a>
-
-                <a href="models.html">
-                    Models
-                </a>
-
-                <a href="archive.html">
-                    Collection Archive
-                </a>
-
-                <a href="panels.html">
-                    Cockpit Panels
-                </a>
-
-                <a href="releases.html">
-                    Releases
                 </a>
 
                 <a href="about.html">
@@ -141,97 +242,35 @@
             </div>
 
 
-            <!-- MODELS -->
-
             <div class="mega-navigation-column">
 
-                <span class="mega-navigation-heading">
+                <span class="mega-navigation-label">
+                    MODELS
+                </span>
+
+                <a href="models.html">
                     Models
-                </span>
-
-                <a href="models.html#aircraft">
-                    Aircraft
                 </a>
 
-                <a href="models.html#ground-vehicles">
-                    Ground Vehicles
-                </a>
-
-                <a href="models.html#helicopters">
-                    Helicopters
-                </a>
-
-            </div>
-
-
-            <!-- COLLECTION ARCHIVE -->
-
-            <div class="mega-navigation-column">
-
-                <span class="mega-navigation-heading">
+                <a href="archive.html">
                     Collection Archive
-                </span>
-
-                <a href="archive.html">
-                    Full Collection
-                </a>
-
-                <a href="archive.html">
-                    Aircraft
-                </a>
-
-                <a href="archive.html">
-                    Helicopters
-                </a>
-
-                <a href="archive.html">
-                    Ground Vehicles
                 </a>
 
             </div>
 
 
-            <!-- COCKPIT PANELS -->
-
             <div class="mega-navigation-column">
 
-                <span class="mega-navigation-heading">
+                <span class="mega-navigation-label">
+                    COLLECTION
+                </span>
+
+                <a href="panels.html">
                     Cockpit Panels
-                </span>
-
-                <a href="panels.html">
-                    All Panels
                 </a>
 
-                <a href="panels.html">
-                    Aircraft Panels
-                </a>
-
-                <a href="panels.html">
-                    Simulator Panels
-                </a>
-
-            </div>
-
-
-            <!-- RELEASES -->
-
-            <div class="mega-navigation-column">
-
-                <span class="mega-navigation-heading">
+                <a href="releases.html">
                     Releases
-                </span>
-
-                <a href="releases.html">
-                    Latest Releases
-                </a>
-
-                <a href="releases.html">
-                    Announcements
-                </a>
-
-                <a href="releases.html">
-                    Work in Progress
                 </a>
 
             </div>
@@ -241,471 +280,355 @@
 
     </div>
 
-
 </header>
 
 
 <main>
 
 
-    <!-- =====================================================
-         PAGE HERO
-    ====================================================== -->
+<section class="page-hero">
 
-    <section class="page-hero">
+    <div class="container">
 
-        <div class="container">
+        <span class="section-kicker">
+            RAKETA DYNAMICS / MODELS
+        </span>
 
-            <h1>
-                Models.
-            </h1>
+        <h1>
+            Models.
+        </h1>
 
-            <p>
-                Explore the Raketa Dynamics range of detailed
-                scale aircraft and ground vehicles.
-            </p>
+        <p>
+            Explore the Raketa Dynamics range of detailed
+            scale aircraft and ground vehicles.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="models-section">
+
+    <div class="container">
+
+
+        <div class="model-branch">
+
+            <div class="model-branch-title">
+
+                <h2>
+                    Aircraft
+                </h2>
+
+            </div>
+
+
+            <div class="model-list">
+
+
+                <article
+                    class="model-item"
+                    onclick="this.classList.toggle('is-open')"
+                >
+
+                    <div class="model-item-header">
+
+                        <h3 class="model-item-title">
+                            MiG-21UPG 'CU2777' No. 23 Squadron "Panthers" Sept 2025
+                        </h3>
+
+                        <span class="model-item-toggle">
+                            +
+                        </span>
+
+                    </div>
+
+
+                    <div class="model-gallery">
+
+                        <div class="model-gallery-slide">
+
+                            <img
+                                src="wip.png"
+                                alt="MiG-21UPG 'CU2777' black WIP image"
+                            >
+
+                        </div>
+
+                        <div class="model-gallery-slide">
+
+                            <img
+                                src="WIPwhite.png"
+                                alt="MiG-21UPG 'CU2777' white WIP image"
+                            >
+
+                        </div>
+
+                        <div class="model-gallery-slide">
+
+                            <img
+                                src="wip.png"
+                                alt="MiG-21UPG 'CU2777' image 3"
+                            >
+
+                        </div>
+
+                        <div class="model-gallery-slide">
+
+                            <img
+                                src="WIPwhite.png"
+                                alt="MiG-21UPG 'CU2777' image 4"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="model-gallery-note">
+                        Scroll to view images
+                    </div>
+
+
+                    <div class="model-item-content">
+
+                        <div class="model-item-description">
+
+                            <p>
+                                MiG-21UPG Bison No. 23 Squadron
+                                "Panthers" 'CU2777' from the
+                                farewell ceremony in September
+                                2025. The Bison remained a worthy
+                                successor to the Indian Air Forces
+                                Fishbed lineage.
+                            </p>
+
+                            <a
+                                href="mig-21-bison.html"
+                                class="text-link model-details-link"
+                                onclick="event.stopPropagation()"
+                            >
+                                Product details →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="model-item"
+                    onclick="this.classList.toggle('is-open')"
+                >
+
+                    <div class="model-item-header">
+
+                        <h3 class="model-item-title">
+                            Sukhoi Su-30MKI 'SB232' No. 220 Squadron "Desert Tigers" May 2025
+                        </h3>
+
+                        <span class="model-item-toggle">
+                            +
+                        </span>
+
+                    </div>
+
+
+                    <div class="model-gallery">
+
+                        <div class="model-gallery-slide">
+
+                            <img
+                                src="wip.png"
+                                alt="Sukhoi Su-30MKI 'SB232' black WIP image"
+                            >
+
+                        </div>
+
+                        <div class="model-gallery-slide">
+
+                            <img
+                                src="WIPwhite.png"
+                                alt="Sukhoi Su-30MKI 'SB232' white WIP image"
+                            >
+
+                        </div>
+
+                        <div class="model-gallery-slide">
+
+                            <img
+                                src="wip.png"
+                                alt="Sukhoi Su-30MKI 'SB232' image 3"
+                            >
+
+                        </div>
+
+                        <div class="model-gallery-slide">
+
+                            <img
+                                src="WIPwhite.png"
+                                alt="Sukhoi Su-30MKI 'SB232' image 4"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="model-gallery-note">
+                        Scroll to view images
+                    </div>
+
+
+                    <div class="model-item-content">
+
+                        <div class="model-item-description">
+
+                            <p>
+                                Sukhoi Su-30MKI 'SB232' of
+                                No. 220 Squadron "Desert Tigers",
+                                May 2025.
+                            </p>
+
+                            <a
+                                href="#"
+                                class="text-link model-details-link"
+                                onclick="event.stopPropagation()"
+                            >
+                                Product details →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
 
         </div>
 
-    </section>
 
+        <div class="model-branch">
 
-    <!-- =====================================================
-         MODELS
-    ====================================================== -->
+            <div class="model-branch-title">
 
-    <section class="models-section">
-
-        <div class="container">
-
-
-            <!-- =================================================
-                 AIRCRAFT
-            ================================================== -->
-
-            <div
-                class="model-branch"
-                id="aircraft"
-            >
-
-                <div class="model-branch-title">
-
-                    <h2>
-                        Aircraft
-                    </h2>
-
-                </div>
-
-
-                <div class="model-list">
-
-
-                    <!-- =================================================
-                         MIG-21
-                    ================================================== -->
-
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
-
-
-                        <div class="model-item-header">
-
-                            <h3 class="model-item-title">
-                                MiG-21UPG 'CU2777' No. 23 Squadron "Panthers" Sept 2025
-                            </h3>
-
-                            <span class="model-item-toggle">
-                                +
-                            </span>
-
-                        </div>
-
-
-                        <div class="model-gallery">
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="MiG-21UPG 'CU2777' image 1"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="MiG-21UPG 'CU2777' image 2"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="MiG-21UPG 'CU2777' image 3"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="MiG-21UPG 'CU2777' image 4"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="MiG-21UPG 'CU2777' image 5"
-                                >
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-
-
-                        <div class="model-item-content">
-
-                            <div class="model-item-description">
-
-                                <p>
-                                    MiG-21UPG Bison No. 23 Squadron
-                                    "Panthers" 'CU2777' from the
-                                    farewell ceremony in September
-                                    2025. The Bison remained a worthy
-                                    successor to the Indian Air Force
-                                    Fishbed lineage.
-                                </p>
-
-
-                                <a
-                                    href="mig-21-bison.html"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                    </article>
-
-
-                    <!-- =================================================
-                         SU-30MKI
-                    ================================================== -->
-
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
-
-
-                        <div class="model-item-header">
-
-                            <h3 class="model-item-title">
-                                Sukhoi Su-30MKI 'SB232' No. 220 Squadron "Desert Tigers" May 2025
-                            </h3>
-
-                            <span class="model-item-toggle">
-                                +
-                            </span>
-
-                        </div>
-
-
-                        <div class="model-gallery">
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="Sukhoi Su-30MKI 'SB232' image 1"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="Sukhoi Su-30MKI 'SB232' image 2"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="Sukhoi Su-30MKI 'SB232' image 3"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="Sukhoi Su-30MKI 'SB232' image 4"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="Sukhoi Su-30MKI 'SB232' image 5"
-                                >
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-
-
-                        <div class="model-item-content">
-
-                            <div class="model-item-description">
-
-                                <p>
-                                    Sukhoi Su-30MKI 'SB232' of
-                                    No. 220 Squadron "Desert Tigers",
-                                    May 2025.
-                                </p>
-
-
-                                <a
-                                    href="#"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                    </article>
-
-
-                </div>
+                <h2>
+                    Ground vehicles
+                </h2>
 
             </div>
 
 
-            <!-- =================================================
-                 GROUND VEHICLES
-            ================================================== -->
-
-            <div
-                class="model-branch"
-                id="ground-vehicles"
-            >
-
-                <div class="model-branch-title">
-
-                    <h2>
-                        Ground vehicles
-                    </h2>
-
-                </div>
+            <div class="model-list">
 
 
-                <div class="model-list">
+                <article
+                    class="model-item"
+                    onclick="this.classList.toggle('is-open')"
+                >
+
+                    <div class="model-item-header">
+
+                        <h3 class="model-item-title">
+                            51P6A 'Bhuj' May 2025
+                        </h3>
+
+                        <span class="model-item-toggle">
+                            +
+                        </span>
+
+                    </div>
 
 
-                    <!-- =================================================
-                         51P6A
-                    ================================================== -->
+                    <div class="model-gallery">
 
-                    <article
-                        class="model-item"
-                        onclick="this.classList.toggle('is-open')"
-                    >
+                        <div class="model-gallery-slide">
 
-
-                        <div class="model-item-header">
-
-                            <h3 class="model-item-title">
-                                51P6A 'Bhuj' May 2025
-                            </h3>
-
-                            <span class="model-item-toggle">
-                                +
-                            </span>
+                            <img
+                                src="wip.png"
+                                alt="51P6A 'Bhuj' black WIP image"
+                            >
 
                         </div>
 
+                        <div class="model-gallery-slide">
 
-                        <div class="model-gallery">
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="51P6A 'Bhuj' image 1"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="51P6A 'Bhuj' image 2"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="51P6A 'Bhuj' image 3"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="51P6A 'Bhuj' image 4"
-                                >
-
-                            </div>
-
-
-                            <div class="model-gallery-slide">
-
-                                <img
-                                    src="wip.png"
-                                    alt="51P6A 'Bhuj' image 5"
-                                >
-
-                            </div>
-
+                            <img
+                                src="WIPwhite.png"
+                                alt="51P6A 'Bhuj' white WIP image"
+                            >
 
                         </div>
 
+                        <div class="model-gallery-slide">
 
-                        <div class="model-gallery-note">
-                            Scroll to view images
-                        </div>
-
-
-                        <div class="model-item-content">
-
-                            <div class="model-item-description">
-
-                                <p>
-                                    51P6A 'Bhuj' ground vehicle
-                                    model, May 2025.
-                                </p>
-
-
-                                <a
-                                    href="#"
-                                    class="text-link model-details-link"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    Product details →
-                                </a>
-
-                            </div>
+                            <img
+                                src="wip.png"
+                                alt="51P6A 'Bhuj' image 3"
+                            >
 
                         </div>
 
+                        <div class="model-gallery-slide">
 
-                    </article>
+                            <img
+                                src="WIPwhite.png"
+                                alt="51P6A 'Bhuj' image 4"
+                            >
+
+                        </div>
+
+                    </div>
 
 
-                </div>
+                    <div class="model-gallery-note">
+                        Scroll to view images
+                    </div>
+
+
+                    <div class="model-item-content">
+
+                        <div class="model-item-description">
+
+                            <p>
+                                51P6A 'Bhuj' ground vehicle
+                                model, May 2025.
+                            </p>
+
+                            <a
+                                href="#"
+                                class="text-link model-details-link"
+                                onclick="event.stopPropagation()"
+                            >
+                                Product details →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
 
             </div>
-
-
-            <!-- =================================================
-                 HELICOPTERS
-                 EMPTY FOR NOW
-            ================================================== -->
-
-            <div
-                class="model-branch"
-                id="helicopters"
-            >
-
-                <div class="model-branch-title">
-
-                    <h2>
-                        Helicopters
-                    </h2>
-
-                </div>
-
-
-                <div class="model-list">
-
-                    <!--
-                        Helicopter models will be added here.
-                    -->
-
-                </div>
-
-            </div>
-
 
         </div>
 
-    </section>
+
+    </div>
+
+</section>
 
 
 </main>
 
 
 <footer class="site-footer">
-
 
     <div class="container footer-bottom">
 
@@ -718,7 +641,6 @@
         </a>
 
     </div>
-
 
 </footer>
 
