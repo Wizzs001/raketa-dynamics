@@ -19,6 +19,473 @@
 
     <link rel="stylesheet" href="style.css">
 
+
+    <!-- =====================================================
+         PAGE-SPECIFIC DROPDOWN MENU
+         This overrides the old menu system on this page.
+    ====================================================== -->
+
+    <style>
+
+        /* -------------------------------------------------
+           KEEP THE EXISTING TOP BAR
+        ------------------------------------------------- */
+
+        .site-header {
+            position: fixed !important;
+
+            top: 0 !important;
+            left: 0 !important;
+
+            width: 100% !important;
+
+            z-index: 10000 !important;
+
+            background: #000000 !important;
+
+            border-bottom:
+                1px solid
+                rgba(255, 255, 255, 0.08) !important;
+        }
+
+
+        .nav-main {
+            position: relative !important;
+
+            width: 100% !important;
+
+            background: #000000 !important;
+
+            z-index: 10001 !important;
+        }
+
+
+        .nav-container {
+            min-height: var(--header-height) !important;
+
+            display: flex !important;
+
+            align-items: center !important;
+
+            justify-content: space-between !important;
+
+            gap: 30px !important;
+        }
+
+
+        /* -------------------------------------------------
+           LOGO
+        ------------------------------------------------- */
+
+        .brand {
+            display: flex !important;
+
+            align-items: center !important;
+            justify-content: center !important;
+
+            flex-shrink: 0 !important;
+
+            line-height: 1 !important;
+        }
+
+
+        .brand img {
+            display: block !important;
+
+            width: 118px !important;
+
+            height: auto !important;
+
+            max-height: 52px !important;
+
+            object-fit: contain !important;
+        }
+
+
+        /* -------------------------------------------------
+           MAIN NAVIGATION
+        ------------------------------------------------- */
+
+        .main-navigation {
+            display: flex !important;
+
+            align-items: center !important;
+
+            justify-content: flex-end !important;
+
+            gap: 38px !important;
+
+            margin-left: auto !important;
+
+            margin-right: 10px !important;
+
+            height: var(--header-height) !important;
+        }
+
+
+        /* -------------------------------------------------
+           HOME + MAIN NAV ITEMS
+        ------------------------------------------------- */
+
+        .main-navigation > a,
+        .main-navigation > .nav-dropdown > .nav-parent {
+
+            position: relative !important;
+
+            display: inline-flex !important;
+
+            align-items: center !important;
+
+            height: var(--header-height) !important;
+
+            padding: 8px 0 !important;
+
+            color: var(--text-muted) !important;
+
+            font-size: 13px !important;
+
+            font-weight: 600 !important;
+
+            letter-spacing: 0.08em !important;
+
+            line-height: 1 !important;
+
+            text-transform: uppercase !important;
+
+            white-space: nowrap !important;
+
+            text-decoration: none !important;
+
+            transition:
+                color 0.2s ease !important;
+        }
+
+
+        .main-navigation > a:hover,
+        .main-navigation > a:focus-visible,
+        .main-navigation > .nav-dropdown:hover > .nav-parent,
+        .main-navigation > .nav-dropdown:focus-within > .nav-parent {
+
+            color: var(--text) !important;
+        }
+
+
+        /* -------------------------------------------------
+           MAIN NAV UNDERLINE
+        ------------------------------------------------- */
+
+        .main-navigation > a::after,
+        .main-navigation > .nav-dropdown > .nav-parent::after {
+
+            content: "" !important;
+
+            position: absolute !important;
+
+            left: 0 !important;
+
+            bottom: 20px !important;
+
+            width: 0 !important;
+
+            height: 1px !important;
+
+            background: var(--accent) !important;
+
+            transition:
+                width 0.2s ease !important;
+        }
+
+
+        .main-navigation > a:hover::after,
+        .main-navigation > a:focus-visible::after,
+        .main-navigation > .nav-dropdown:hover > .nav-parent::after,
+        .main-navigation > .nav-dropdown:focus-within > .nav-parent::after {
+
+            width: 100% !important;
+        }
+
+
+        /* -------------------------------------------------
+           INDIVIDUAL DROPDOWN CONTAINER
+        ------------------------------------------------- */
+
+        .nav-dropdown {
+
+            position: relative !important;
+
+            display: flex !important;
+
+            align-items: center !important;
+
+            height: var(--header-height) !important;
+        }
+
+
+        /* -------------------------------------------------
+           DROPDOWN PANEL
+
+           THIS IS DIRECTLY UNDER THE WORD.
+
+           left: 0
+           means it starts at the exact left edge
+           of SUPPLY / ABOUT / etc.
+
+           It does NOT use right: 0.
+        ------------------------------------------------- */
+
+        .nav-dropdown-menu {
+
+            position: absolute !important;
+
+            top: 100% !important;
+
+            left: 0 !important;
+
+            right: auto !important;
+
+            width: max-content !important;
+
+            min-width: 160px !important;
+
+            padding: 7px 0 !important;
+
+            margin: 0 !important;
+
+
+            /* almost transparent grey */
+
+            background:
+                rgba(62, 65, 62, 0.88) !important;
+
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.10) !important;
+
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.07) !important;
+
+
+            box-shadow:
+                0 18px 40px
+                rgba(0, 0, 0, 0.45) !important;
+
+
+            backdrop-filter:
+                blur(14px) !important;
+
+            -webkit-backdrop-filter:
+                blur(14px) !important;
+
+
+            /* hidden initially */
+
+            opacity: 0 !important;
+
+            visibility: hidden !important;
+
+            pointer-events: none !important;
+
+
+            transform:
+                translateY(-6px) !important;
+
+
+            transition:
+                opacity 0.18s ease,
+                visibility 0.18s ease,
+                transform 0.18s ease !important;
+
+
+            z-index: 10050 !important;
+        }
+
+
+        /* -------------------------------------------------
+           OPEN ONLY WHEN THIS MAIN ITEM IS HOVERED
+        ------------------------------------------------- */
+
+        .nav-dropdown:hover > .nav-dropdown-menu,
+        .nav-dropdown:focus-within > .nav-dropdown-menu {
+
+            opacity: 1 !important;
+
+            visibility: visible !important;
+
+            pointer-events: auto !important;
+
+            transform:
+                translateY(0) !important;
+        }
+
+
+        /* -------------------------------------------------
+           DROPDOWN LINKS
+
+           VERTICAL:
+
+           MODELS
+           ARMOURY
+           HANGER
+        ------------------------------------------------- */
+
+        .nav-dropdown-menu a {
+
+            display: block !important;
+
+            width: 100% !important;
+
+            padding:
+                11px
+                18px !important;
+
+            margin: 0 !important;
+
+            color: var(--text-muted) !important;
+
+            font-size: 10px !important;
+
+            font-weight: 600 !important;
+
+            letter-spacing: 0.09em !important;
+
+            line-height: 1.4 !important;
+
+            text-transform: uppercase !important;
+
+            white-space: nowrap !important;
+
+            text-decoration: none !important;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                padding-left 0.2s ease !important;
+        }
+
+
+        .nav-dropdown-menu a:hover,
+        .nav-dropdown-menu a:focus-visible {
+
+            background:
+                rgba(255, 255, 255, 0.07) !important;
+
+            color: var(--text) !important;
+
+            padding-left: 22px !important;
+        }
+
+
+        /* -------------------------------------------------
+           COMPLETELY DISABLE THE OLD FULL-WIDTH MENU
+        ------------------------------------------------- */
+
+        .mega-navigation {
+
+            display: none !important;
+
+            visibility: hidden !important;
+
+            opacity: 0 !important;
+
+            pointer-events: none !important;
+        }
+
+
+        /* -------------------------------------------------
+           MOBILE
+        ------------------------------------------------- */
+
+        @media (max-width: 760px) {
+
+            .main-navigation {
+
+                gap: 24px !important;
+
+                height: auto !important;
+
+                overflow-x: auto !important;
+
+                justify-content: flex-start !important;
+
+                margin: 0 !important;
+
+                scrollbar-width: none !important;
+            }
+
+
+            .main-navigation::-webkit-scrollbar {
+                display: none !important;
+            }
+
+
+            .main-navigation > a,
+            .main-navigation > .nav-dropdown > .nav-parent {
+
+                height: 45px !important;
+
+                font-size: 10px !important;
+            }
+
+
+            .nav-dropdown {
+
+                height: 45px !important;
+
+                flex-shrink: 0 !important;
+            }
+
+
+            .nav-dropdown-menu {
+
+                top: 100% !important;
+
+                left: 0 !important;
+
+                right: auto !important;
+
+                min-width: 145px !important;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .main-navigation {
+
+                gap: 18px !important;
+            }
+
+
+            .main-navigation > a,
+            .main-navigation > .nav-dropdown > .nav-parent {
+
+                font-size: 9px !important;
+            }
+
+
+            .nav-dropdown-menu {
+
+                min-width: 135px !important;
+            }
+
+
+            .nav-dropdown-menu a {
+
+                padding:
+                    10px
+                    14px !important;
+
+                font-size: 9px !important;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -31,7 +498,9 @@
 
 <header class="site-header">
 
+
     <div class="nav-main">
+
 
         <div class="container nav-container">
 
@@ -51,7 +520,9 @@
             </a>
 
 
-            <!-- MAIN NAVIGATION -->
+            <!-- =================================================
+                 ONE SINGLE MAIN MENU
+            ================================================== -->
 
             <nav class="main-navigation">
 
@@ -63,9 +534,12 @@
                 </a>
 
 
-                <!-- SUPPLY -->
+                <!-- =================================================
+                     SUPPLY
+                ================================================== -->
 
                 <div class="nav-dropdown">
+
 
                     <a
                         href="supply.html"
@@ -74,28 +548,37 @@
                         Supply
                     </a>
 
+
                     <div class="nav-dropdown-menu">
+
 
                         <a href="models.html">
                             Models
                         </a>
 
+
                         <a href="armoury.html">
                             Armoury
                         </a>
+
 
                         <a href="hanger.html">
                             Hanger
                         </a>
 
+
                     </div>
+
 
                 </div>
 
 
-                <!-- COLLECTION ARCHIVE -->
+                <!-- =================================================
+                     COLLECTION ARCHIVE
+                ================================================== -->
 
                 <div class="nav-dropdown">
+
 
                     <a
                         href="archive.html"
@@ -104,20 +587,27 @@
                         Collection Archive
                     </a>
 
+
                     <div class="nav-dropdown-menu">
+
 
                         <a href="archive.html">
                             Collection Archive
                         </a>
 
+
                     </div>
+
 
                 </div>
 
 
-                <!-- UPDATES -->
+                <!-- =================================================
+                     UPDATES
+                ================================================== -->
 
                 <div class="nav-dropdown">
+
 
                     <a
                         href="releases.html"
@@ -126,20 +616,27 @@
                         Updates
                     </a>
 
+
                     <div class="nav-dropdown-menu">
+
 
                         <a href="releases.html">
                             Updates
                         </a>
 
+
                     </div>
+
 
                 </div>
 
 
-                <!-- ABOUT -->
+                <!-- =================================================
+                     ABOUT
+                ================================================== -->
 
                 <div class="nav-dropdown">
+
 
                     <a
                         href="about.html"
@@ -148,32 +645,41 @@
                         About
                     </a>
 
+
                     <div class="nav-dropdown-menu">
+
 
                         <a href="about.html">
                             About
                         </a>
 
+
                         <a href="contact.html">
                             Contact
                         </a>
 
+
                     </div>
+
 
                 </div>
 
 
             </nav>
 
+
         </div>
 
+
     </div>
+
 
 </header>
 
 
+
 <!-- =========================================================
-     MAIN CONTENT
+     MAIN
 ========================================================= -->
 
 <main>
@@ -185,22 +691,28 @@
 
     <section class="page-hero">
 
+
         <div class="container">
+
 
             <span class="section-kicker">
                 RAKETA DYNAMICS / MODELS
             </span>
 
+
             <h1>
                 Aircraft
             </h1>
+
 
             <p class="large-text">
                 Highly detailed aircraft replicas created for
                 collectors and aviation enthusiasts.
             </p>
 
+
         </div>
+
 
     </section>
 
@@ -212,18 +724,22 @@
 
     <section class="models-section">
 
+
         <div class="container">
 
 
             <div class="section-header">
 
+
                 <span class="section-kicker">
                     AIRCRAFT
                 </span>
 
+
                 <h2>
                     Aircraft
                 </h2>
+
 
             </div>
 
@@ -231,38 +747,46 @@
             <div class="models-grid">
 
 
-                <!-- MIG-21 -->
+                <!-- MIG-21UPG -->
 
                 <article class="model-card">
+
 
                     <a
                         href="mig-21-bison.html"
                         class="model-card-image"
                     >
 
+
                         <img
                             src="wip.png"
                             alt="MiG-21UPG CU2777 No. 23 Squadron Panthers"
                         >
+
 
                     </a>
 
 
                     <div class="model-card-content">
 
+
                         <h3>
                             MiG-21UPG
                         </h3>
+
 
                         <p>
                             'CU2777' No. 23 Squadron "Panthers"
                         </p>
 
+
                         <span>
                             Sept 2025
                         </span>
 
+
                     </div>
+
 
                 </article>
 
@@ -272,38 +796,48 @@
 
                 <article class="model-card">
 
+
                     <div class="model-card-image">
+
 
                         <img
                             src="WIPwhite.png"
                             alt="Sukhoi Su-30MKI SB232 No. 220 Squadron Desert Tigers"
                         >
 
+
                     </div>
 
 
                     <div class="model-card-content">
 
+
                         <h3>
                             Sukhoi Su-30MKI
                         </h3>
+
 
                         <p>
                             'SB232' No. 220 Squadron "Desert Tigers"
                         </p>
 
+
                         <span>
                             May 2025
                         </span>
 
+
                     </div>
+
 
                 </article>
 
 
             </div>
 
+
         </div>
+
 
     </section>
 
@@ -315,18 +849,22 @@
 
     <section class="models-section">
 
+
         <div class="container">
 
 
             <div class="section-header">
 
+
                 <span class="section-kicker">
                     GROUND VEHICLES
                 </span>
 
+
                 <h2>
                     Ground vehicles
                 </h2>
+
 
             </div>
 
@@ -338,38 +876,48 @@
 
                 <article class="model-card">
 
+
                     <div class="model-card-image">
+
 
                         <img
                             src="wip.png"
                             alt="51P6A Bhuj"
                         >
 
+
                     </div>
 
 
                     <div class="model-card-content">
 
+
                         <h3>
                             51P6A
                         </h3>
+
 
                         <p>
                             'Bhuj'
                         </p>
 
+
                         <span>
                             May 2025
                         </span>
 
+
                     </div>
+
 
                 </article>
 
 
             </div>
 
+
         </div>
+
 
     </section>
 
@@ -381,18 +929,22 @@
 
     <section class="models-section">
 
+
         <div class="container">
 
 
             <div class="section-header">
 
+
                 <span class="section-kicker">
                     HELICOPTERS
                 </span>
 
+
                 <h2>
                     Helicopters
                 </h2>
+
 
             </div>
 
@@ -400,34 +952,42 @@
             <div class="models-grid">
 
 
-                <!-- WIP -->
+                <!-- WORK IN PROGRESS -->
 
                 <article class="model-card">
 
+
                     <div class="model-card-image">
+
 
                         <img
                             src="WIPwhite.png"
                             alt="Raketa Dynamics helicopter project work in progress"
                         >
 
+
                     </div>
 
 
                     <div class="model-card-content">
 
+
                         <h3>
                             Work in Progress
                         </h3>
 
+
                     </div>
+
 
                 </article>
 
 
             </div>
 
+
         </div>
+
 
     </section>
 
@@ -442,6 +1002,7 @@
 
 <footer class="site-footer">
 
+
     <div class="container footer-grid">
 
 
@@ -449,15 +1010,18 @@
 
         <div>
 
+
             <a
                 href="index.html"
                 class="brand footer-brand"
             >
 
+
                 <img
                     src="logo.png"
                     alt="Raketa Dynamics"
                 >
+
 
             </a>
 
@@ -467,6 +1031,7 @@
                 and aviation enthusiasts.
             </p>
 
+
         </div>
 
 
@@ -475,41 +1040,51 @@
 
         <div class="footer-links">
 
+
             <a href="index.html">
                 Home
             </a>
+
 
             <a href="supply.html">
                 Supply
             </a>
 
+
             <a href="models.html">
                 Models
             </a>
+
 
             <a href="armoury.html">
                 Armoury
             </a>
 
+
             <a href="hanger.html">
                 Hanger
             </a>
+
 
             <a href="archive.html">
                 Collection Archive
             </a>
 
+
             <a href="releases.html">
                 Updates
             </a>
+
 
             <a href="about.html">
                 About
             </a>
 
+
             <a href="contact.html">
                 Contact
             </a>
+
 
         </div>
 
@@ -519,13 +1094,16 @@
 
         <div class="footer-contact">
 
+
             <span>
                 CONTACT
             </span>
 
+
             <a href="mailto:Raketadynamicsmodels@gmail.com">
                 Raketadynamicsmodels@gmail.com
             </a>
+
 
         </div>
 
@@ -538,13 +1116,16 @@
 
     <div class="container footer-bottom">
 
+
         <span>
             © 2026 Raketa Dynamics
         </span>
 
+
         <span>
             Berkshire, United Kingdom
         </span>
+
 
     </div>
 
