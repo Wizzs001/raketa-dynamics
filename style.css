@@ -2538,3 +2538,1010 @@ button:focus-visible {
         transition: none; 
     } 
 }
+/* =========================================================
+   COLLECTION ARCHIVE / TECH TREE
+========================================================= */
+
+.archive-page {
+    background: #050605;
+}
+
+
+/* =========================================================
+   ARCHIVE SELECTOR
+========================================================= */
+
+.archive-selector {
+    min-height: calc(100vh - var(--header-height));
+
+    padding: 110px 0 120px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(168, 154, 114, 0.08),
+            transparent 42%
+        ),
+        #070807;
+}
+
+
+.archive-selector-intro {
+    width: min(
+        calc(100% - 48px),
+        var(--max-width)
+    );
+
+    margin: 0 auto 65px;
+}
+
+
+.archive-selector-intro h1 {
+    margin-top: 15px;
+
+    font-size:
+        clamp(
+            52px,
+            7vw,
+            100px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+}
+
+
+.archive-selector-intro p {
+    max-width: 650px;
+
+    margin-top: 25px;
+
+    color: var(--text-muted);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   THREE LARGE SELECTORS
+========================================================= */
+
+.archive-tree-selectors {
+    width: min(
+        calc(100% - 48px),
+        1500px
+    );
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 2px;
+
+    background: var(--line);
+}
+
+
+.archive-selector-card {
+    position: relative;
+
+    min-height: 620px;
+
+    overflow: hidden;
+
+    background: #090a09;
+
+    border: 1px solid var(--line);
+
+    isolation: isolate;
+}
+
+
+.archive-selector-image {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -3;
+
+    background: #000;
+}
+
+
+.archive-selector-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0.42;
+
+    transform: scale(1.02);
+
+    transition:
+        transform 0.7s ease,
+        opacity 0.7s ease;
+}
+
+
+.archive-selector-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.75) 65%,
+            rgba(0, 0, 0, 0.96)
+        );
+
+    transition:
+        background 0.5s ease;
+}
+
+
+.archive-selector-card:hover .archive-selector-image img {
+    transform: scale(1.07);
+
+    opacity: 0.65;
+}
+
+
+.archive-selector-card:hover .archive-selector-overlay {
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.10),
+            rgba(0, 0, 0, 0.62) 60%,
+            rgba(0, 0, 0, 0.95)
+        );
+}
+
+
+.archive-selector-content {
+    height: 100%;
+
+    min-height: 620px;
+
+    padding: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+}
+
+
+.archive-selector-content > span {
+    color: var(--accent-light);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+}
+
+
+.archive-selector-content h2 {
+    margin-top: 12px;
+
+    font-size:
+        clamp(
+            42px,
+            4vw,
+            68px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.045em;
+}
+
+
+.archive-selector-content p {
+    max-width: 300px;
+
+    margin-top: 18px;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.archive-selector-content strong {
+    display: inline-block;
+
+    margin-top: 28px;
+
+    color: var(--text);
+
+    font-size: 9px;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   FULLSCREEN TREE
+========================================================= */
+
+.archive-fullscreen-tree {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        120px
+        0
+        180px;
+
+    background: #050605;
+
+    border-top: 1px solid var(--line);
+
+    scroll-margin-top: var(--header-height);
+}
+
+
+.archive-models-tree {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(168, 154, 114, 0.065),
+            transparent 35%
+        ),
+        #050605;
+}
+
+
+.archive-hanger-tree {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(193, 181, 142, 0.05),
+            transparent 35%
+        ),
+        #070807;
+}
+
+
+.archive-armoury-tree {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255, 255, 255, 0.035),
+            transparent 35%
+        ),
+        #040504;
+}
+
+
+/* =========================================================
+   TREE HEADER
+========================================================= */
+
+.archive-tree-header {
+    width: min(
+        calc(100% - 48px),
+        var(--max-width)
+    );
+
+    margin: 0 auto 100px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.archive-tree-header h2 {
+    margin-top: 12px;
+
+    font-size:
+        clamp(
+            55px,
+            8vw,
+            110px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.06em;
+}
+
+
+.archive-tree-close {
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+
+    transition:
+        color var(--transition-fast);
+}
+
+
+.archive-tree-close:hover {
+    color: var(--text);
+}
+
+
+/* =========================================================
+   TECH TREE
+========================================================= */
+
+.tech-tree {
+    width: min(
+        calc(100% - 48px),
+        1450px
+    );
+
+    margin: 0 auto;
+}
+
+
+.tree-start-node {
+    width: 250px;
+
+    margin: 0 auto;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background: #0c0e0c;
+
+    border: 1px solid var(--line-strong);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.tree-start-node span,
+.tree-category-node span,
+.tree-country > span,
+.tree-manufacturer span,
+.tree-model span {
+    display: block;
+
+    color: var(--accent-light);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+}
+
+
+.tree-start-node strong {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    letter-spacing: 0.08em;
+}
+
+
+.tree-vertical-line {
+    width: 1px;
+
+    height: 70px;
+
+    margin: 0 auto;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--line-strong),
+            rgba(168, 154, 114, 0.55)
+        );
+}
+
+
+/* =========================================================
+   CATEGORY ROW
+========================================================= */
+
+.tree-category-row {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 40px;
+}
+
+
+.tree-category-row::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 16.66%;
+
+    right: 16.66%;
+
+    height: 1px;
+
+    background: var(--line-strong);
+}
+
+
+.tree-category-node {
+    position: relative;
+
+    padding: 28px 25px;
+
+    background: #0b0d0b;
+
+    border: 1px solid var(--line);
+}
+
+
+.tree-category-node::before {
+    content: "";
+
+    position: absolute;
+
+    top: -1px;
+
+    left: 50%;
+
+    width: 1px;
+
+    height: 25px;
+
+    background: var(--line-strong);
+}
+
+
+.tree-category-node strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 19px;
+
+    font-weight: 500;
+
+    letter-spacing: -0.02em;
+}
+
+
+.tree-branch-line {
+    width: 1px;
+
+    height: 70px;
+
+    margin: 0 auto;
+
+    background: var(--line-strong);
+}
+
+
+/* =========================================================
+   TREE SECTION
+========================================================= */
+
+.tree-section {
+    margin-top: 100px;
+
+    padding-top: 50px;
+
+    border-top: 1px solid var(--line);
+}
+
+
+.tree-section-title {
+    margin-bottom: 45px;
+
+    text-align: center;
+}
+
+
+.tree-section-title span {
+    color: var(--accent-light);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+}
+
+
+.tree-country-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 2px;
+
+    background: var(--line);
+}
+
+
+.tree-country {
+    position: relative;
+
+    padding: 35px;
+
+    background: #090b09;
+
+    border: 1px solid var(--line);
+}
+
+
+.tree-country > strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 28px;
+
+    font-weight: 500;
+
+    letter-spacing: -0.035em;
+}
+
+
+.tree-country-line {
+    width: 100%;
+
+    height: 1px;
+
+    margin: 25px 0;
+
+    background: var(--line);
+}
+
+
+.tree-manufacturer {
+    padding-left: 20px;
+
+    border-left: 1px solid var(--line-strong);
+}
+
+
+.tree-manufacturer strong {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 17px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   MODEL NODE
+========================================================= */
+
+.tree-model {
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns: 130px 1fr;
+
+    gap: 20px;
+
+    align-items: center;
+
+    padding: 15px;
+
+    background: #050605;
+
+    border: 1px solid var(--line);
+}
+
+
+.tree-model-image {
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: #000;
+}
+
+
+.tree-model-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0.65;
+}
+
+
+.tree-model strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 23px;
+
+    font-weight: 500;
+
+    letter-spacing: -0.025em;
+}
+
+
+/* =========================================================
+   RELEASE BRANCHES
+========================================================= */
+
+.tree-releases {
+    position: relative;
+
+    margin-top: 35px;
+
+    margin-left: 65px;
+
+    padding-left: 30px;
+
+    border-left: 1px solid var(--line-strong);
+}
+
+
+.release-node {
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    padding: 15px 0;
+
+    min-height: 75px;
+}
+
+
+.release-dot {
+    position: absolute;
+
+    left: -36px;
+
+    top: 24px;
+
+    width: 11px;
+
+    height: 11px;
+
+    border-radius: 50%;
+
+    background: #777;
+
+    border: 2px solid #050605;
+}
+
+
+.release-node strong {
+    display: block;
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.03em;
+}
+
+
+.release-node span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+.release-node small {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   COLLECTION LINES
+========================================================= */
+
+.silver-line .release-dot {
+    background: #aeb3b1;
+
+    box-shadow:
+        0 0 12px
+        rgba(190, 195, 193, 0.25);
+}
+
+
+.silver-line small {
+    color: #aeb3b1;
+}
+
+
+.gold-line .release-dot {
+    background: #c8ad62;
+
+    box-shadow:
+        0 0 14px
+        rgba(200, 173, 98, 0.35);
+}
+
+
+.gold-line small {
+    color: #c8ad62;
+}
+
+
+.black-line .release-dot {
+    background: #050505;
+
+    border-color: #777;
+
+    box-shadow:
+        0 0 14px
+        rgba(255, 255, 255, 0.12);
+}
+
+
+.black-line small {
+    color: #bcbdb8;
+}
+
+
+.white-line .release-dot {
+    background: #fff;
+
+    box-shadow:
+        0 0 18px
+        rgba(255, 255, 255, 0.55);
+}
+
+
+.white-line small {
+    color: #fff;
+}
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.archive-line-legend {
+    margin-top: 100px;
+
+    padding-top: 30px;
+
+    border-top: 1px solid var(--line);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+}
+
+
+.archive-line-legend > span {
+    width: 100%;
+
+    text-align: center;
+
+    color: var(--accent-light);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+}
+
+
+.line-legend-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--text-muted);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+}
+
+
+.line-legend-item i {
+    width: 22px;
+
+    height: 2px;
+
+    display: block;
+}
+
+
+.line-legend-item.silver-line i {
+    background: #aeb3b1;
+}
+
+
+.line-legend-item.gold-line i {
+    background: #c8ad62;
+}
+
+
+.line-legend-item.black-line i {
+    background: #555;
+}
+
+
+.line-legend-item.white-line i {
+    background: #fff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .archive-tree-selectors {
+        grid-template-columns: 1fr;
+    }
+
+
+    .archive-selector-card,
+    .archive-selector-content {
+        min-height: 460px;
+    }
+
+
+    .tree-category-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tree-category-row::before {
+        display: none;
+    }
+
+
+    .tree-country-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .archive-selector {
+        padding-top: 80px;
+    }
+
+
+    .archive-selector-intro {
+        width: min(
+            calc(100% - 32px),
+            var(--max-width)
+        );
+    }
+
+
+    .archive-tree-selectors {
+        width: min(
+            calc(100% - 32px),
+            1500px
+        );
+    }
+
+
+    .archive-selector-content {
+        padding: 25px;
+    }
+
+
+    .archive-fullscreen-tree {
+        padding-top: 90px;
+    }
+
+
+    .archive-tree-header {
+        width: min(
+            calc(100% - 32px),
+            var(--max-width)
+        );
+
+        margin-bottom: 70px;
+    }
+
+
+    .tech-tree {
+        width: min(
+            calc(100% - 32px),
+            1450px
+        );
+    }
+
+
+    .tree-model {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tree-releases {
+        margin-left: 25px;
+    }
+
+
+    .archive-line-legend {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
