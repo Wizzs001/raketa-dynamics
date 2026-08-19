@@ -183,8 +183,6 @@ section {
 }
 
 .nav-container {
-    position: relative;
-
     min-height: var(--header-height);
 
     display: flex;
@@ -214,17 +212,20 @@ section {
 .brand img {
     display: block;
 
-    /*
-       Slightly enlarged from the original.
-    */
-
-    width: 76px;
+    width: 118px;
 
     height: auto;
 
-    max-height: 42px;
+    max-height: 52px;
 
     object-fit: contain;
+
+    transition:
+        transform var(--transition-fast);
+}
+
+.brand:hover img {
+    transform: scale(1.02);
 }
 
 
@@ -241,7 +242,7 @@ section {
     gap: 38px;
 
     margin-left: auto;
-    margin-right: 4px;
+    margin-right: 10px;
 }
 
 .main-navigation a {
@@ -251,18 +252,11 @@ section {
 
     align-items: center;
 
-    justify-content: center;
-
     padding: 8px 0;
 
     color: var(--text-muted);
 
-    /*
-       Slightly larger than before.
-    */
-
-    font-size: 12px;
-
+    font-size: 13px;
     font-weight: 600;
 
     letter-spacing: 0.08em;
@@ -348,32 +342,26 @@ section {
 
 /* =========================================================
    SUBMENU / MEGA NAVIGATION
-=========================================================
+========================================================= */
 
+/*
    IMPORTANT:
 
-   The old version used a large independent grid.
+   The original submenu was built as four independent
+   columns with visible headings.
 
-   This version intentionally does NOT.
+   This version treats the submenu as an extension of the
+   main toolbar.
 
-   The submenu is positioned underneath the actual
-   top toolbar and its columns line up with:
+   The four existing HTML columns are positioned beneath:
 
-       Home
-       Supply
-       Collection Archive
-       Updates
-       About
+       Supply          Collection Archive   Updates   About
 
-   Only Supply and About contain links.
-========================================================= */
+   Home intentionally has nothing beneath it.
+*/
 
 .mega-navigation {
     position: absolute;
-
-    /*
-       Start directly beneath the main toolbar.
-    */
 
     top: var(--header-height);
 
@@ -383,55 +371,79 @@ section {
 
     z-index: 10001;
 
-    /*
-       Smaller translucent grey panel.
-    */
+    background: transparent;
 
-    background: rgba(39, 42, 39, 0.88);
-
-    backdrop-filter: blur(18px) saturate(110%);
-    -webkit-backdrop-filter: blur(18px) saturate(110%);
-
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.06);
-
-    border-bottom:
-        1px solid
-        rgba(255, 255, 255, 0.14);
-
-    /*
-       Animation.
-    */
+    border: 0;
 
     opacity: 0;
 
     visibility: hidden;
 
     transform:
-        translateY(-10px);
+        translateY(-10px)
+        scaleY(0.96);
+
+    transform-origin: top center;
 
     transition:
-        opacity 0.24s ease,
-        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-        visibility 0.24s ease;
+        opacity 0.22s ease,
+        visibility 0.22s ease,
+        transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 
     pointer-events: none;
-
-    /*
-       Keeps it visually above all page content.
-    */
-
-    box-shadow:
-        0 18px 45px
-        rgba(0, 0, 0, 0.38);
 }
 
 
 /*
-   Open the submenu when the header is hovered
-   or focused.
+   The actual grey panel.
+
+   It begins after the logo area, so there is deliberately
+   no submenu panel underneath Home.
 */
+
+.mega-navigation::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: max(
+        calc((100% - var(--max-width)) / 2 + 135px),
+        135px
+    );
+
+    right: max(
+        calc((100% - var(--max-width)) / 2),
+        24px
+    );
+
+    height: 145px;
+
+    background:
+        rgba(39, 42, 39, 0.91);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.42);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 0 0 3px 3px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   OPEN SUBMENU
+========================================================= */
 
 .site-header:hover .mega-navigation,
 .site-header:focus-within .mega-navigation {
@@ -440,34 +452,21 @@ section {
     visibility: visible;
 
     transform:
-        translateY(0);
+        translateY(0)
+        scaleY(1);
 
     pointer-events: auto;
 }
 
 
 /* =========================================================
-   SUBMENU INNER ALIGNMENT
+   SUBMENU CONTENT
 ========================================================= */
 
 .mega-navigation-inner {
-    /*
-       Same horizontal structure as the main nav.
+    position: relative;
 
-       The logo occupies the left side.
-       The navigation occupies the right side.
-
-       This is what keeps "Models" underneath
-       "Supply" rather than somewhere on the left.
-    */
-
-    display: grid;
-
-    grid-template-columns:
-        76px
-        1fr;
-
-    gap: 30px;
+    z-index: 2;
 
     width: min(
         calc(100% - 48px),
@@ -477,89 +476,97 @@ section {
     margin-left: auto;
     margin-right: auto;
 
-    padding-top: 14px;
-    padding-bottom: 16px;
-}
-
-
-/*
-   Empty logo column.
-
-   This intentionally preserves alignment with
-   the top navigation.
-*/
-
-.mega-navigation-inner::before {
-    content: "";
-
-    display: block;
-}
-
-
-/* =========================================================
-   SUBMENU NAVIGATION COLUMNS
-========================================================= */
-
-.mega-navigation-column {
-    min-width: 0;
-
-    display: flex;
-
-    align-items: flex-start;
-
-    /*
-       Five equal positions corresponding to
-       the five real top-toolbar headings.
-    */
-
-    justify-content: flex-end;
-
-    gap: 38px;
-}
-
-
-/*
-   Each column now represents the exact position
-   of its corresponding main-navigation item.
-
-   Empty columns remain empty.
-*/
-
-.mega-navigation-column {
     display: grid;
 
-    grid-template-columns:
-        1fr
-        1fr
-        1fr
-        1fr
-        1fr;
+    /*
+       Empty Home column
+       Supply
+       Collection Archive
+       Updates
+       About
+    */
 
-    align-items: start;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        minmax(0, 1fr);
 
     gap: 38px;
+
+    padding-top: 22px;
+    padding-bottom: 25px;
+
+    min-height: 145px;
 }
 
 
 /* =========================================================
-   SUBMENU HEADING
-=========================================================
-
-   Headings are hidden.
-
-   The user specifically wanted:
-
-       Supply
-         Models
-         Armoury
-         Hanger
-
-   rather than a second "SUPPLY" heading.
-
+   POSITION EXISTING HTML COLUMNS
 ========================================================= */
+
+/*
+   Existing HTML order is:
+
+   1. Supply
+   2. Collection Archive
+   3. Updates
+   4. About
+
+   We deliberately leave column 1 empty for Home.
+*/
+
+.mega-navigation-column:nth-child(1) {
+    grid-column: 2;
+}
+
+.mega-navigation-column:nth-child(2) {
+    grid-column: 3;
+}
+
+.mega-navigation-column:nth-child(3) {
+    grid-column: 4;
+}
+
+.mega-navigation-column:nth-child(4) {
+    grid-column: 5;
+}
+
+
+/* =========================================================
+   HIDE OLD SUBMENU HEADINGS
+========================================================= */
+
+/*
+   This is the key fix.
+
+   There should NOT be another large "SUPPLY",
+   "COLLECTION ARCHIVE", "UPDATES" or "ABOUT"
+   heading inside the dropdown.
+*/
 
 .mega-navigation-heading {
     display: none;
+}
+
+
+/* =========================================================
+   SUBMENU COLUMNS
+========================================================= */
+
+.mega-navigation-column {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: flex-start;
+
+    gap: 9px;
+
+    min-width: 0;
 }
 
 
@@ -570,233 +577,63 @@ section {
 .mega-navigation-column a {
     position: relative;
 
-    display: block;
+    display: inline-block;
+
+    width: max-content;
+    max-width: 100%;
+
+    padding: 0;
 
     color: var(--text-muted);
 
-    /*
-       Same family / visual language as main toolbar,
-       but slightly smaller.
-    */
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 10px;
+    font-size: 11px;
 
     font-weight: 600;
 
     letter-spacing: 0.08em;
 
-    line-height: 1.35;
+    line-height: 1.45;
 
     text-transform: uppercase;
 
     white-space: nowrap;
 
-    opacity: 0.92;
-
     transition:
         color var(--transition-fast),
-        transform var(--transition-fast),
-        opacity var(--transition-fast);
+        transform var(--transition-fast);
 }
 
 .mega-navigation-column a:hover,
 .mega-navigation-column a:focus-visible {
     color: var(--text);
 
-    opacity: 1;
-
-    transform:
-        translateY(-1px);
+    transform: translateX(4px);
 }
 
-
-/*
-   Small accent line on hover.
-*/
-
-.mega-navigation-column a::after {
+.mega-navigation-column a::before {
     content: "";
 
     position: absolute;
 
-    left: 0;
-    bottom: -4px;
+    left: -9px;
+
+    top: 50%;
 
     width: 0;
-
     height: 1px;
 
     background: var(--accent);
+
+    transform:
+        translateY(-50%);
 
     transition:
         width var(--transition-fast);
 }
 
-.mega-navigation-column a:hover::after,
-.mega-navigation-column a:focus-visible::after {
-    width: 100%;
-}
-
-
-/* =========================================================
-   POSITION THE SUBMENU ITEMS
-=========================================================
-
-   Because the HTML uses separate columns, the CSS below
-   places the actual links underneath their parent.
-
-   Supply = position 2
-   About  = position 5
-========================================================= */
-
-
-/*
-   Hide the first empty slot.
-
-   Home has no submenu.
-*/
-
-.mega-navigation-column a:nth-child(1) {
-    grid-column: 2;
-}
-
-
-/*
-   If the Supply links are all present, stack them
-   directly underneath Supply.
-*/
-
-.mega-navigation-column a[href="models.html"] {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.mega-navigation-column a[href="armoury.html"] {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-.mega-navigation-column a[href="hanger.html"] {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-
-/*
-   Collection Archive has no submenu.
-   Updates has no submenu.
-*/
-
-
-/*
-   About / Contact.
-
-   Contact is positioned directly underneath
-   About at the far-right navigation position.
-*/
-
-.mega-navigation-column a[href="contact.html"] {
-    grid-column: 5;
-    grid-row: 1;
-}
-
-
-/* =========================================================
-   PREVENT UNWANTED COLUMN HEADING BEHAVIOUR
-========================================================= */
-
-.mega-navigation-column > .mega-navigation-heading {
-    display: none;
-}
-
-
-/* =========================================================
-   SUPPLY / ABOUT SUBMENU VERTICAL STACK
-========================================================= */
-
-.mega-navigation-column:has(a[href="models.html"]) {
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr
-        1fr
-        1fr
-        1fr;
-
-    grid-template-rows:
-        auto
-        auto
-        auto;
-
-    row-gap: 8px;
-
-    align-items: start;
-}
-
-
-/*
-   Put all Supply links in the same horizontal
-   navigation position.
-*/
-
-.mega-navigation-column:has(a[href="models.html"]) a[href="models.html"],
-.mega-navigation-column:has(a[href="models.html"]) a[href="armoury.html"],
-.mega-navigation-column:has(a[href="models.html"]) a[href="hanger.html"] {
-    grid-column: 2;
-}
-
-
-/*
-   About submenu.
-*/
-
-.mega-navigation-column:has(a[href="contact.html"]) {
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr
-        1fr
-        1fr
-        1fr;
-
-    align-items: start;
-}
-
-
-/* =========================================================
-   FALLBACK FOR BROWSERS WITHOUT :has()
-========================================================= */
-
-@supports not selector(:has(*)) {
-
-    .mega-navigation-inner {
-        display: grid;
-
-        grid-template-columns:
-            76px
-            1fr;
-    }
-
-    .mega-navigation-column {
-        display: flex;
-
-        flex-direction: row;
-
-        justify-content: flex-end;
-
-        gap: 38px;
-    }
-
-    .mega-navigation-column a {
-        flex: 0 0 auto;
-    }
+.mega-navigation-column a:hover::before,
+.mega-navigation-column a:focus-visible::before {
+    width: 4px;
 }
 
 
@@ -808,7 +645,11 @@ section {
     position: relative;
 
     width: 100%;
-    height: calc(100vh - var(--header-height));
+
+    height:
+        calc(
+            100vh - var(--header-height)
+        );
 
     min-height: 650px;
 
@@ -1152,7 +993,12 @@ section {
 .hero h1 {
     max-width: 980px;
 
-    font-size: clamp(60px, 9vw, 128px);
+    font-size:
+        clamp(
+            60px,
+            9vw,
+            128px
+        );
 
     font-weight: 500;
 
@@ -1320,7 +1166,12 @@ section {
 .intro-content h2 {
     margin-bottom: 28px;
 
-    font-size: clamp(42px, 6vw, 78px);
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            78px
+        );
 
     font-weight: 500;
 
@@ -1380,7 +1231,12 @@ section {
 .section-heading h2 {
     margin-top: 12px;
 
-    font-size: clamp(42px, 5vw, 68px);
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            68px
+        );
 
     font-weight: 500;
 
@@ -1637,7 +1493,12 @@ section {
 .archive-introduction h2 {
     margin-top: 15px;
 
-    font-size: clamp(44px, 5vw, 72px);
+    font-size:
+        clamp(
+            44px,
+            5vw,
+            72px
+        );
 
     font-weight: 500;
 
@@ -1784,7 +1645,12 @@ section {
 }
 
 .about-grid h2 {
-    font-size: clamp(44px, 5vw, 72px);
+    font-size:
+        clamp(
+            44px,
+            5vw,
+            72px
+        );
 
     font-weight: 500;
 
@@ -1841,7 +1707,12 @@ section {
 .contact-content h2 {
     margin-top: 18px;
 
-    font-size: clamp(46px, 6vw, 82px);
+    font-size:
+        clamp(
+            46px,
+            6vw,
+            82px
+        );
 
     font-weight: 500;
 
@@ -1892,7 +1763,12 @@ section {
 
     margin-top: 14px;
 
-    font-size: clamp(52px, 7vw, 92px);
+    font-size:
+        clamp(
+            52px,
+            7vw,
+            92px
+        );
 
     font-weight: 500;
 
@@ -1933,7 +1809,12 @@ section {
 .model-branch-title h2 {
     margin: 0;
 
-    font-size: clamp(36px, 4vw, 54px);
+    font-size:
+        clamp(
+            36px,
+            4vw,
+            54px
+        );
 
     font-weight: 500;
 
@@ -1961,7 +1842,9 @@ section {
 
     overflow: hidden;
 
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
 
     cursor: pointer;
 
@@ -1974,7 +1857,8 @@ section {
 }
 
 .model-item:hover {
-    border-color: rgba(193, 181, 142, 0.42);
+    border-color:
+        rgba(193, 181, 142, 0.42);
 
     transform: translateY(-2px);
 }
@@ -2261,7 +2145,9 @@ section {
 
 a:focus-visible,
 button:focus-visible {
-    outline: 1px solid var(--accent-light);
+    outline:
+        1px solid
+        var(--accent-light);
 
     outline-offset: 4px;
 }
@@ -2278,19 +2164,23 @@ button:focus-visible {
     }
 
     .main-navigation a {
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .mega-navigation-inner {
-        grid-template-columns:
-            76px
-            1fr;
-
-        gap: 24px;
+        gap: 22px;
     }
 
-    .mega-navigation-column {
-        gap: 24px;
+    .mega-navigation-column a {
+        font-size: 10px;
+    }
+
+    .mega-navigation::before {
+        left:
+            max(
+                calc((100% - var(--max-width)) / 2 + 115px),
+                115px
+            );
     }
 
     .archive-grid {
@@ -2342,14 +2232,14 @@ button:focus-visible {
 
         flex-wrap: wrap;
 
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 12px;
+        padding-bottom: 12px;
     }
 
     .brand img {
-        width: 64px;
+        width: 88px;
 
-        max-height: 36px;
+        max-height: 42px;
     }
 
     .main-navigation {
@@ -2389,47 +2279,67 @@ button:focus-visible {
         top: var(--header-height);
 
         max-height:
-            calc(100vh - var(--header-height));
+            calc(
+                100vh -
+                var(--header-height)
+            );
 
         overflow-y: auto;
     }
 
+    .mega-navigation::before {
+        left: 16px;
+
+        right: 16px;
+
+        height: auto;
+
+        min-height: 150px;
+    }
+
     .mega-navigation-inner {
-        display: block;
+        width:
+            calc(
+                100% - 32px
+            );
 
-        width: min(
-            calc(100% - 32px),
-            var(--max-width)
-        );
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
 
-        padding-top: 18px;
-        padding-bottom: 20px;
+        gap: 14px;
+
+        padding-top: 20px;
+        padding-bottom: 25px;
+
+        min-height: 150px;
     }
 
-    .mega-navigation-inner::before {
-        display: none;
+    /*
+       On mobile the Home space is still preserved.
+    */
+
+    .mega-navigation-column:nth-child(1) {
+        grid-column: 1;
     }
 
-    .mega-navigation-column {
-        display: flex;
+    .mega-navigation-column:nth-child(2) {
+        grid-column: 2;
+    }
 
-        flex-direction: column;
+    .mega-navigation-column:nth-child(3) {
+        grid-column: 3;
+    }
 
-        align-items: flex-start;
-
-        gap: 8px;
+    .mega-navigation-column:nth-child(4) {
+        grid-column: 4;
     }
 
     .mega-navigation-column a {
-        font-size: 10px;
-    }
+        font-size: 8px;
 
-    .mega-navigation-column a[href="models.html"],
-    .mega-navigation-column a[href="armoury.html"],
-    .mega-navigation-column a[href="hanger.html"],
-    .mega-navigation-column a[href="contact.html"] {
-        grid-column: auto;
-        grid-row: auto;
+        letter-spacing: 0.06em;
+
+        white-space: normal;
     }
 
 
@@ -2611,15 +2521,31 @@ button:focus-visible {
 @media (max-width: 480px) {
 
     .brand img {
-        width: 58px;
+        width: 76px;
 
-        max-height: 32px;
+        max-height: 36px;
     }
 
     .mega-navigation-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
 
-        gap: 30px;
+        gap: 8px;
+    }
+
+    .mega-navigation::before {
+        left: 10px;
+        right: 10px;
+    }
+
+    .mega-navigation-column {
+        gap: 7px;
+    }
+
+    .mega-navigation-column a {
+        font-size: 7px;
+
+        line-height: 1.35;
     }
 
     .hero {
