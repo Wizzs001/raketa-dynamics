@@ -21,13 +21,22 @@
 
 </head>
 
+
 <body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header class="site-header">
 
     <div class="nav-main">
 
         <div class="container nav-container">
+
+
+            <!-- LOGO -->
 
             <a
                 href="index.html"
@@ -42,29 +51,30 @@
             </a>
 
 
+            <!-- MAIN NAVIGATION -->
+
             <nav class="main-navigation">
 
 
                 <!-- HOME -->
 
-                <div class="nav-item">
-
-                    <a href="index.html">
-                        Home
-                    </a>
-
-                </div>
+                <a href="index.html">
+                    Home
+                </a>
 
 
                 <!-- SUPPLY -->
 
-                <div class="nav-item nav-item-dropdown">
+                <div class="nav-dropdown">
 
-                    <a href="supply.html">
+                    <a
+                        href="supply.html"
+                        class="nav-parent"
+                    >
                         Supply
                     </a>
 
-                    <div class="nav-dropdown">
+                    <div class="nav-dropdown-menu">
 
                         <a href="models.html">
                             Models
@@ -85,35 +95,60 @@
 
                 <!-- COLLECTION ARCHIVE -->
 
-                <div class="nav-item">
+                <div class="nav-dropdown">
 
-                    <a href="archive.html">
+                    <a
+                        href="archive.html"
+                        class="nav-parent"
+                    >
                         Collection Archive
                     </a>
+
+                    <div class="nav-dropdown-menu">
+
+                        <a href="archive.html">
+                            Collection Archive
+                        </a>
+
+                    </div>
 
                 </div>
 
 
                 <!-- UPDATES -->
 
-                <div class="nav-item">
+                <div class="nav-dropdown">
 
-                    <a href="releases.html">
+                    <a
+                        href="releases.html"
+                        class="nav-parent"
+                    >
                         Updates
                     </a>
+
+                    <div class="nav-dropdown-menu">
+
+                        <a href="releases.html">
+                            Updates
+                        </a>
+
+                    </div>
 
                 </div>
 
 
                 <!-- ABOUT -->
 
-                <div class="nav-item nav-item-dropdown">
+                <div class="nav-dropdown">
 
-                    <a href="about.html">
+                    <a
+                        href="about.html"
+                        class="nav-parent"
+                    >
                         About
                     </a>
 
-                    <div class="nav-dropdown">
+                    <div class="nav-dropdown-menu">
 
                         <a href="about.html">
                             About
@@ -137,252 +172,268 @@
 </header>
 
 
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
 <main>
 
 
-<!-- =========================================================
-     PAGE HERO
-========================================================= -->
+    <!-- =====================================================
+         PAGE HERO
+    ====================================================== -->
 
-<section class="page-hero">
+    <section class="page-hero">
 
-    <div class="container">
-
-        <span class="section-kicker">
-            RAKETA DYNAMICS / MODELS
-        </span>
-
-        <h1>
-            Aircraft
-        </h1>
-
-        <p class="large-text">
-            Highly detailed aircraft replicas created for
-            collectors and aviation enthusiasts.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     AIRCRAFT
-========================================================= -->
-
-<section class="models-section">
-
-    <div class="container">
-
-        <div class="section-header">
+        <div class="container">
 
             <span class="section-kicker">
-                AIRCRAFT
+                RAKETA DYNAMICS / MODELS
             </span>
 
-            <h2>
+            <h1>
                 Aircraft
-            </h2>
+            </h1>
+
+            <p class="large-text">
+                Highly detailed aircraft replicas created for
+                collectors and aviation enthusiasts.
+            </p>
 
         </div>
 
+    </section>
 
-        <div class="models-grid">
 
 
-            <!-- MIG-21UPG -->
+    <!-- =====================================================
+         AIRCRAFT
+    ====================================================== -->
 
-            <article class="model-card">
+    <section class="models-section">
 
-                <a
-                    href="mig-21-bison.html"
-                    class="model-card-image"
-                >
+        <div class="container">
 
-                    <img
-                        src="wip.png"
-                        alt="MiG-21UPG CU2777 No. 23 Squadron Panthers"
+
+            <div class="section-header">
+
+                <span class="section-kicker">
+                    AIRCRAFT
+                </span>
+
+                <h2>
+                    Aircraft
+                </h2>
+
+            </div>
+
+
+            <div class="models-grid">
+
+
+                <!-- MIG-21 -->
+
+                <article class="model-card">
+
+                    <a
+                        href="mig-21-bison.html"
+                        class="model-card-image"
                     >
 
-                </a>
+                        <img
+                            src="wip.png"
+                            alt="MiG-21UPG CU2777 No. 23 Squadron Panthers"
+                        >
 
-                <div class="model-card-content">
-
-                    <h3>
-                        MiG-21UPG
-                    </h3>
-
-                    <p>
-                        'CU2777' No. 23 Squadron "Panthers"
-                    </p>
-
-                    <span>
-                        Sept 2025
-                    </span>
-
-                </div>
-
-            </article>
+                    </a>
 
 
-            <!-- SU-30MKI -->
+                    <div class="model-card-content">
 
-            <article class="model-card">
+                        <h3>
+                            MiG-21UPG
+                        </h3>
 
-                <div class="model-card-image">
+                        <p>
+                            'CU2777' No. 23 Squadron "Panthers"
+                        </p>
 
-                    <img
-                        src="WIPwhite.png"
-                        alt="Sukhoi Su-30MKI SB232 No. 220 Squadron Desert Tigers"
-                    >
+                        <span>
+                            Sept 2025
+                        </span>
 
-                </div>
+                    </div>
 
-                <div class="model-card-content">
-
-                    <h3>
-                        Sukhoi Su-30MKI
-                    </h3>
-
-                    <p>
-                        'SB232' No. 220 Squadron "Desert Tigers"
-                    </p>
-
-                    <span>
-                        May 2025
-                    </span>
-
-                </div>
-
-            </article>
+                </article>
 
 
-        </div>
 
-    </div>
+                <!-- SU-30MKI -->
 
-</section>
+                <article class="model-card">
+
+                    <div class="model-card-image">
+
+                        <img
+                            src="WIPwhite.png"
+                            alt="Sukhoi Su-30MKI SB232 No. 220 Squadron Desert Tigers"
+                        >
+
+                    </div>
 
 
-<!-- =========================================================
-     GROUND VEHICLES
-========================================================= -->
+                    <div class="model-card-content">
 
-<section class="models-section">
+                        <h3>
+                            Sukhoi Su-30MKI
+                        </h3>
 
-    <div class="container">
+                        <p>
+                            'SB232' No. 220 Squadron "Desert Tigers"
+                        </p>
 
-        <div class="section-header">
+                        <span>
+                            May 2025
+                        </span>
 
-            <span class="section-kicker">
-                GROUND VEHICLES
-            </span>
+                    </div>
 
-            <h2>
-                Ground vehicles
-            </h2>
+                </article>
+
+
+            </div>
 
         </div>
 
-
-        <div class="models-grid">
-
-
-            <!-- 51P6A -->
-
-            <article class="model-card">
-
-                <div class="model-card-image">
-
-                    <img
-                        src="wip.png"
-                        alt="51P6A Bhuj"
-                    >
-
-                </div>
-
-                <div class="model-card-content">
-
-                    <h3>
-                        51P6A
-                    </h3>
-
-                    <p>
-                        'Bhuj'
-                    </p>
-
-                    <span>
-                        May 2025
-                    </span>
-
-                </div>
-
-            </article>
+    </section>
 
 
-        </div>
 
-    </div>
+    <!-- =====================================================
+         GROUND VEHICLES
+    ====================================================== -->
 
-</section>
+    <section class="models-section">
 
-
-<!-- =========================================================
-     HELICOPTERS
-========================================================= -->
-
-<section class="models-section">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-kicker">
-                HELICOPTERS
-            </span>
-
-            <h2>
-                Helicopters
-            </h2>
-
-        </div>
+        <div class="container">
 
 
-        <div class="models-grid">
+            <div class="section-header">
+
+                <span class="section-kicker">
+                    GROUND VEHICLES
+                </span>
+
+                <h2>
+                    Ground vehicles
+                </h2>
+
+            </div>
 
 
-            <!-- WORK IN PROGRESS -->
+            <div class="models-grid">
 
-            <article class="model-card">
 
-                <div class="model-card-image">
+                <!-- 51P6A -->
 
-                    <img
-                        src="WIPwhite.png"
-                        alt="Raketa Dynamics helicopter project work in progress"
-                    >
+                <article class="model-card">
 
-                </div>
+                    <div class="model-card-image">
 
-                <div class="model-card-content">
+                        <img
+                            src="wip.png"
+                            alt="51P6A Bhuj"
+                        >
 
-                    <h3>
-                        Work in Progress
-                    </h3>
+                    </div>
 
-                </div>
 
-            </article>
+                    <div class="model-card-content">
 
+                        <h3>
+                            51P6A
+                        </h3>
+
+                        <p>
+                            'Bhuj'
+                        </p>
+
+                        <span>
+                            May 2025
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+
+
+    <!-- =====================================================
+         HELICOPTERS
+    ====================================================== -->
+
+    <section class="models-section">
+
+        <div class="container">
+
+
+            <div class="section-header">
+
+                <span class="section-kicker">
+                    HELICOPTERS
+                </span>
+
+                <h2>
+                    Helicopters
+                </h2>
+
+            </div>
+
+
+            <div class="models-grid">
+
+
+                <!-- WIP -->
+
+                <article class="model-card">
+
+                    <div class="model-card-image">
+
+                        <img
+                            src="WIPwhite.png"
+                            alt="Raketa Dynamics helicopter project work in progress"
+                        >
+
+                    </div>
+
+
+                    <div class="model-card-content">
+
+                        <h3>
+                            Work in Progress
+                        </h3>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
 
 
 </main>
+
 
 
 <!-- =========================================================
@@ -393,6 +444,8 @@
 
     <div class="container footer-grid">
 
+
+        <!-- FOOTER BRAND -->
 
         <div>
 
@@ -408,6 +461,7 @@
 
             </a>
 
+
             <p>
                 Highly detailed aircraft replicas for collectors
                 and aviation enthusiasts.
@@ -415,6 +469,9 @@
 
         </div>
 
+
+
+        <!-- FOOTER LINKS -->
 
         <div class="footer-links">
 
@@ -457,6 +514,9 @@
         </div>
 
 
+
+        <!-- FOOTER CONTACT -->
+
         <div class="footer-contact">
 
             <span>
@@ -473,6 +533,9 @@
     </div>
 
 
+
+    <!-- FOOTER BOTTOM -->
+
     <div class="container footer-bottom">
 
         <span>
@@ -484,6 +547,7 @@
         </span>
 
     </div>
+
 
 </footer>
 
