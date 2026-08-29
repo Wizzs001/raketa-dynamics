@@ -5058,3 +5058,55 @@ button:focus-visible {
     border-color: var(--accent, #d4af37);
     transform: scale(1.2);
 }
+
+/* ==========================================================================
+   SOVIET PROGRAM TYPOGRAPHY — SUPPLY, MODELS, HANGER & ARMOURY
+   ========================================================================== */
+
+/* 1. Large Supply Card Headings (MODELS, ARMOURY, HANGER) */
+.supply-card h2,
+.supply-card h3,
+.supply-card-title,
+.supply-card .title,
+.archive-division-card h2,
+.archive-division-card h3,
+.division-card h2,
+.division-card h3 {
+    font-family: 'Soviet Program', 'Space Grotesk', 'Rajdhani', sans-serif;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* 2. Card Numbers (01, 02, 03) */
+.supply-card-number,
+.archive-card-number,
+.division-card-number {
+    font-family: 'Soviet Program', 'Share Tech Mono', monospace, sans-serif;
+    letter-spacing: 0.05em;
+}
+
+/* 3. Section Subheadings across Supply, Models, Hanger, and Armoury */
+.section-header h2,
+.section-header h3,
+.section-title,
+.models-section h2,
+.hanger-section h2,
+.armoury-section h2,
+.models-header h2,
+.hanger-header h2,
+.armoury-header h2 {
+    font-family: 'Soviet Program', 'Space Grotesk', 'Rajdhani', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+/* 4. Descriptions, Details, and Action Links */
+.supply-card p,
+.supply-card-description,
+.supply-card-link,
+.models-section p,
+.hanger-section p,
+.armoury-section p,
+.section-header p {
+    font-family: 'Soviet Program', 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+}
