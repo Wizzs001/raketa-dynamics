@@ -4939,16 +4939,13 @@ button:focus-visible {
 }
 
 /* ==========================================================================
-   PAGE HERO SLIDESHOW (Increased Brightness & Visibility)
+   PAGE HERO SLIDESHOW (Preserves Original Sizing & Spacing)
    ========================================================================== */
 
+/* Only add relative positioning so the background images sit inside */
 .page-hero {
     position: relative;
     overflow: hidden;
-    background: #050605;
-    min-height: 420px;
-    display: flex;
-    align-items: center;
 }
 
 /* 1. Slideshow background container */
@@ -4962,7 +4959,7 @@ button:focus-visible {
     overflow: hidden;
 }
 
-/* 2. Individual slide images */
+/* 2. Slide images */
 .hero-slide-image {
     position: absolute;
     inset: 0;
@@ -4974,12 +4971,11 @@ button:focus-visible {
     transition: opacity 0.8s ease-in-out;
 }
 
-/* Increased from 0.35 to 0.65 for much clearer visibility */
 .hero-slide-image.is-active {
-    opacity: 0.65;
+    opacity: 0.55;
 }
 
-/* 3. Lighter overlay so the image shows through clearly */
+/* 3. Dark overlay */
 .page-hero-overlay {
     position: absolute;
     inset: 0;
@@ -4989,29 +4985,27 @@ button:focus-visible {
     pointer-events: none;
     background: linear-gradient(
         to right,
-        rgba(5, 6, 5, 0.82) 0%,
+        rgba(5, 6, 5, 0.85) 0%,
         rgba(5, 6, 5, 0.45) 50%,
-        rgba(5, 6, 5, 0.20) 100%
+        rgba(5, 6, 5, 0.15) 100%
     ),
     linear-gradient(
         to bottom,
-        rgba(5, 6, 5, 0.15) 0%,
+        rgba(5, 6, 5, 0.10) 0%,
         rgba(5, 6, 5, 0.70) 100%
     );
 }
 
-/* 4. Text container */
-.page-hero .container {
+/* 4. Keeps your original container, text, and headings intact and on top */
+.page-hero > *:not(.page-hero-slideshow):not(.page-hero-overlay):not(.page-hero-dots) {
     position: relative;
     z-index: 3;
-    background: transparent;
-    width: 100%;
 }
 
-/* 5. Clickable slideshow dots */
+/* 5. Slideshow dots */
 .page-hero-dots {
     position: absolute;
-    bottom: 24px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -5020,8 +5014,8 @@ button:focus-visible {
 }
 
 .page-hero-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.25);
     border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.2));
