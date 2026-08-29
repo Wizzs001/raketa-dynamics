@@ -4995,3 +4995,8 @@ button:focus-visible {
 .page-hero-dot.is-active {
     background: var(--accent-light);
 }
+
+.page-hero {
+    position: relative;
+    overflow: hidden;
+}
