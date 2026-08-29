@@ -4939,13 +4939,21 @@ button:focus-visible {
 }
 
 /* ==========================================================================
-   PAGE HERO SLIDESHOW (Preserves Original Sizing & Spacing)
+   PAGE HERO SLIDESHOW & TYPOGRAPHY ADJUSTMENTS
    ========================================================================== */
 
-/* Only add relative positioning so the background images sit inside */
+/* Completely hide the small yellow kickers across all pages */
+.section-kicker,
+.supply-card-kicker,
+.hero-kicker {
+    display: none !important;
+}
+
+/* Page Hero Container */
 .page-hero {
     position: relative;
     overflow: hidden;
+    padding: 130px 0 60px; /* Refined compact spacing */
 }
 
 /* 1. Slideshow background container */
@@ -4975,7 +4983,7 @@ button:focus-visible {
     opacity: 0.55;
 }
 
-/* 3. Dark overlay */
+/* 3. Dark editorial overlay */
 .page-hero-overlay {
     position: absolute;
     inset: 0;
@@ -4996,13 +5004,30 @@ button:focus-visible {
     );
 }
 
-/* 4. Keeps your original container, text, and headings intact and on top */
+/* 4. Hero Content & Soviet Program Typography */
 .page-hero > *:not(.page-hero-slideshow):not(.page-hero-overlay):not(.page-hero-dots) {
     position: relative;
     z-index: 3;
 }
 
-/* 5. Slideshow dots */
+.page-hero h1 {
+    font-family: 'Soviet Program', 'Space Grotesk', 'Rajdhani', sans-serif;
+    font-size: clamp(36px, 4.2vw, 56px); /* Scaled down to prevent oversized text */
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+}
+
+.page-hero .large-text {
+    font-family: 'Soviet Program', 'Space Grotesk', sans-serif;
+    font-size: clamp(15px, 1.2vw, 18px); /* Natural, proportional reading size */
+    line-height: 1.6;
+    max-width: 640px;
+    color: var(--text-muted, #a0a5a0);
+}
+
+/* 5. Slideshow navigation dots */
 .page-hero-dots {
     position: absolute;
     bottom: 20px;
