@@ -372,7 +372,7 @@ section {
  
     position: absolute; 
  
-    top: calc(100% + 13px); 
+    top: 100%; 
  
     left: 50%; 
  
@@ -394,7 +394,7 @@ section {
  
     min-width: 110px; 
  
-    padding: 2px 8px 8px; 
+    padding: 15px 8px 8px; 
  
     opacity: 0; 
  
@@ -410,15 +410,15 @@ section {
  
  
 /* ========================================================= 
-   OPEN ALL DROPDOWNS WHEN HOVERING THE HEADER
+   OPEN ONLY THE DROPDOWN YOU'RE HOVERING
 ========================================================= */ 
  
-.site-header:hover .supply-dropdown, 
-.site-header:hover .updates-dropdown, 
-.site-header:hover .about-dropdown, 
-.site-header:focus-within .supply-dropdown, 
-.site-header:focus-within .updates-dropdown, 
-.site-header:focus-within .about-dropdown { 
+.site-navigation-supply:hover .supply-dropdown, 
+.site-navigation-updates:hover .updates-dropdown, 
+.site-navigation-about:hover .about-dropdown, 
+.site-navigation-supply:focus-within .supply-dropdown, 
+.site-navigation-updates:focus-within .updates-dropdown, 
+.site-navigation-about:focus-within .about-dropdown { 
  
     opacity: 1; 
  
