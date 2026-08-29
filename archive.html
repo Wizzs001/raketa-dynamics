@@ -171,6 +171,13 @@
 
 <section class="page-hero">
 
+    <div class="page-hero-slideshow">
+        <img src="wip.png" class="hero-slide-image is-active" alt="">
+        <img src="WIPwhite.png" class="hero-slide-image" alt="">
+    </div>
+
+    <div class="page-hero-overlay"></div>
+
     <div class="container">
 
         <span class="section-kicker">
@@ -182,10 +189,15 @@
         </h1>
 
         <p class="large-text">
-            A visual record of every Raketa Dynamics release,
-            organised into three independent collections.
+            A visual record of every Raketa Dynamics release, organised into
+            three independent collections.
         </p>
 
+    </div>
+
+    <div class="page-hero-dots">
+        <button class="page-hero-dot is-active" data-slide-index="0" aria-label="Show image 1"></button>
+        <button class="page-hero-dot" data-slide-index="1" aria-label="Show image 2"></button>
     </div>
 
 </section>
@@ -511,6 +523,7 @@
 </footer>
 
 
+<script src="hero-slideshow.js"></script>
 </body>
 
 </html>
