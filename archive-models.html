@@ -14,6 +14,185 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <style>
+
+        /* =========================================================
+           RAKETA DYNAMICS — MODELS TECHTREE
+           ========================================================= */
+
+        .models-techtree-page {
+            width: 100%;
+            background: #101210;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .techtree-stage {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 50px);
+            min-height: 791px;
+            overflow: hidden;
+            background: #101210;
+        }
+
+        .techtree-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        /* =========================================================
+           CONNECTION LINES
+           ========================================================= */
+
+        .techtree-line {
+            fill: none;
+            stroke: #3c3a5d;
+            stroke-width: 7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* =========================================================
+           PRODUCT NODES
+           ========================================================= */
+
+        .techtree-node {
+            position: absolute;
+            width: 75px;
+            height: 30px;
+
+            background: #3c3a5d;
+
+            box-sizing: border-box;
+
+            cursor: pointer;
+
+            transition:
+                transform 180ms ease,
+                background 180ms ease;
+        }
+
+        .techtree-node:hover {
+            transform: scale(1.04);
+            background: #48466d;
+        }
+
+        .techtree-node::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 39px;
+
+            width: 75px;
+            height: 30px;
+
+            background: #3c3a5d;
+
+            transition: background 180ms ease;
+        }
+
+        .techtree-node:hover::after {
+            background: #48466d;
+        }
+
+        /* =========================================================
+           NODE POSITIONS
+           Coordinate system: 1211 × 791
+           ========================================================= */
+
+        .node-01 {
+            left: 31px;
+            top: 362px;
+        }
+
+        .node-02 {
+            left: 139px;
+            top: 442px;
+        }
+
+        .node-03 {
+            left: 251px;
+            top: 442px;
+        }
+
+        .node-04 {
+            left: 398px;
+            top: 417px;
+        }
+
+        .node-05 {
+            left: 437px;
+            top: 302px;
+        }
+
+        .node-06 {
+            left: 542px;
+            top: 282px;
+        }
+
+        .node-07 {
+            left: 627px;
+            top: 349px;
+        }
+
+        .node-08 {
+            left: 772px;
+            top: 309px;
+        }
+
+        .node-09 {
+            left: 776px;
+            top: 112px;
+        }
+
+        .node-10 {
+            left: 998px;
+            top: 355px;
+        }
+
+        /* =========================================================
+           ARCHIVE TREE
+           ========================================================= */
+
+        .archive-tree-section {
+            position: relative;
+            width: 100%;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .techtree-stage {
+                min-height: 650px;
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
+
+            .techtree-svg {
+                width: 1211px;
+                height: 791px;
+                min-width: 1211px;
+            }
+
+            .techtree-node {
+                transform-origin: center;
+            }
+
+            .techtree-node:hover {
+                transform: scale(1.04);
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -50,10 +229,177 @@
 
 
 <!-- =====================================================
-     TREE
+     MODELS TECHTREE
 ====================================================== -->
 
-<main class="tech-tree">
+<main class="models-techtree-page">
+
+    <section class="techtree-stage">
+
+
+        <!-- =================================================
+             SVG CONNECTION SYSTEM
+        ================================================== -->
+
+        <svg
+            class="techtree-svg"
+            viewBox="0 0 1211 791"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+
+            <!-- =================================================
+                 UPPER LEFT BRANCH
+            ================================================== -->
+
+            <polyline
+                class="techtree-line"
+                points="
+                    644,4
+                    473,120
+                    473,242
+                "
+            />
+
+            <polyline
+                class="techtree-line"
+                points="
+                    473,120
+                    763,122
+                "
+            />
+
+
+            <!-- =================================================
+                 UPPER RIGHT BRANCH
+            ================================================== -->
+
+            <polyline
+                class="techtree-line"
+                points="
+                    844,3
+                    1029,182
+                    1029,333
+                "
+            />
+
+
+            <!-- =================================================
+                 CENTRAL / LEFT BRANCH
+            ================================================== -->
+
+            <polyline
+                class="techtree-line"
+                points="
+                    473,241
+                    219,284
+                    219,435
+                "
+            />
+
+            <polyline
+                class="techtree-line"
+                points="
+                    219,360
+                    117,394
+                "
+            />
+
+
+            <!-- =================================================
+                 CENTRAL BRANCH
+            ================================================== -->
+
+            <polyline
+                class="techtree-line"
+                points="
+                    473,241
+                    473,288
+                    577,265
+                "
+            />
+
+        </svg>
+
+
+
+        <!-- =====================================================
+             PRODUCT NODES
+        ===================================================== -->
+
+        <div
+            class="techtree-node node-01"
+            data-product="01"
+            aria-label="Model 01"
+        ></div>
+
+        <div
+            class="techtree-node node-02"
+            data-product="02"
+            aria-label="Model 02"
+        ></div>
+
+        <div
+            class="techtree-node node-03"
+            data-product="03"
+            aria-label="Model 03"
+        ></div>
+
+        <div
+            class="techtree-node node-04"
+            data-product="04"
+            aria-label="Model 04"
+        ></div>
+
+        <div
+            class="techtree-node node-05"
+            data-product="05"
+            aria-label="Model 05"
+        ></div>
+
+        <div
+            class="techtree-node node-06"
+            data-product="06"
+            aria-label="Model 06"
+        ></div>
+
+        <div
+            class="techtree-node node-07"
+            data-product="07"
+            aria-label="Model 07"
+        ></div>
+
+        <div
+            class="techtree-node node-08"
+            data-product="08"
+            aria-label="Model 08"
+        ></div>
+
+        <div
+            class="techtree-node node-09"
+            data-product="09"
+            aria-label="Model 09"
+        ></div>
+
+        <div
+            class="techtree-node node-10"
+            data-product="10"
+            aria-label="Model 10"
+        ></div>
+
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     ORIGINAL ARCHIVE TREE
+====================================================== -->
+
+<main class="tech-tree archive-tree-section">
 
 
     <div class="tree-intro">
