@@ -13,7 +13,7 @@
 <body>
 
 <!-- =====================================================
-     HEADER
+     FIXED HEADER
 ====================================================== -->
 <header class="site-header">
     <div class="nav-container">
@@ -33,21 +33,22 @@
                 </div>
             </div>
 
-            <a href="archive.html" class="site-navigation-link">COLLECTION ARCHIVE</a>
+            <a href="archive.html" class="site-navigation-link active">COLLECTION ARCHIVE</a>
 
             <div class="site-navigation-item site-navigation-updates">
                 <a href="releases.html" class="site-navigation-link">UPDATES</a>
                 <div class="updates-dropdown">
                     <a href="releases.html" class="dropdown-navigation-link">RELEASES</a>
-                </div>
-            </div>
-
-            <div class="site-navigation-item site-navigation-about">
-                <a href="about.html" class="site-navigation-link">ABOUT</a>
-                <div class="about-dropdown">
+                    <a href="about.html" class="dropdown-navigation-link">ABOUT</a>
                     <a href="contact.html" class="dropdown-navigation-link">CONTACT</a>
                 </div>
             </div>
+
+            <a href="lines.html" class="site-navigation-link">LINES</a>
+
+            <button class="nav-cart-btn" type="button" onclick="toggleCart()">
+                CART (<span id="cart-counter">0</span>)
+            </button>
         </nav>
     </div>
 </header>
@@ -74,7 +75,7 @@
         </div>
     </section>
 
-    <!-- ARCHIVE TABS & FILTER DASHBOARD (FROM YOUR SKETCH) -->
+    <!-- ARCHIVE TABS & FILTER DASHBOARD -->
     <section class="archive-dashboard-section">
         <div class="container">
             
@@ -144,7 +145,6 @@
                     <h2>AEROSPACE & VEHICLE LINEAGE TREE</h2>
                 </div>
 
-                <!-- BRANCHING TREE FROM YOUR SKETCH -->
                 <div class="archive-tree-wrapper">
                     <div class="tree-root-box">
                         <span class="tree-node-title">FLANKER / SUKHOI PLATFORM</span>
@@ -231,7 +231,7 @@
                 </div>
             </div>
 
-            <!-- TAB 2: ARMOURY (1:1 REPLICAS) -->
+            <!-- TAB 2: ARMOURY -->
             <div id="tab-content-armoury" class="archive-tab-pane">
                 <div class="techtree-header">
                     <span class="techtree-tag">1:1 ARMOURY CATALOGUE</span>
@@ -259,7 +259,7 @@
                 </div>
             </div>
 
-            <!-- TAB 3: HANGER (COCKPIT & PANELS) -->
+            <!-- TAB 3: HANGER -->
             <div id="tab-content-hanger" class="archive-tab-pane">
                 <div class="techtree-header">
                     <span class="techtree-tag">HANGER SIMULATOR SYSTEMS</span>
@@ -314,6 +314,7 @@
             <a href="releases.html">Updates</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
+            <a href="lines.html">Lines</a>
         </div>
 
         <div class="footer-contact">
@@ -328,21 +329,36 @@
     </div>
 </footer>
 
+<!-- SHOPPING CART SLIDE-OUT DRAWER -->
+<div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+        <h3>ACQUISITION CART</h3>
+        <button class="cart-close-btn" type="button" onclick="toggleCart()">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items-container"></div>
+    <div class="cart-footer">
+        <div class="cart-total-row">
+            <span>SUBTOTAL</span>
+            <span id="cart-total">£0.00</span>
+        </div>
+        <button class="cart-checkout-btn" type="button" onclick="alert('Checkout integration in progress.')">PROCEED TO ACQUISITION</button>
+    </div>
+</div>
+<div id="cart-backdrop" class="cart-backdrop" onclick="toggleCart()"></div>
+
 <script src="hero-slideshow.js"></script>
+<script src="cart.js"></script>
 
 <!-- TAB SWITCHING & FILTERING SCRIPT -->
 <script>
-    // Tab switching
     const tabBtns = document.querySelectorAll('.archive-tab-btn');
     const tabPanes = document.querySelectorAll('.archive-tab-pane');
 
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const targetTab = btn.dataset.tab;
-
             tabBtns.forEach(b => b.classList.remove('is-active'));
             tabPanes.forEach(p => p.classList.remove('is-active'));
-
             btn.classList.add('is-active');
             const activePane = document.getElementById(`tab-content-${targetTab}`);
             if (activePane) activePane.classList.add('is-active');
@@ -350,7 +366,6 @@
         });
     });
 
-    // Real-time filtering
     const filterType = document.getElementById('filter-type');
     const filterCountry = document.getElementById('filter-country');
     const filterLine = document.getElementById('filter-line');
@@ -364,9 +379,7 @@
         const activePane = document.querySelector('.archive-tab-pane.is-active');
         if (!activePane) return;
 
-        const cards = activePane.querySelectorAll('.archive-node-card');
-
-        cards.forEach(card => {
+        activePane.querySelectorAll('.archive-node-card').forEach(card => {
             const cType = card.dataset.type;
             const cCountry = card.dataset.country;
             const cLine = card.dataset.line;
@@ -375,13 +388,7 @@
             const matchCountry = (selectedCountry === 'all' || selectedCountry === cCountry);
             const matchLine = (selectedLine === 'all' || selectedLine === cLine);
 
-            if (matchType && matchCountry && matchLine) {
-                card.style.display = 'block';
-                card.style.opacity = '1';
-            } else {
-                card.style.display = 'none';
-                card.style.opacity = '0';
-            }
+            card.style.display = (matchType && matchCountry && matchLine) ? 'block' : 'none';
         });
     }
 
