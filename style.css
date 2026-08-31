@@ -5947,3 +5947,27 @@ button:focus-visible {
     .line-spec-row { grid-template-columns: 1fr; }
     .cart-drawer { width: 100%; right: -100%; }
 }
+
+/* ==========================================================================
+   SHOP TABS DISPLAY FIX (Hides Inactive Shop Panes)
+   ========================================================================== */
+
+.shop-tab-pane {
+    display: none !important;
+}
+
+.shop-tab-pane.is-active {
+    display: block !important;
+    animation: fadeInShop 0.35s ease;
+}
+
+@keyframes fadeInShop {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
