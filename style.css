@@ -5543,3 +5543,407 @@ button:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   SUPPLY SHOP — 3-COLUMN PRODUCTS & 5-LINE SYSTEM STYLING
+   ========================================================================== */
+
+/* Cart Button in Header */
+.nav-cart-btn {
+    background: #0d120d;
+    border: 1px solid var(--accent, #d4af37);
+    color: var(--accent, #d4af37);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 14px;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+}
+
+.nav-cart-btn:hover {
+    background: var(--accent, #d4af37);
+    color: #050605;
+}
+
+/* Sub-navigation Pills (Aircraft / Helicopters / Ground) */
+.sub-nav-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.sub-nav-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--line, rgba(255, 255, 255, 0.15));
+    color: var(--text-muted, #a0a5a0);
+    padding: 6px 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.sub-nav-pill:hover {
+    border-color: var(--accent, #d4af37);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.shop-subsection {
+    margin-bottom: 50px;
+}
+
+.subsection-header h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: 0.04em;
+    border-left: 3px solid var(--accent, #d4af37);
+    padding-left: 12px;
+}
+
+/* 3 Side-by-Side Product Cards Grid (Matching Attachment 2) */
+.shop-product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.shop-product-card {
+    position: relative;
+    background: #080a08;
+    border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.15));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.shop-product-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent, #d4af37);
+}
+
+/* Top Line Color Banner */
+.product-line-stripe {
+    height: 5px;
+    width: 100%;
+}
+
+.stripe-silver { background: #b0b5ba; }
+.stripe-squadron { background: #28a7b0; }
+.stripe-gold { background: #d4af37; }
+.stripe-white { background: #ffffff; }
+.stripe-black { background: #404540; border-bottom: 1px solid #707570; }
+
+.product-img-box {
+    background: #000000;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    overflow: hidden;
+}
+
+.product-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.85;
+}
+
+.product-info-box {
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-line-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.tag-silver { color: #b0b5ba; }
+.tag-squadron { color: #28a7b0; }
+.tag-gold { color: #d4af37; }
+.tag-white { color: #ffffff; }
+.tag-black { color: #ffffff; }
+
+.product-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    color: #eeeDE7;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.02em;
+}
+
+.product-spec {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 12.5px;
+    color: var(--text-muted, #a0a5a0);
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.product-buy-row {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.product-price {
+    font-family: 'Russo One', sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.btn-add-cart {
+    background: transparent;
+    border: 1px solid var(--accent, #d4af37);
+    color: var(--accent, #d4af37);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: all 0.2s ease;
+}
+
+.btn-add-cart:hover {
+    background: var(--accent, #d4af37);
+    color: #050605;
+}
+
+/* ==========================================================================
+   OFFICIAL LINES DOCUMENT PAGE (lines.html)
+   ========================================================================== */
+.lines-spec-section {
+    padding: 40px 0 80px;
+    background: #050605;
+}
+
+.lines-document-box {
+    background: #080a08;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 36px 30px;
+}
+
+.lines-doc-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 24px;
+}
+
+.lines-doc-brand {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.lines-doc-class {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--accent, #d4af37);
+    letter-spacing: 0.1em;
+}
+
+.line-spec-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 30px;
+    padding: 24px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    align-items: center;
+}
+
+.line-spec-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    font-style: italic;
+}
+
+.title-silver { color: #b0b5ba; }
+.title-squadron { color: #28a7b0; }
+.title-gold { color: #d4af37; }
+.title-white { color: #ffffff; }
+.title-black { color: #000000; }
+
+.line-black-row {
+    background: #ffffff;
+    color: #000000;
+}
+
+.line-black-row .line-spec-desc {
+    color: #111111;
+}
+
+.line-spec-desc {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    letter-spacing: 0.04em;
+}
+
+.lines-doc-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted, #a0a5a0);
+}
+
+.signature-mark {
+    font-family: 'Russo One', sans-serif;
+    font-style: italic;
+    color: var(--accent, #d4af37);
+}
+
+/* ==========================================================================
+   SHOPPING CART SLIDE-OUT DRAWER
+   ========================================================================== */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 380px;
+    height: 100vh;
+    background: #080a08;
+    border-left: 1px solid var(--line-strong, rgba(255, 255, 255, 0.2));
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 24px;
+}
+
+.cart-drawer.is-open {
+    right: 0;
+}
+
+.cart-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.cart-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.cart-header h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.cart-close-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.cart-items-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.cart-item-row {
+    background: #0e120e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item-row h4 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+}
+
+.cart-item-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--accent, #d4af37);
+}
+
+.cart-remove-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ff6b6b;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.cart-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 18px;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    background: var(--accent, #d4af37);
+    border: none;
+    color: #050605;
+    font-family: 'Russo One', sans-serif;
+    padding: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+}
+
+@media (max-width: 900px) {
+    .shop-product-grid { grid-template-columns: 1fr; }
+    .line-spec-row { grid-template-columns: 1fr; }
+    .cart-drawer { width: 100%; right: -100%; }
+}
