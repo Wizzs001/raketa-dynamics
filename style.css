@@ -6209,3 +6209,17 @@ body {
     border-color: #ffffff !important;
     color: #ffffff !important;
 }
+
+/* ==========================================================================
+   HIDE TAB NUMBERS (Clean "MODELS", "ARMOURY", "HANGER" Tabs)
+   ========================================================================== */
+
+.tab-code {
+    display: none !important;
+}
+
+.archive-tab-btn {
+    padding: 10px 22px !important;
+    text-align: center !important;
+    letter-spacing: 0.14em !important;
+}
