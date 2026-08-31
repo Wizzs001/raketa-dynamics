@@ -3,549 +3,528 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the Supply divisions of Raketa Dynamics — Models, Armoury and Hanger.">
-    <title>Raketa Dynamics | Supply</title>
+    <meta name="description" content="Raketa Dynamics Supply Shop — Scale Models, Cockpit Projects, and Replicas.">
+    <title>Supply — Raketa Dynamics</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="logo.png">
 </head>
-
 <body>
 
-<!-- =====================================================
-     HEADER
-====================================================== -->
-<header class="site-header">
-    <div class="nav-container">
-        
-        <a href="index.html" class="brand">
-            <img src="logo.png" alt="Raketa Dynamics">
-        </a>
-
-        <nav class="site-navigation" aria-label="Main navigation">
-            <a href="index.html" class="site-navigation-link">HOME</a>
-
-            <div class="site-navigation-item site-navigation-supply">
-                <a href="supply.html" class="site-navigation-link active">SUPPLY</a>
-                <div class="supply-dropdown">
-                    <a href="supply.html#models" class="dropdown-navigation-link" onclick="switchTab('models')">MODELS</a>
-                    <a href="supply.html#armoury" class="dropdown-navigation-link" onclick="switchTab('armoury')">ARMOURY</a>
-                    <a href="supply.html#hanger" class="dropdown-navigation-link" onclick="switchTab('hanger')">HANGER</a>
-                </div>
-            </div>
-
-            <a href="archive.html" class="site-navigation-link">COLLECTION ARCHIVE</a>
-
-            <div class="site-navigation-item site-navigation-updates">
-                <a href="releases.html" class="site-navigation-link">UPDATES</a>
-                <div class="updates-dropdown">
-                    <a href="releases.html" class="dropdown-navigation-link">RELEASES</a>
-                    <a href="about.html" class="dropdown-navigation-link">ABOUT</a>
-                    <a href="contact.html" class="dropdown-navigation-link">CONTACT</a>
-                </div>
-            </div>
-
-            <a href="lines.html" class="site-navigation-link">LINES</a>
-
-            <button class="nav-cart-btn" type="button" onclick="toggleCart()">
-                CART (<span id="cart-counter">0</span>)
-            </button>
-        </nav>
-    </div>
-</header>
-
-<!-- =====================================================
-     MAIN
-====================================================== -->
-<main>
-
-    <!-- SUPPLY HERO WITH SLIDESHOW -->
-    <section class="page-hero">
-        <div class="page-hero-slideshow">
-            <img class="hero-slide-image is-active" src="wip.png" alt="Raketa Dynamics">
-            <img class="hero-slide-image" src="WIPwhite.png" alt="Raketa Dynamics">
-        </div>
-        <div class="page-hero-overlay"></div>
-        <div class="container">
-            <h1>Supply</h1>
-            <p class="large-text">Scale models, cockpit projects, and full-scale replicas.</p>
-        </div>
-        <div class="page-hero-dots">
-            <button class="page-hero-dot is-active" type="button" aria-label="Slide 1"></button>
-            <button class="page-hero-dot" type="button" aria-label="Slide 2"></button>
-        </div>
-    </section>
-
-    <!-- SHOP DASHBOARD -->
-    <section class="supply-shop-section">
-        <div class="container">
-            
-            <!-- TOP CONTROLS: 3 TABS & FILTERS -->
-            <div class="archive-control-bar">
-                <div class="archive-tabs-wrapper">
-                    <button class="archive-tab-btn is-active" data-tab="models" onclick="switchTab('models')">
-                        <span class="tab-code">01</span>
-                        <span class="tab-name">MODELS</span>
-                    </button>
-                    <button class="archive-tab-btn" data-tab="armoury" onclick="switchTab('armoury')">
-                        <span class="tab-code">02</span>
-                        <span class="tab-name">ARMOURY</span>
-                    </button>
-                    <button class="archive-tab-btn" data-tab="hanger" onclick="switchTab('hanger')">
-                        <span class="tab-code">03</span>
-                        <span class="tab-name">HANGER</span>
-                    </button>
-                </div>
-
-                <!-- REAL-TIME FILTERS -->
-                <div class="archive-filter-panel">
-                    <div class="filter-group">
-                        <label for="filter-type">TYPE</label>
-                        <select id="filter-type" class="archive-select">
-                            <option value="all">ALL TYPES</option>
-                            <option value="aircraft">AIRCRAFT</option>
-                            <option value="helicopter">HELICOPTERS</option>
-                            <option value="ground">GROUND VEHICLES</option>
-                            <option value="weapon">WEAPONS / 1:1</option>
-                            <option value="cockpit">COCKPITS & PANELS</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-group">
-                        <label for="filter-country">COUNTRY</label>
-                        <select id="filter-country" class="archive-select">
-                            <option value="all">ALL COUNTRIES</option>
-                            <option value="poland">POLAND</option>
-                            <option value="india">INDIA</option>
-                            <option value="russia">RUSSIA</option>
-                            <option value="ukraine">UKRAINE</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-group">
-                        <label for="filter-line">LINE</label>
-                        <select id="filter-line" class="archive-select">
-                            <option value="all">ALL LINES</option>
-                            <option value="silver">SILVER LINE</option>
-                            <option value="squadron">SQUADRON LINE</option>
-                            <option value="gold">GOLD LINE</option>
-                            <option value="white">WHITE LINE</option>
-                            <option value="black">BLACK LINE</option>
-                        </select>
-                    </div>
-
-                    <button id="filter-reset-btn" class="archive-reset-btn" type="button" onclick="resetFilters()">RESET</button>
-                </div>
-            </div>
-
-            <!-- =====================================================
-                 TAB 1: MODELS (AIRCRAFT / HELICOPTERS / GROUND)
-            ====================================================== -->
-            <div id="shop-tab-models" class="shop-tab-pane is-active">
-                
-                <!-- Quick Jump Sub-bar -->
-                <div class="sub-nav-bar">
-                    <a href="#section-aircraft" class="sub-nav-pill">AIRCRAFT</a>
-                    <a href="#section-helicopters" class="sub-nav-pill">HELICOPTERS</a>
-                    <a href="#section-ground" class="sub-nav-pill">GROUND VEHICLES</a>
-                </div>
-
-                <!-- SUB-SECTION 1: AIRCRAFT -->
-                <div id="section-aircraft" class="shop-subsection">
-                    <div class="subsection-header">
-                        <h3>Aircraft</h3>
-                    </div>
-
-                    <div class="shop-product-grid">
-                        <div class="shop-product-card" data-type="aircraft" data-country="poland" data-line="gold">
-                            <div class="product-line-stripe stripe-gold"></div>
-                            <div class="product-img-box">
-                                <img src="wip.png" alt="Mig21Bis 9444 Polish Air Force 1992">
-                            </div>
-                            <div class="product-info-box">
-                                <div class="product-line-tag tag-gold">GOLD LINE</div>
-                                <h4 class="product-title">Mig21Bis '9444'</h4>
-                                <p class="product-spec">Polish Air Force 1992 — 1:48 Scale Replica</p>
-                                <div class="product-buy-row">
-                                    <span class="product-price">£185.00</span>
-                                    <button class="btn-add-cart" type="button" onclick="addToCart('Mig21Bis 9444 (Gold Line)', 185.00, 'Gold Line')">ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="shop-product-card" data-type="aircraft" data-country="poland" data-line="silver">
-                            <div class="product-line-stripe stripe-silver"></div>
-                            <div class="product-img-box">
-                                <img src="WIPwhite.png" alt="Mig21Bis 9444 Polish Air Force 1992">
-                            </div>
-                            <div class="product-info-box">
-                                <div class="product-line-tag tag-silver">SILVER LINE</div>
-                                <h4 class="product-title">Mig21Bis '9444'</h4>
-                                <p class="product-spec">Polish Air Force 1992 — Base Release</p>
-                                <div class="product-buy-row">
-                                    <span class="product-price">£135.00</span>
-                                    <button class="btn-add-cart" type="button" onclick="addToCart('Mig21Bis 9444 (Silver Line)', 135.00, 'Silver Line')">ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="shop-product-card" data-type="aircraft" data-country="india" data-line="black">
-                            <div class="product-line-stripe stripe-black"></div>
-                            <div class="product-img-box">
-                                <img src="wip.png" alt="SU-30MKI SB024 IAF">
-                            </div>
-                            <div class="product-info-box">
-                                <div class="product-line-tag tag-black">BLACK LINE</div>
-                                <h4 class="product-title">SU-30MKI 'SB024'</h4>
-                                <p class="product-spec">No. 220 Squadron — Exclusive Detail Edition</p>
-                                <div class="product-buy-row">
-                                    <span class="product-price">£290.00</span>
-                                    <button class="btn-add-cart" type="button" onclick="addToCart('SU-30MKI SB024 (Black Line)', 290.00, 'Black Line')">ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SUB-SECTION 2: HELICOPTERS -->
-                <div id="section-helicopters" class="shop-subsection">
-                    <div class="subsection-header">
-                        <h3>Helicopters</h3>
-                    </div>
-
-                    <div class="shop-product-grid">
-                        <div class="shop-product-card" data-type="helicopter" data-country="india" data-line="gold">
-                            <div class="product-line-stripe stripe-gold"></div>
-                            <div class="product-img-box">
-                                <img src="wip.png" alt="MI-17V5 No 155 HU">
-                            </div>
-                            <div class="product-info-box">
-                                <div class="product-line-tag tag-gold">GOLD LINE</div>
-                                <h4 class="product-title">MI-17V5 'No. 155 HU'</h4>
-                                <p class="product-spec">Op Sindoor Tactical Helicopter</p>
-                                <div class="product-buy-row">
-                                    <span class="product-price">£195.00</span>
-                                    <button class="btn-add-cart" type="button" onclick="addToCart('MI-17V5 No. 155 HU', 195.00, 'Gold Line')">ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="shop-product-card" data-type="helicopter" data-country="russia" data-line="squadron">
-                            <div class="product-line-stripe stripe-squadron"></div>
-                            <div class="product-img-box">
-                                <img src="WIPwhite.png" alt="KA-52 Alligator">
-                            </div>
-                            <div class="product-info-box">
-                                <div class="product-line-tag tag-squadron">SQUADRON LINE</div>
-                                <h4 class="product-title">KA-52 'Alligator'</h4>
-                                <p class="product-spec">Military Liaison Specification</p>
-                                <div class="product-buy-row">
-                                    <span class="product-price">£210.00</span>
-                                    <button class="btn-add-cart" type="button" onclick="addToCart('KA-52 Alligator', 210.00, 'Squadron Line')">ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="shop-product-card" data-type="helicopter" data-country="ukraine" data-line="white">
-                            <div class="product-line-stripe stripe-white"></div>
-                            <div class="product-img-box">
-                                <img src="wip.png" alt="MI-24P Hind-F">
-                            </div>
-                            <div class="product-info-box">
-                                <div class="product-line-tag tag-white">WHITE LINE</div>
-                                <h4 class="product-title">MI-24P 'Hind-F'</h4>
-                                <p class="product-spec">Ultra-Rare Exhibition Grade</p>
-                                <div class="product-buy-row">
-                                    <span class="product-price">£340.00</span>
-                                    <button class="btn-add-cart" type="button" onclick="addToCart('MI-24P Hind-F', 340.00, 'White Line')">ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SUB-SECTION 3: GROUND VEHICLES -->
-                <div id="section-ground" class="shop-subsection">
-                    <div class="subsection-header">
-                        <h3>Ground Vehicles</h3>
-                    </div>
-
-                    <div class="shop-product-grid">
-                        <div class="shop-product-card" data-type="ground" data-country="india" data-line="black">
-                            <div class="product-line-stripe stripe-black"></div>
-                            <div class="product-img-box">
-                                <img src="WIPwhite.png" alt="51P6A TEL Launcher">
-                            </div>
-                            <div class="product-info-box">
-                                <div class="product-line-tag tag-black">BLACK LINE</div>
-                                <h4 class="product-title">51P6A TEL Launcher</h4>
-                                <p class="product-spec">Bhuj Air Base Mobile Air Defence System</p>
-                                <div class="product-buy-row">
-                                    <span class="product-price">£220.00</span>
-                                    <button class="btn-add-cart" type="button" onclick="addToCart('51P6A TEL Launcher', 220.00, 'Black Line')">ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="shop-product-card" data-type="ground" data-country="russia" data-line="silver">
-                            <div class="product-line-stripe stripe-silver"></div>
-                            <div class="product-img-box">
-                                <img src="wip.png" alt="T-90M Main Battle Tank">
-                            </div>
-                            <div class="product-info-box">
-                                <div class="product-line-tag tag-silver">SILVER LINE</div>
-                                <h4 class="product-title">T-90M 'Proryv-3'</h4>
-                                <p class="product-spec">Armoured Heavy Vehicle Replica</p>
-                                <div class="product-buy-row">
-                                    <span class="product-price">£145.00</span>
-                                    <button class="btn-add-cart" type="button" onclick="addToCart('T-90M Proryv-3', 145.00, 'Silver Line')">ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- =====================================================
-                 TAB 2: ARMOURY (1:1 REPLICAS & WEAPONS)
-            ====================================================== -->
-            <div id="shop-tab-armoury" class="shop-tab-pane">
-                <div class="subsection-header">
-                    <h3>Armoury Collection</h3>
-                </div>
-
-                <div class="shop-product-grid">
-                    <div class="shop-product-card" data-type="weapon" data-country="russia" data-line="black">
-                        <div class="product-line-stripe stripe-black"></div>
-                        <div class="product-img-box">
-                            <img src="wip.png" alt="GSH-30-1 Autocannon">
-                        </div>
-                        <div class="product-info-box">
-                            <div class="product-line-tag tag-black">BLACK LINE</div>
-                            <h4 class="product-title">GSH-30-1 Autocannon (1:1)</h4>
-                            <p class="product-spec">30mm Aircraft Gun Full Metal Display</p>
-                            <div class="product-buy-row">
-                                <span class="product-price">£450.00</span>
-                                <button class="btn-add-cart" type="button" onclick="addToCart('GSH-30-1 Autocannon 1:1', 450.00, 'Black Line')">ADD TO CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-product-card" data-type="weapon" data-country="india" data-line="gold">
-                        <div class="product-line-stripe stripe-gold"></div>
-                        <div class="product-img-box">
-                            <img src="WIPwhite.png" alt="R-73 Archer Missile Body">
-                        </div>
-                        <div class="product-info-box">
-                            <div class="product-line-tag tag-gold">GOLD LINE</div>
-                            <h4 class="product-title">R-73 Seeker Head Section</h4>
-                            <p class="product-spec">1:1 Museum Grade Air-to-Air Ordnance</p>
-                            <div class="product-buy-row">
-                                <span class="product-price">£320.00</span>
-                                <button class="btn-add-cart" type="button" onclick="addToCart('R-73 Seeker Head 1:1', 320.00, 'Gold Line')">ADD TO CART</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- =====================================================
-                 TAB 3: HANGER (COCKPITS & PANELS)
-            ====================================================== -->
-            <div id="shop-tab-hanger" class="shop-tab-pane">
-                <div class="subsection-header">
-                    <h3>Hanger Simulator Systems</h3>
-                </div>
-
-                <div class="shop-product-grid">
-                    <div class="shop-product-card" data-type="cockpit" data-country="india" data-line="white">
-                        <div class="product-line-stripe stripe-white"></div>
-                        <div class="product-img-box">
-                            <img src="wip.png" alt="SU-30MKI Front IP Cockpit">
-                        </div>
-                        <div class="product-info-box">
-                            <div class="product-line-tag tag-white">WHITE LINE</div>
-                            <h4 class="product-title">SU-30MKI Front Cockpit IP</h4>
-                            <p class="product-spec">Active Backlit Multi-Function Display Bezels</p>
-                            <div class="product-buy-row">
-                                <span class="product-price">£780.00</span>
-                                <button class="btn-add-cart" type="button" onclick="addToCart('SU-30MKI Cockpit IP', 780.00, 'White Line')">ADD TO CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-product-card" data-type="cockpit" data-country="russia" data-line="black">
-                        <div class="product-line-stripe stripe-black"></div>
-                        <div class="product-img-box">
-                            <img src="WIPwhite.png" alt="SU-27 Left Throttle Quadrant">
-                        </div>
-                        <div class="product-info-box">
-                            <div class="product-line-tag tag-black">BLACK LINE</div>
-                            <h4 class="product-title">SU-27 Throttle Console</h4>
-                            <p class="product-spec">Weighted Dual-Engine Tactical Quadrant</p>
-                            <div class="product-buy-row">
-                                <span class="product-price">£390.00</span>
-                                <button class="btn-add-cart" type="button" onclick="addToCart('SU-27 Throttle Console', 390.00, 'Black Line')">ADD TO CART</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-</main>
-
-<!-- SHOPPING CART SLIDE-OUT DRAWER -->
-<div id="cart-drawer" class="cart-drawer">
-    <div class="cart-header">
-        <h3>ACQUISITION CART</h3>
-        <button class="cart-close-btn" type="button" onclick="toggleCart()">✕</button>
-    </div>
-    <div id="cart-items" class="cart-items-container">
-        <p class="cart-empty-msg">Your cart is currently empty.</p>
-    </div>
-    <div class="cart-footer">
-        <div class="cart-total-row">
-            <span>SUBTOTAL</span>
-            <span id="cart-total">£0.00</span>
-        </div>
-        <button class="cart-checkout-btn" type="button" onclick="alert('Checkout integration in progress.')">PROCEED TO ACQUISITION</button>
-    </div>
-</div>
-<div id="cart-backdrop" class="cart-backdrop" onclick="toggleCart()"></div>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-    <div class="container footer-grid">
-        <div>
-            <a href="index.html" class="brand footer-brand">
+    <!-- GLOBAL HEADER -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
                 <img src="logo.png" alt="Raketa Dynamics">
             </a>
-            <p>Highly detailed aircraft replicas for collectors and aviation enthusiasts.</p>
-        </div>
 
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="supply.html">Supply</a>
-            <a href="archive.html">Collection Archive</a>
-            <a href="releases.html">Releases</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="lines.html">Lines</a>
-        </div>
+            <nav class="site-navigation" aria-label="Main navigation">
+                <a href="index.html" class="site-navigation-link">HOME</a>
 
-        <div class="footer-contact">
-            <span>CONTACT</span>
-            <a href="mailto:Raketadynamicsmodels@gmail.com">Raketadynamicsmodels@gmail.com</a>
+                <div class="site-navigation-item site-navigation-supply">
+                    <a href="supply.html" class="site-navigation-link active">SUPPLY</a>
+                    <div class="supply-dropdown">
+                        <a href="supply.html#models" class="dropdown-navigation-link" onclick="switchTab('models')">MODELS</a>
+                        <a href="supply.html#armoury" class="dropdown-navigation-link" onclick="switchTab('armoury')">ARMOURY</a>
+                        <a href="supply.html#hanger" class="dropdown-navigation-link" onclick="switchTab('hanger')">HANGER</a>
+                    </div>
+                </div>
+
+                <a href="archive.html" class="site-navigation-link">COLLECTION ARCHIVE</a>
+
+                <div class="site-navigation-item site-navigation-updates">
+                    <a href="releases.html" class="site-navigation-link">UPDATES</a>
+                    <div class="updates-dropdown">
+                        <a href="releases.html" class="dropdown-navigation-link">RELEASES</a>
+                        <a href="about.html" class="dropdown-navigation-link">ABOUT</a>
+                        <a href="contact.html" class="dropdown-navigation-link">CONTACT</a>
+                    </div>
+                </div>
+
+                <a href="lines.html" class="site-navigation-link">LINES</a>
+
+                <button class="nav-cart-btn" type="button" onclick="toggleCart()">
+                    CART (<span id="cart-counter">0</span>)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <div class="page-hero-slideshow">
+                <img class="hero-slide-image is-active" src="wip.png" alt="Raketa Dynamics">
+                <img class="hero-slide-image" src="WIPwhite.png" alt="Raketa Dynamics">
+            </div>
+            <div class="page-hero-overlay"></div>
+            <div class="container">
+                <h1>Supply</h1>
+                <p class="large-text">Scale models, cockpit projects, and full-scale replicas.</p>
+            </div>
+            <div class="page-hero-dots">
+                <button class="page-hero-dot is-active" type="button" aria-label="Slide 1"></button>
+                <button class="page-hero-dot" type="button" aria-label="Slide 2"></button>
+            </div>
+        </section>
+
+        <!-- SHOP DASHBOARD -->
+        <section class="supply-shop-section">
+            <div class="container">
+                
+                <!-- TOP CONTROLS: 3 TABS & DYNAMIC FILTERS -->
+                <div class="archive-control-bar">
+                    <div class="archive-tabs-wrapper">
+                        <button class="archive-tab-btn is-active" data-tab="models" onclick="switchTab('models')">
+                            <span class="tab-code">01</span>
+                            <span class="tab-name">MODELS</span>
+                        </button>
+                        <button class="archive-tab-btn" data-tab="armoury" onclick="switchTab('armoury')">
+                            <span class="tab-code">02</span>
+                            <span class="tab-name">ARMOURY</span>
+                        </button>
+                        <button class="archive-tab-btn" data-tab="hanger" onclick="switchTab('hanger')">
+                            <span class="tab-code">03</span>
+                            <span class="tab-name">HANGER</span>
+                        </button>
+                    </div>
+
+                    <!-- REAL-TIME FILTERS -->
+                    <div class="archive-filter-panel">
+                        <div class="filter-group">
+                            <label for="filter-type">TYPE</label>
+                            <select id="filter-type" class="archive-select">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="filter-country">COUNTRY</label>
+                            <select id="filter-country" class="archive-select">
+                                <option value="all">ALL COUNTRIES</option>
+                                <option value="poland">POLAND</option>
+                                <option value="india">INDIA</option>
+                                <option value="russia">RUSSIA</option>
+                                <option value="ukraine">UKRAINE</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="filter-line">LINE</label>
+                            <select id="filter-line" class="archive-select">
+                                <option value="all">ALL LINES</option>
+                                <option value="silver">SILVER LINE</option>
+                                <option value="squadron">SQUADRON LINE</option>
+                                <option value="gold">GOLD LINE</option>
+                                <option value="white">WHITE LINE</option>
+                                <option value="black">BLACK LINE</option>
+                            </select>
+                        </div>
+
+                        <button id="filter-reset-btn" class="archive-reset-btn" type="button" onclick="resetFilters()">RESET</button>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+                     TAB 1: MODELS
+                ====================================================== -->
+                <div id="shop-tab-models" class="shop-tab-pane is-active">
+                    
+                    <div class="sub-nav-bar">
+                        <a href="#section-aircraft" class="sub-nav-pill">AIRCRAFT</a>
+                        <a href="#section-helicopters" class="sub-nav-pill">HELICOPTERS</a>
+                        <a href="#section-ground" class="sub-nav-pill">GROUND VEHICLES</a>
+                    </div>
+
+                    <!-- AIRCRAFT -->
+                    <div id="section-aircraft" class="shop-subsection">
+                        <div class="subsection-header">
+                            <h3>Aircraft</h3>
+                        </div>
+
+                        <div class="shop-product-grid">
+                            <div class="shop-product-card" data-type="aircraft" data-country="poland" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="Mig21Bis 9444"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">Mig21Bis '9444'</h4>
+                                    <p class="product-spec">Polish Air Force 1992 — 1:48 Scale Replica</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£185.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Mig21Bis 9444 (Gold Line)', 185.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-product-card" data-type="aircraft" data-country="poland" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="Mig21Bis 9444"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE</div>
+                                    <h4 class="product-title">Mig21Bis '9444'</h4>
+                                    <p class="product-spec">Polish Air Force 1992 — Base Release</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£135.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('Mig21Bis 9444 (Silver Line)', 135.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-product-card" data-type="aircraft" data-country="india" data-line="black">
+                                <div class="product-line-stripe stripe-black"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="SU-30MKI SB024"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-black">BLACK LINE</div>
+                                    <h4 class="product-title">SU-30MKI 'SB024'</h4>
+                                    <p class="product-spec">No. 220 Squadron — Exclusive Detail Edition</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£290.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('SU-30MKI SB024 (Black Line)', 290.00, 'Black Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HELICOPTERS -->
+                    <div id="section-helicopters" class="shop-subsection">
+                        <div class="subsection-header">
+                            <h3>Helicopters</h3>
+                        </div>
+
+                        <div class="shop-product-grid">
+                            <div class="shop-product-card" data-type="helicopter" data-country="india" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="MI-17V5 No 155 HU"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">MI-17V5 'No. 155 HU'</h4>
+                                    <p class="product-spec">Op Sindoor Tactical Helicopter</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£195.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('MI-17V5 No. 155 HU', 195.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-product-card" data-type="helicopter" data-country="russia" data-line="squadron">
+                                <div class="product-line-stripe stripe-squadron"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="KA-52 Alligator"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-squadron">SQUADRON LINE</div>
+                                    <h4 class="product-title">KA-52 'Alligator'</h4>
+                                    <p class="product-spec">Military Liaison Specification</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£210.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('KA-52 Alligator', 210.00, 'Squadron Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-product-card" data-type="helicopter" data-country="ukraine" data-line="white">
+                                <div class="product-line-stripe stripe-white"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="MI-24P Hind-F"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-white">WHITE LINE</div>
+                                    <h4 class="product-title">MI-24P 'Hind-F'</h4>
+                                    <p class="product-spec">Ultra-Rare Exhibition Grade</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£340.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('MI-24P Hind-F', 340.00, 'White Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GROUND VEHICLES -->
+                    <div id="section-ground" class="shop-subsection">
+                        <div class="subsection-header">
+                            <h3>Ground Vehicles</h3>
+                        </div>
+
+                        <div class="shop-product-grid">
+                            <div class="shop-product-card" data-type="ground" data-country="india" data-line="black">
+                                <div class="product-line-stripe stripe-black"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="51P6A TEL Launcher"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-black">BLACK LINE</div>
+                                    <h4 class="product-title">51P6A TEL Launcher</h4>
+                                    <p class="product-spec">Bhuj Air Base Mobile Air Defence System</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£220.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('51P6A TEL Launcher', 220.00, 'Black Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-product-card" data-type="ground" data-country="russia" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="T-90M Main Battle Tank"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE</div>
+                                    <h4 class="product-title">T-90M 'Proryv-3'</h4>
+                                    <p class="product-spec">Armoured Heavy Vehicle Replica</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£145.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('T-90M Proryv-3', 145.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- =====================================================
+                     TAB 2: ARMOURY
+                ====================================================== -->
+                <div id="shop-tab-armoury" class="shop-tab-pane">
+                    <div class="shop-subsection">
+                        <div class="subsection-header">
+                            <h3>Armoury Collection</h3>
+                        </div>
+
+                        <div class="shop-product-grid">
+                            <div class="shop-product-card" data-type="weapon" data-country="russia" data-line="black">
+                                <div class="product-line-stripe stripe-black"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="GSH-30-1 Autocannon"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-black">BLACK LINE</div>
+                                    <h4 class="product-title">GSH-30-1 Autocannon (1:1)</h4>
+                                    <p class="product-spec">30mm Aircraft Gun Full Metal Display</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£450.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('GSH-30-1 Autocannon 1:1', 450.00, 'Black Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-product-card" data-type="weapon" data-country="india" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="R-73 Archer Missile Body"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">R-73 Seeker Head Section</h4>
+                                    <p class="product-spec">1:1 Museum Grade Air-to-Air Ordnance</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£320.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('R-73 Seeker Head 1:1', 320.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-product-card" data-type="weapon" data-country="ukraine" data-line="silver">
+                                <div class="product-line-stripe stripe-silver"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="R-27R Missile Body"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-silver">SILVER LINE</div>
+                                    <h4 class="product-title">R-27R Missile Display Body</h4>
+                                    <p class="product-spec">1:1 Precision Fabricated Missile Body</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£280.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('R-27R Missile Body 1:1', 280.00, 'Silver Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+                     TAB 3: HANGER
+                ====================================================== -->
+                <div id="shop-tab-hanger" class="shop-tab-pane">
+                    <div class="shop-subsection">
+                        <div class="subsection-header">
+                            <h3>Hanger Simulator Systems</h3>
+                        </div>
+
+                        <div class="shop-product-grid">
+                            <div class="shop-product-card" data-type="cockpit" data-country="india" data-line="white">
+                                <div class="product-line-stripe stripe-white"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="SU-30MKI Front IP Cockpit"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-white">WHITE LINE</div>
+                                    <h4 class="product-title">SU-30MKI Front Cockpit IP</h4>
+                                    <p class="product-spec">Active Backlit Multi-Function Display Bezels</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£780.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('SU-30MKI Cockpit IP', 780.00, 'White Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-product-card" data-type="cockpit" data-country="russia" data-line="black">
+                                <div class="product-line-stripe stripe-black"></div>
+                                <div class="product-img-box"><img src="WIPwhite.png" alt="SU-27 Left Throttle Quadrant"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-black">BLACK LINE</div>
+                                    <h4 class="product-title">SU-27 Throttle Console</h4>
+                                    <p class="product-spec">Weighted Dual-Engine Tactical Quadrant</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£390.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('SU-27 Throttle Console', 390.00, 'Black Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shop-product-card" data-type="cockpit" data-country="india" data-line="gold">
+                                <div class="product-line-stripe stripe-gold"></div>
+                                <div class="product-img-box"><img src="wip.png" alt="MI-17V5 Overhead Panel"></div>
+                                <div class="product-info-box">
+                                    <div class="product-line-tag tag-gold">GOLD LINE</div>
+                                    <h4 class="product-title">MI-17V5 Overhead Panel</h4>
+                                    <p class="product-spec">Tactical Switchgear & Cockpit Lighting Module</p>
+                                    <div class="product-buy-row">
+                                        <span class="product-price">£310.00</span>
+                                        <button class="btn-add-cart" type="button" onclick="addToCart('MI-17V5 Overhead Panel', 310.00, 'Gold Line')">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- SHOPPING CART SLIDE-OUT DRAWER -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3>ACQUISITION CART</h3>
+            <button class="cart-close-btn" type="button" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cart-items" class="cart-items-container"></div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>SUBTOTAL</span>
+                <span id="cart-total">£0.00</span>
+            </div>
+            <button class="cart-checkout-btn" type="button" onclick="alert('Checkout integration in progress.')">PROCEED TO ACQUISITION</button>
         </div>
     </div>
+    <div id="cart-backdrop" class="cart-backdrop" onclick="toggleCart()"></div>
 
-    <div class="container footer-bottom">
-        <span>© 2026 Raketa Dynamics</span>
-        <span>Berkshire, United Kingdom</span>
-    </div>
-</footer>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="brand footer-brand">
+                    <img src="logo.png" alt="Raketa Dynamics">
+                </a>
+                <p>Highly detailed aircraft replicas for collectors and aviation enthusiasts.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="supply.html">Supply</a>
+                <a href="models.html">Models</a>
+                <a href="armoury.html">Armoury</a>
+                <a href="hanger.html">Hanger</a>
+                <a href="archive.html">Collection Archive</a>
+                <a href="releases.html">Updates</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="lines.html">Lines</a>
+            </div>
+            <div class="footer-contact">
+                <span>CONTACT</span>
+                <a href="mailto:Raketadynamicsmodels@gmail.com">Raketadynamicsmodels@gmail.com</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>© 2026 Raketa Dynamics</span>
+            <span>Berkshire, United Kingdom</span>
+        </div>
+    </footer>
 
-<script src="hero-slideshow.js"></script>
+    <script src="hero-slideshow.js"></script>
+    <script src="cart.js"></script>
 
-<!-- SHOP & CART LOGIC -->
-<script>
-    let cart = JSON.parse(localStorage.getItem('raketa_cart') || '[]');
+    <!-- DYNAMIC FILTER SCRIPT -->
+    <script>
+        const typeOptions = {
+            models: [
+                { value: 'all', label: 'ALL TYPES' },
+                { value: 'aircraft', label: 'AIRCRAFT' },
+                { value: 'helicopter', label: 'HELICOPTERS' },
+                { value: 'ground', label: 'GROUND VEHICLES' }
+            ],
+            armoury: [
+                { value: 'all', label: 'ALL TYPES' },
+                { value: 'weapon', label: 'WEAPONS / 1:1' }
+            ],
+            hanger: [
+                { value: 'all', label: 'ALL TYPES' },
+                { value: 'cockpit', label: 'COCKPITS & PANELS' }
+            ]
+        };
 
-    function updateCartUI() {
-        const counter = document.getElementById('cart-counter');
-        if (counter) counter.innerText = cart.length;
-        const container = document.getElementById('cart-items');
-        const totalElem = document.getElementById('cart-total');
-        if (!container) return;
-
-        if (cart.length === 0) {
-            container.innerHTML = '<p class="cart-empty-msg" style="color: #a0a5a0; font-family: \'Share Tech Mono\', monospace; padding: 20px 0;">Your cart is currently empty.</p>';
-            if (totalElem) totalElem.innerText = '£0.00';
-            return;
+        function updateTypeOptions(tabId) {
+            const select = document.getElementById('filter-type');
+            select.innerHTML = '';
+            (typeOptions[tabId] || typeOptions.models).forEach(opt => {
+                const el = document.createElement('option');
+                el.value = opt.value;
+                el.innerText = opt.label;
+                select.appendChild(el);
+            });
         }
 
-        let total = 0;
-        container.innerHTML = cart.map((item, idx) => {
-            total += item.price;
-            return `
-                <div class="cart-item-row">
-                    <div>
-                        <h4>${item.name}</h4>
-                        <span class="cart-item-meta">${item.line} — £${item.price.toFixed(2)}</span>
-                    </div>
-                    <button class="cart-remove-btn" onclick="removeFromCart(${idx})">REMOVE</button>
-                </div>
-            `;
-        }).join('');
+        function switchTab(tabId) {
+            document.querySelectorAll('.archive-tab-btn').forEach(btn => {
+                btn.classList.toggle('is-active', btn.dataset.tab === tabId);
+            });
+            document.querySelectorAll('.shop-tab-pane').forEach(pane => {
+                pane.classList.toggle('is-active', pane.id === `shop-tab-${tabId}`);
+            });
+            updateTypeOptions(tabId);
+            applyFilters();
+        }
 
-        if (totalElem) totalElem.innerText = `£${total.toFixed(2)}`;
-    }
+        function applyFilters() {
+            const selectedType = document.getElementById('filter-type').value;
+            const selectedCountry = document.getElementById('filter-country').value;
+            const selectedLine = document.getElementById('filter-line').value;
 
-    function toggleCart() {
-        document.getElementById('cart-drawer').classList.toggle('is-open');
-        document.getElementById('cart-backdrop').classList.toggle('is-open');
-    }
+            const activePane = document.querySelector('.shop-tab-pane.is-active');
+            if (!activePane) return;
 
-    function addToCart(name, price, line) {
-        cart.push({ name, price, line });
-        localStorage.setItem('raketa_cart', JSON.stringify(cart));
-        updateCartUI();
-        toggleCart();
-    }
+            // Filter individual cards
+            activePane.querySelectorAll('.shop-product-card').forEach(card => {
+                const cType = card.dataset.type;
+                const cCountry = card.dataset.country;
+                const cLine = card.dataset.line;
 
-    function removeFromCart(idx) {
-        cart.splice(idx, 1);
-        localStorage.setItem('raketa_cart', JSON.stringify(cart));
-        updateCartUI();
-    }
+                const matchType = (selectedType === 'all' || selectedType === cType);
+                const matchCountry = (selectedCountry === 'all' || selectedCountry === cCountry);
+                const matchLine = (selectedLine === 'all' || selectedLine === cLine);
 
-    function switchTab(tabId) {
-        document.querySelectorAll('.archive-tab-btn').forEach(btn => {
-            btn.classList.toggle('is-active', btn.dataset.tab === tabId);
-        });
-        document.querySelectorAll('.shop-tab-pane').forEach(pane => {
-            pane.classList.toggle('is-active', pane.id === `shop-tab-${tabId}`);
-        });
+                card.style.display = (matchType && matchCountry && matchLine) ? 'flex' : 'none';
+            });
+
+            // Auto-hide empty sub-sections
+            activePane.querySelectorAll('.shop-subsection').forEach(section => {
+                const visibleCards = section.querySelectorAll('.shop-product-card[style*="display: flex"]');
+                section.style.display = (visibleCards.length > 0) ? 'block' : 'none';
+            });
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-type').value = 'all';
+            document.getElementById('filter-country').value = 'all';
+            document.getElementById('filter-line').value = 'all';
+            applyFilters();
+        }
+
+        document.getElementById('filter-type').addEventListener('change', applyFilters);
+        document.getElementById('filter-country').addEventListener('change', applyFilters);
+        document.getElementById('filter-line').addEventListener('change', applyFilters);
+
+        // Initial setup
+        updateTypeOptions('models');
         applyFilters();
-    }
-
-    function applyFilters() {
-        const selectedType = document.getElementById('filter-type').value;
-        const selectedCountry = document.getElementById('filter-country').value;
-        const selectedLine = document.getElementById('filter-line').value;
-
-        const activePane = document.querySelector('.shop-tab-pane.is-active');
-        if (!activePane) return;
-
-        activePane.querySelectorAll('.shop-product-card').forEach(card => {
-            const cType = card.dataset.type;
-            const cCountry = card.dataset.country;
-            const cLine = card.dataset.line;
-
-            const matchType = (selectedType === 'all' || selectedType === cType);
-            const matchCountry = (selectedCountry === 'all' || selectedCountry === cCountry);
-            const matchLine = (selectedLine === 'all' || selectedLine === cLine);
-
-            card.style.display = (matchType && matchCountry && matchLine) ? 'flex' : 'none';
-        });
-    }
-
-    function resetFilters() {
-        document.getElementById('filter-type').value = 'all';
-        document.getElementById('filter-country').value = 'all';
-        document.getElementById('filter-line').value = 'all';
-        applyFilters();
-    }
-
-    document.getElementById('filter-type').addEventListener('change', applyFilters);
-    document.getElementById('filter-country').addEventListener('change', applyFilters);
-    document.getElementById('filter-line').addEventListener('change', applyFilters);
-
-    updateCartUI();
-</script>
-
+    </script>
 </body>
 </html>
