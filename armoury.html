@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the Raketa Dynamics armoury collection.">
+    <meta name="description" content="Explore the Raketa Dynamics Armoury — 1:1 Scale Replicas and Technical Display Ordnance.">
     <title>Armoury | Raketa Dynamics</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="logo.png">
@@ -59,7 +59,7 @@
             <div class="page-hero-overlay"></div>
             <div class="container">
                 <h1>Armoury</h1>
-                <p class="large-text">1:1 full-scale replicas, equipment pieces, and technical display ordnance.</p>
+                <p class="large-text">1:1 full-scale replicas, weapon platforms, and technical display ordnance.</p>
             </div>
             <div class="page-hero-dots">
                 <button class="page-hero-dot is-active" type="button" aria-label="Slide 1"></button>
@@ -93,9 +93,10 @@
                             <label for="filter-country">COUNTRY</label>
                             <select id="filter-country" class="archive-select">
                                 <option value="all">ALL COUNTRIES</option>
-                                <option value="russia">RUSSIA</option>
                                 <option value="india">INDIA</option>
+                                <option value="russia">RUSSIA</option>
                                 <option value="ukraine">UKRAINE</option>
+                                <option value="uk">UNITED KINGDOM</option>
                             </select>
                         </div>
 
@@ -115,7 +116,98 @@
 
                 <!-- 3-COLUMN PRODUCT GRID -->
                 <div class="shop-product-grid">
-                    
+
+                    <!-- AK 203i — 5th Rajput Regiment — GOLD LINE -->
+                    <div class="shop-product-card" data-country="india" data-line="gold">
+                        <div class="product-line-stripe stripe-gold"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="AK 203i"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-gold">GOLD LINE</div>
+                            <h4 class="product-title">AK 203i (1:1)</h4>
+                            <p class="product-spec">5th Rajput Regiment — Jul 2026</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£285.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('AK 203i 5th Rajput (Gold Line)', 285.00, 'Gold Line')">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1A1 SLR — 2nd Rajputana Rifles — SILVER LINE -->
+                    <div class="shop-product-card" data-country="india" data-line="silver">
+                        <div class="product-line-stripe stripe-silver"></div>
+                        <div class="product-img-box"><img src="WIPwhite.png" alt="1A1 SLR"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-silver">SILVER LINE</div>
+                            <h4 class="product-title">1A1 SLR (1:1)</h4>
+                            <p class="product-spec">2nd Rajputana Rifles — Jun 1999</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£220.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('1A1 SLR 2nd Rajputana (Silver Line)', 220.00, 'Silver Line')">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- L1A1 — 1st Bn Royal Regiment of Fusiliers — SILVER LINE -->
+                    <div class="shop-product-card" data-country="uk" data-line="silver">
+                        <div class="product-line-stripe stripe-silver"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="L1A1"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-silver">SILVER LINE</div>
+                            <h4 class="product-title">L1A1 (1:1)</h4>
+                            <p class="product-spec">1st Battalion Royal Regiment of Fusiliers — Jul 1970</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£235.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('L1A1 Royal Fusiliers (Silver Line)', 235.00, 'Silver Line')">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AK105 — TsSN FSB Alpha Group — SILVER LINE -->
+                    <div class="shop-product-card" data-country="russia" data-line="silver">
+                        <div class="product-line-stripe stripe-silver"></div>
+                        <div class="product-img-box"><img src="WIPwhite.png" alt="AK105"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-silver">SILVER LINE</div>
+                            <h4 class="product-title">AK105 (1:1)</h4>
+                            <p class="product-spec">TsSN FSB Alpha Group — Oct 2008</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£210.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('AK105 FSB Alpha (Silver Line)', 210.00, 'Silver Line')">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AK74M — 76th Guards Air Assault Division — GOLD LINE -->
+                    <div class="shop-product-card" data-country="russia" data-line="gold">
+                        <div class="product-line-stripe stripe-gold"></div>
+                        <div class="product-img-box"><img src="wip.png" alt="AK74M 76th Guards"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-gold">GOLD LINE</div>
+                            <h4 class="product-title">AK74M (1:1)</h4>
+                            <p class="product-spec">76th Guards Air Assault Division — Dec 2023</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£270.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('AK74M 76th Guards (Gold Line)', 270.00, 'Gold Line')">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AK74M — 82nd Air Assault Brigade — SILVER LINE -->
+                    <div class="shop-product-card" data-country="ukraine" data-line="silver">
+                        <div class="product-line-stripe stripe-silver"></div>
+                        <div class="product-img-box"><img src="WIPwhite.png" alt="AK74M 82nd Air Assault"></div>
+                        <div class="product-info-box">
+                            <div class="product-line-tag tag-silver">SILVER LINE</div>
+                            <h4 class="product-title">AK74M (1:1)</h4>
+                            <p class="product-spec">82nd Air Assault Brigade — Dec 2023</p>
+                            <div class="product-buy-row">
+                                <span class="product-price">£220.00</span>
+                                <button class="btn-add-cart" type="button" onclick="addToCart('AK74M 82nd Air Assault (Silver Line)', 220.00, 'Silver Line')">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GSH-30-1 Autocannon — BLACK LINE -->
                     <div class="shop-product-card" data-country="russia" data-line="black">
                         <div class="product-line-stripe stripe-black"></div>
                         <div class="product-img-box"><img src="wip.png" alt="GSH-30-1 Autocannon"></div>
@@ -130,6 +222,7 @@
                         </div>
                     </div>
 
+                    <!-- R-73 Seeker Head Section — GOLD LINE -->
                     <div class="shop-product-card" data-country="india" data-line="gold">
                         <div class="product-line-stripe stripe-gold"></div>
                         <div class="product-img-box"><img src="WIPwhite.png" alt="R-73 Seeker Head"></div>
@@ -144,6 +237,7 @@
                         </div>
                     </div>
 
+                    <!-- R-27R Missile Body — SILVER LINE -->
                     <div class="shop-product-card" data-country="ukraine" data-line="silver">
                         <div class="product-line-stripe stripe-silver"></div>
                         <div class="product-img-box"><img src="wip.png" alt="R-27R Missile Casing"></div>
@@ -159,7 +253,6 @@
                     </div>
 
                 </div>
-
             </div>
         </section>
     </main>
@@ -191,8 +284,11 @@
             <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="supply.html">Supply</a>
+                <a href="models.html">Models</a>
+                <a href="armoury.html">Armoury</a>
+                <a href="hanger.html">Hanger</a>
                 <a href="archive.html">Collection Archive</a>
-                <a href="releases.html">Releases</a>
+                <a href="releases.html">Updates</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
                 <a href="lines.html">Lines</a>
